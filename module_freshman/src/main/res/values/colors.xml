@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="colorPrimary" tools:ignore="ResourceName">#58B1FC</color>
+    <color name="colorPrimaryDark" tools:ignore="ResourceName">#798DFA</color>
+    <color name="colorAccent" tools:ignore="ResourceName">#788EFA</color>
+    <color name="freshman_activity_home_bg_color">#c9e3ff</color>
+    <color name="freshman_activity_data_revealed_man_color">#71d5ff</color>
+    <color name="freshman_activity_data_revealed_woman_color">#ff95c3</color>
+    <color name="freshman_activity_data_revealed_edge_color">#698aff</color>
+    <color name="freshman_activity_data_revealed_bg_color">#eff7ff</color>
+</resources>
