@@ -5,6 +5,7 @@
 # Files for the ART/Dalvik VM
 *.dex
 
+
 # Java class files
 *.class
 
@@ -79,4 +80,5 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 # lint/reports/
+*.DS_Store
 
