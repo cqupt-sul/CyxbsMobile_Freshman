@@ -7,6 +7,11 @@ import com.mredrock.cyxbs.freshman.view.customui.chartview.SubjectFragment
 import com.mredrock.cyxbs.freshman.view.nannvbili.NannvbiliFragment
 import com.mredrock.cyxbs.freshman.viewmodel.SubjectViewModel
 
+/**
+* @date 2019-08-02
+* @author Override0330
+* @description
+*/
 
 class MainActivity : AppCompatActivity() {
 

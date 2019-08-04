@@ -4,6 +4,12 @@ import androidx.lifecycle.MutableLiveData
 import com.mredrock.cyxbs.common.viewmodel.BaseViewModel
 import com.mredrock.cyxbs.freshman.view.adapter.HomeItem
 
+/**
+* @date 2019-08-03
+* @author Override0330
+* @description
+*/
+
 class HomeViewModel : BaseViewModel(){
     var showList = MutableLiveData<ArrayList<HomeItem>>()
     fun init(){
@@ -20,6 +26,7 @@ class HomeViewModel : BaseViewModel(){
             val homeItem = HomeItem(titleList[i],smallList[i])
             dataList.add(homeItem)
         }
+
         showList.value = dataList
     }
 }
