@@ -3,7 +3,9 @@ package com.mredrock.cyxbs.freshman.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.mredrock.cyxbs.freshman.R
+import com.mredrock.cyxbs.freshman.view.customui.chartview.SubjectFragment
 import com.mredrock.cyxbs.freshman.view.nannvbili.NannvbiliFragment
+import com.mredrock.cyxbs.freshman.viewmodel.SubjectViewModel
 
 
 class MainActivity : AppCompatActivity() {

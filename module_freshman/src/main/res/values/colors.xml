@@ -8,4 +8,5 @@
     <color name="freshman_activity_data_revealed_woman_color">#ff95c3</color>
     <color name="freshman_activity_data_revealed_edge_color">#698aff</color>
     <color name="freshman_activity_data_revealed_bg_color">#eff7ff</color>
+    <color name="freshman_activity_view_divider_line_color">#b3c4ff</color>
 </resources>
