@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:background=""
+        tools:ignore="UselessParent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_item_institute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="通信与信息工程学院"
+            android:textSize="24dp" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_item_institute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:background="@drawable/freshman_home_arrow_btn" />
+    </FrameLayout>
+</LinearLayout>
