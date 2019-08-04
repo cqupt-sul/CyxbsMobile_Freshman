@@ -8,13 +8,15 @@ import android.graphics.Paint
 import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
+import com.mredrock.cyxbs.common.utils.LogUtils
 import com.mredrock.cyxbs.freshman.R
 import kotlin.math.PI
 
-/**
- * 饼图自定义view，之后要通过viewModel实时变化的nowAngle来进行不断重绘
- * 原始信息包含一个list，list里有需要展示的每个分饼图的信息，分饼图信息应该含有，text，颜色，所占百分比
- */
+ /**
+ * @date 2019-08-02
+ * @author Override0330
+ * @description 原始信息包含一个list，list里有需要展示的每个分饼图的信息，分饼图信息应该含有，text，颜色，所占百分比
+  */
 class CircleView : View {
     private val paintFill = Paint()
     private val paintStroke = Paint()
@@ -53,7 +55,6 @@ class CircleView : View {
 
     @SuppressLint("DrawAllocation")
     override fun onDraw(canvas: Canvas?) {
-        println("onDraw被调用")
         super.onDraw(canvas)
         canvas?.translate(width/2F,height/2F)
         val r = Math.min(width,height)/2F
@@ -79,7 +80,6 @@ class CircleView : View {
                     paintNumber.alpha = ((nowAngle/360F+ showList!![0].startAngle)*255).toInt()
                     println((nowAngle/totalAngle).toInt()*255)
                     val angleSin = (Math.sqrt(Math.pow(textWidth/2.0, 2.0)+Math.pow(paintNumber.textSize*1.5,2.0))/2)/r
-//                    println(textAngle)
                     when (textAngle) {
                         in 0.0..90.0 -> {
                             //字体在右下方

@@ -34,7 +34,6 @@ class NannvbiliFragment : BaseViewModelFragment<NannvbiliViewModel>(){
     override fun onStart() {
         super.onStart()
         viewModel.showList.observe(this, Observer<ArrayList<CircleData>> {
-            println("livedata监听回调")
             circle_view_test.init(viewModel.showList.value)
             if (viewModel.showList.value!=null){
                 val animation = ObjectAnimator.ofFloat(circle_view_test,"nowAngle",
@@ -42,7 +41,6 @@ class NannvbiliFragment : BaseViewModelFragment<NannvbiliViewModel>(){
                         viewModel.showList.value!![0].startAngle+360)
                 animation.duration = 2000
                 animation.addUpdateListener {
-                    println("画一次 ${circle_view_test.nowAngle},${circle_view_test.totalAngle}")
                     circle_view_test.invalidate()
                 }
                 animation.interpolator = AccelerateDecelerateInterpolator()

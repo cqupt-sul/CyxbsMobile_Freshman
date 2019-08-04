@@ -9,6 +9,12 @@ import com.mredrock.cyxbs.freshman.databinding.FreshmanFragmentNannvbiliBinding
 import com.mredrock.cyxbs.freshman.model.DataRevealedSchool
 import com.mredrock.cyxbs.freshman.view.customui.circle.CircleData
 
+/**
+* @date 2019-08-02
+* @author Override0330
+* @description
+*/
+
 class NannvbiliViewModel : BaseViewModel() {
     val showList = MutableLiveData<ArrayList<CircleData>>()
     fun init(dataBinding: FreshmanFragmentNannvbiliBinding){
