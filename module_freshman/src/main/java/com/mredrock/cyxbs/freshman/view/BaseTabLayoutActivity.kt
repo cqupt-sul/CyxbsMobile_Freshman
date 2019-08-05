@@ -9,14 +9,17 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import com.mredrock.cyxbs.common.ui.BaseActivity
+import com.mredrock.cyxbs.common.ui.BaseViewModelActivity
+import com.mredrock.cyxbs.common.viewmodel.BaseViewModel
 import com.mredrock.cyxbs.freshman.R
 import com.mredrock.cyxbs.freshman.view.adapter.BaseFragmentPagerAdapter
 import kotlinx.android.synthetic.main.freshman_activity_data_disclosure.*
+import kotlinx.android.synthetic.main.freshman_tab_custom_view.*
 import org.jetbrains.anko.textColor
 import java.io.IOException
 
 @SuppressLint("Registered")
-abstract class BaseTabLayoutActivity : BaseActivity() {
+abstract class BaseTabLayoutActivity<T:BaseViewModel> : BaseViewModelActivity<T>(){
     override val isFragmentActivity: Boolean
         get() = true
 

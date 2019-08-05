@@ -3,4 +3,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="freshman_college_name">重庆邮电大学地址：</string>
+    <string name="freshman_college_address">重庆市南岸区南山街道崇文路二号重庆邮电大学</string>
+    <string name="freshman_goto_map_description">重邮全景地图前往发现查看(发现→重邮地图)</string>
 </resources>

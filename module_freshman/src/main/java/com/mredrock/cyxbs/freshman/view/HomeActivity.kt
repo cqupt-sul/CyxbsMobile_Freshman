@@ -13,8 +13,7 @@ import com.mredrock.cyxbs.freshman.BR
 import com.mredrock.cyxbs.freshman.R
 import com.mredrock.cyxbs.freshman.databinding.FreshmanRecycleItemHomeBinding
 import com.mredrock.cyxbs.freshman.view.adapter.BaseRecyclerViewAdapter
-import com.mredrock.cyxbs.freshman.view.adapter.HomeItem
-import com.mredrock.cyxbs.freshman.view.adapter.HomeRecyclerViewAdapter
+import com.mredrock.cyxbs.freshman.model.HomeItem
 import com.mredrock.cyxbs.freshman.viewmodel.HomeViewModel
 import kotlinx.android.synthetic.main.freshman_acitvity_home.*
 
@@ -49,7 +48,7 @@ class HomeActivity : BaseViewModelActivity<HomeViewModel>() {
         iv_home_shadow_right.startAnimation(animation4)
 
         viewModel.showList.observe{
-            val adapter = BaseRecyclerViewAdapter<FreshmanRecycleItemHomeBinding,HomeItem>(R.layout.freshman_recycle_item_home,BR.item,it)
+            val adapter = BaseRecyclerViewAdapter<FreshmanRecycleItemHomeBinding, HomeItem>(R.layout.freshman_recycle_item_home,BR.item,it)
             //设置监听
             adapter.onItemOnClickListener = object : BaseRecyclerViewAdapter.OnItemOnClickListener{
                 override fun onItemClick(itemView: View, position: Int) {

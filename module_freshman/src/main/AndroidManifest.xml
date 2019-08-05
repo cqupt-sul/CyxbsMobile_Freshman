@@ -19,7 +19,14 @@
             <!--</intent-filter>-->
         </activity>
         <activity android:name=".view.MainActivity"/>
-        <activity android:name=".view.campusguide.CampusGuideActivity"/>
+        <!--<activity android:name=".view.campusguide.CampusGuideActivity"/>-->
+        <activity android:name=".view.GoToCquptActivity">
+            <intent-filter>
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            </intent-filter>
+        </activity>
         <activity android:name=".view.DataDisclosureActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

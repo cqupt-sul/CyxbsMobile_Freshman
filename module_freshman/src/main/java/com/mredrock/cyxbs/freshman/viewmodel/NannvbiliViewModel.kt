@@ -7,7 +7,7 @@ import com.mredrock.cyxbs.freshman.BR
 import com.mredrock.cyxbs.freshman.R
 import com.mredrock.cyxbs.freshman.databinding.FreshmanFragmentNannvbiliBinding
 import com.mredrock.cyxbs.freshman.model.DataRevealedSchool
-import com.mredrock.cyxbs.freshman.view.customui.circle.CircleData
+import com.mredrock.cyxbs.freshman.model.CircleData
 
 /**
 * @date 2019-08-02

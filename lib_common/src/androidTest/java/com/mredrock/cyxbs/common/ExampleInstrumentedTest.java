@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 import static org.junit.Assert.*;
 
 /**
- * Instrumented test, which will execute on an Android device.
+ * Instrumented freshman_define_window, which will execute on an Android device.
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
@@ -18,9 +18,9 @@ import static org.junit.Assert.*;
 public class ExampleInstrumentedTest {
     @Test
     public void useAppContext() {
-        // Context of the app under test.
+        // Context of the app under freshman_define_window.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.mredrock.cyxbs.common.test", appContext.getPackageName());
+        assertEquals("com.mredrock.cyxbs.common.freshman_define_window", appContext.getPackageName());
     }
 }

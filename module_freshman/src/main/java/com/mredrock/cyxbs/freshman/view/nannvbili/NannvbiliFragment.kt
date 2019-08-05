@@ -1,7 +1,6 @@
 package com.mredrock.cyxbs.freshman.view.nannvbili
 
 import android.animation.ObjectAnimator
-import android.animation.TimeInterpolator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,12 +12,12 @@ import androidx.lifecycle.ViewModelProviders
 import com.mredrock.cyxbs.common.ui.BaseViewModelFragment
 import com.mredrock.cyxbs.freshman.R
 import com.mredrock.cyxbs.freshman.databinding.FreshmanFragmentNannvbiliBinding
-import com.mredrock.cyxbs.freshman.view.customui.circle.CircleData
+import com.mredrock.cyxbs.freshman.model.CircleData
 import com.mredrock.cyxbs.freshman.viewmodel.NannvbiliViewModel
 import kotlinx.android.synthetic.main.freshman_fragment_nannvbili.*
 
 class NannvbiliFragment : BaseViewModelFragment<NannvbiliViewModel>(){
-    lateinit var dataBinding: FreshmanFragmentNannvbiliBinding
+    private lateinit var dataBinding: FreshmanFragmentNannvbiliBinding
     override val viewModelClass = NannvbiliViewModel::class.java
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val viewModelFactory = getViewModelFactory()

@@ -17,7 +17,7 @@ android {
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.freshman_define_window.runner.AndroidJUnitRunner"
 
         kapt {
             //Arouter

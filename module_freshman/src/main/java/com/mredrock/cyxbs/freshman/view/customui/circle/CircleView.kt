@@ -8,8 +8,8 @@ import android.graphics.Paint
 import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
-import com.mredrock.cyxbs.common.utils.LogUtils
 import com.mredrock.cyxbs.freshman.R
+import com.mredrock.cyxbs.freshman.model.CircleData
 import kotlin.math.PI
 
  /**

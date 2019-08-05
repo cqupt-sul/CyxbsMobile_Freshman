@@ -2,7 +2,7 @@ package com.mredrock.cyxbs.freshman.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.mredrock.cyxbs.common.viewmodel.BaseViewModel
-import com.mredrock.cyxbs.freshman.view.adapter.HomeItem
+import com.mredrock.cyxbs.freshman.model.HomeItem
 
 /**
 * @date 2019-08-03
@@ -23,7 +23,7 @@ class HomeViewModel : BaseViewModel(){
                 "迎新网 新生课表",
                 "红岩网校")
         for(i in 0 until titleList.size){
-            val homeItem = HomeItem(titleList[i],smallList[i])
+            val homeItem = HomeItem(titleList[i], smallList[i])
             dataList.add(homeItem)
         }
 
