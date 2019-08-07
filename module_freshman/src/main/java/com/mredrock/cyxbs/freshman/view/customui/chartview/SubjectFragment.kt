@@ -24,8 +24,13 @@ class SubjectFragment : BaseViewModelFragment<SubjectViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val subjectViewModel = ViewModelProviders.of(this).get(SubjectViewModel::class.java)
-        subjectViewModel.initData().observe(this,
+        val viewModelFactory = getViewModelFactory()
+        viewModel = if (viewModelFactory != null) {
+            ViewModelProviders.of(this, viewModelFactory).get(viewModelClass)
+        } else {
+            ViewModelProviders.of(this).get(viewModelClass)
+        }
+        viewModel.initData().observe(this,
                 Observer {
                     for (i in 0 until it.size) {
                         when (i) {

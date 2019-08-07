@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:gravity="center"
-        android:textSize="39dp"
-        android:text="。。。"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tl_dormitory"
+        app:tabIndicator="@null"
+        app:tabRippleColor="@null"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="30dp"/>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vp_dormitory"
+        android:overScrollMode="never"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </androidx.viewpager.widget.ViewPager>
 </LinearLayout>

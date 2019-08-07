@@ -1,29 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/freshman_activity_data_revealed_bg_color"
     android:orientation="vertical">
 
-    <androidx.fragment.app.FragmentTabHost
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/freshman_data_revealed_iv_bg_normal">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="232dp"
-            android:background="@drawable/freshman_data_revealed_iv_bg_normal" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/freshman_appcompattextview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="37dp"
+            android:text="2018-2019部分学科挂科率"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.mredrock.cyxbs.freshman.view.customui.chart.ChartView
             android:id="@+id/cv_subject"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-
-            />
-    </androidx.fragment.app.FragmentTabHost>
+            android:layout_width="345dp"
+            android:layout_height="308dp"
+            android:layout_gravity="center_horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

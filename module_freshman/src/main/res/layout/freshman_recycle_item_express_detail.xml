@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="expressDetailData"
+            type="com.mredrock.cyxbs.freshman.model.campusguide.ExpressDetailData" />
+    </data>
+
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="345dp"
+            android:layout_height="374dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/freshman_bg"
+            tools:ignore="UselessParent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginRight="14dp"
+                android:layout_marginBottom="165dp"
+                app:picUrl="@{expressDetailData.detailData.photo}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="72dp"
+                android:layout_height="17dp"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="224dp"
+                android:text="@{expressDetailData.detailData.title}"
+                android:textColor="#b3000000"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="307dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="17dp"
+                android:layout_marginTop="245dp"
+                android:text="@{expressDetailData.detailData.detail}"
+                android:textColor="#a6000000"
+                android:textSize="14sp" />
+        </FrameLayout>
+    </LinearLayout>
+</layout>

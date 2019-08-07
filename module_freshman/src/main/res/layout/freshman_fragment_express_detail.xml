@@ -1,54 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
-    <data>
-        <variable
-            name="expressData"
-            type="com.mredrock.cyxbs.freshman.model.campusguide.ExpressData" />
-    </data>
-    <LinearLayout
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-    <FrameLayout
-        android:layout_width="345dp"
-        android:layout_height="374dp"
-        android:layout_gravity="center"
-        android:background="@drawable/freshman_express_bg"
-        tools:ignore="UselessParent">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_marginTop="14dp"
-            android:layout_marginLeft="14dp"
-            android:layout_marginRight="14dp"
-            android:layout_marginBottom="165dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorPrimaryDark"
-            />
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="72dp"
-            android:layout_height="17dp"
-            android:text="知行苑五舍"
-            android:textColor="#b3000000"
-            android:textSize="14sp"
-            android:layout_marginStart="19dp"
-            android:layout_marginTop="224dp"
-            />
-       <androidx.appcompat.widget.AppCompatTextView
-           android:layout_width="307dp"
-           android:layout_height="109dp"
-           android:text="啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦
-啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦
-啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦
-啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦
-啦啦啦啦
-"
-           android:layout_marginStart="17dp"
-           android:layout_marginTop="245dp"
-           android:textColor="#a6000000"
-           android:textSize="14sp"
-           />
-    </FrameLayout>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/freshman_activity_data_revealed_bg_color"
+    android:orientation="vertical">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_express_detail"
+        android:overScrollMode="never"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp">
+    </androidx.recyclerview.widget.RecyclerView>
 </LinearLayout>
-</layout>
