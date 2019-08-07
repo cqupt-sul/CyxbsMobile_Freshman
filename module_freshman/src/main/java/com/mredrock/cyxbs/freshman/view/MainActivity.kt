@@ -18,6 +18,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.freshman_activity_main)
-        supportFragmentManager.beginTransaction().replace(R.id.fragment, NannvbiliFragment()).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.fragment, SubjectFragment()).commit()
     }
 }

@@ -1,30 +1,24 @@
 package com.mredrock.cyxbs.freshman.view
 
-import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.Typeface
-import android.os.Bundle
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
-import com.mredrock.cyxbs.common.ui.BaseActivity
-import com.mredrock.cyxbs.common.ui.BaseViewModelActivity
+import com.mredrock.cyxbs.common.ui.BaseViewModelFragment
 import com.mredrock.cyxbs.common.viewmodel.BaseViewModel
 import com.mredrock.cyxbs.freshman.R
 import com.mredrock.cyxbs.freshman.view.adapter.BaseFragmentPagerAdapter
-import kotlinx.android.synthetic.main.freshman_activity_data_disclosure.*
-import kotlinx.android.synthetic.main.freshman_tab_custom_view.*
 import org.jetbrains.anko.textColor
-import java.io.IOException
 
-@SuppressLint("Registered")
-abstract class BaseTabLayoutActivity<T : BaseViewModel> : BaseViewModelActivity<T>() {
-    override val isFragmentActivity: Boolean
-        get() = true
-
-//    private lateinit var titles: List<String>
-//    private lateinit var fragments: List<Fragment>
+/**
+ * Created by yyfbe on 2019-08-05
+ */
+abstract class BaseTabLayoutFragment<T : BaseViewModel>(override val viewModelClass: Class<T>) : BaseViewModelFragment<T>() {
+//   lateinit var titles: List<String>
+//    lateinit var fragments: List<Fragment>
     fun setTabView(position: Int, titles: List<String>, tabLayout: TabLayout) {
         getTabView(position, true, titles, tabLayout)
     }
@@ -39,10 +33,10 @@ abstract class BaseTabLayoutActivity<T : BaseViewModel> : BaseViewModelActivity<
         val customView = tab?.customView?.findViewById<TextView>(R.id.tv_tab_select)
         customView?.text = titles[position]
         if (selected) {
-            customView?.textColor = Color.parseColor("#4b72ff")
+            customView?.textColor = Color.parseColor("#bf000000")
             customView?.typeface = Typeface.DEFAULT_BOLD
         } else {
-            customView?.textColor = Color.parseColor("#cc000000")
+            customView?.textColor = Color.parseColor("#99000000")
             customView?.typeface = Typeface.DEFAULT
         }
     }
@@ -50,8 +44,8 @@ abstract class BaseTabLayoutActivity<T : BaseViewModel> : BaseViewModelActivity<
     open fun initTabLayout(viewPager: ViewPager, tabLayout: TabLayout,
                            titles: List<String>,fragments: List<Fragment>) {
         checkMatch(titles, fragments)
-        val fm = supportFragmentManager
-        val dataFragmentPagerAdapter = BaseFragmentPagerAdapter(titles, fragments, fm)
+        val fm = activity?.supportFragmentManager
+        val dataFragmentPagerAdapter = fm?.let { BaseFragmentPagerAdapter(titles, fragments, it) }
         viewPager.adapter = dataFragmentPagerAdapter
 
         tabLayout.setupWithViewPager(viewPager)
@@ -60,7 +54,7 @@ abstract class BaseTabLayoutActivity<T : BaseViewModel> : BaseViewModelActivity<
             tab?.setCustomView(R.layout.freshman_tab_custom_view)
             val textView = tab?.customView?.findViewById<TextView>(R.id.tv_tab_select)
             if (i == 0) {
-                textView?.textColor = Color.parseColor("#4b72ff")
+                textView?.textColor = Color.parseColor("#bf000000")
                 textView?.typeface = Typeface.DEFAULT_BOLD
             }
             textView?.text = titles[i]

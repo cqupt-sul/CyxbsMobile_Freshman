@@ -32,18 +32,17 @@ class ChartView(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : Vi
     constructor(context: Context) : this(context, null)
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
 
-    private val sWidth = getScreenWidth()
-    private val sHeight = getScreenHeight()
-    private val axisY = sHeight * 0.26.toFloat()
-    private val axisX = sWidth * 0.69.toFloat()
+//    private val sWidth = getScreenWidth()
+//    private val sHeight = getScreenHeight()
+    private var axisY = 0f
+    private var axisX = 0f
     //原点位置
-    private val pointX = sWidth * 0.19.toFloat()
-    private var pointY = 0.0f
+    private var pointX = 0f
+    private var pointY = 0f
     //view起点在屏幕的Y轴高度
-    private var startY = 0.0f
+//    private var startY = 0.0f
     private val arrowPathX = Path()
     private val arrowPathY = Path()
-    private val titlePaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val sideTitlePaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val axisPaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val subjectNamePaint = Paint(Paint.ANTI_ALIAS_FLAG)
@@ -58,7 +57,7 @@ class ChartView(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : Vi
     var subjectName2: String = ""
     var subjectName3: String = ""
     var currentRatio: Float = 1f
-    var matchScreenRatio = sHeight / 2712
+    var matchScreenRatio = 1f
     private val ratioPaint = Paint(Paint.ANTI_ALIAS_FLAG)
 
     init {
@@ -67,22 +66,18 @@ class ChartView(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : Vi
         ratioTextPaint.textAlign = Paint.Align.CENTER
         ratioTextPaint.textSize = 50f * matchScreenRatio
 
-        titlePaint.color = DEFAULT_TITLE_COLOR
-        titlePaint.strokeWidth = 15f * matchScreenRatio
-        titlePaint.textSize = 70f * matchScreenRatio
-
         axisPaint.color = DEFAULT_COMMON_COLOR
         axisPaint.strokeWidth = 5f * matchScreenRatio
         axisPaint.style = Paint.Style.STROKE
 
         sideTitlePaint.color = DEFAULT_COMMON_COLOR
         sideTitlePaint.strokeWidth = 13f * matchScreenRatio
-        sideTitlePaint.textSize = 50f * matchScreenRatio
+        sideTitlePaint.textSize = 40f * matchScreenRatio
 
         subjectNamePaint.color = DEFAULT_COMMON_COLOR
-        subjectNamePaint.strokeWidth = 20f * matchScreenRatio
+        subjectNamePaint.strokeWidth = 10f * matchScreenRatio
         subjectNamePaint.textAlign = Paint.Align.CENTER
-        subjectNamePaint.textSize = 60f * matchScreenRatio
+        subjectNamePaint.textSize = 40f * matchScreenRatio
 
         columnPaint1.color = DEFAULT_SUBJECT1_COLOR
         columnPaint2.color = DEFAULT_SUBJECT2_COLOR
@@ -98,9 +93,12 @@ class ChartView(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : Vi
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
         //得到startY位置
-        startY = sHeight - height
-        println("$sHeight>>$sWidth")
-        pointY = (0.56 * sHeight - startY).toFloat()
+//        startY = sHeight - height
+//        pointY = (0.56 * sHeight - startY).toFloat()
+        axisY = height * 0.56.toFloat()
+        axisX = height * 0.74.toFloat()
+        pointY = (0.81 * height).toFloat()
+        pointX=(width * 0.16).toFloat()
         //画坐标轴
         canvas?.drawLine(pointX, pointY, pointX, pointY - axisY, axisPaint)
         canvas?.drawLine(pointX, pointY, pointX + axisX, pointY, axisPaint)
@@ -120,16 +118,16 @@ class ChartView(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : Vi
         drawSubject(subjectName2, 2, subjectRatio2, canvas, columnPaint2)
         drawSubject(subjectName3, 3, subjectRatio3, canvas, columnPaint3)
         //画主标题
-        canvas?.drawText(MAIN_TITLE, (0.12 * sWidth).toFloat(), (0.26 * sHeight - startY).toFloat(), titlePaint)
+//        canvas?.drawText(MAIN_TITLE, (0.12 * sWidth).toFloat(), (0.26 * sHeight - startY).toFloat(), titlePaint)
         //画侧标题
         for (i in 0 until SIDE_TITLE.length) {
-            canvas?.drawText(SIDE_TITLE[i].toString(), (0.12 * sWidth).toFloat(), pointY - axisY + (i + 1) * getTextHeight(sideTitlePaint),
+            canvas?.drawText(SIDE_TITLE[i].toString(), (pointX-getTextHeight(sideTitlePaint)*1.5f), pointY - axisY + (i + 1) * getTextHeight(sideTitlePaint),
                     sideTitlePaint)
         }
         //画y轴的线
         for (i in 0 until 4) {
-            canvas?.drawLine(pointX, (pointY - (i + 1) * 0.04 * sHeight).toFloat(), pointX - 18f * matchScreenRatio,
-                    (pointY - (i + 1) * 0.04 * sHeight).toFloat(), axisPaint)
+            canvas?.drawLine(pointX, (pointY - (i + 1) * 0.09 * height).toFloat(), pointX - 18f * matchScreenRatio,
+                    (pointY - (i + 1) * 0.09 * height).toFloat(), axisPaint)
         }
     }
 
@@ -146,8 +144,8 @@ class ChartView(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : Vi
     }
 
     private fun drawSubject(name: String, position: Int, ratio: Float, canvas: Canvas?, paint: Paint) {
-        val left = sWidth * (0.25 + 0.2 * (position - 1)).toFloat()
-        val right = sWidth * (0.34 + 0.2 * (position - 1)).toFloat()
+        val left = width * (0.26 + 0.2 * (position - 1)).toFloat()
+        val right = width * (0.36 + 0.2 * (position - 1)).toFloat()
         canvas?.drawRect(left, pointY - currentRatio * ratio * axisY, right, pointY, paint)
         canvas?.drawRect(left, pointY - currentRatio * ratio * axisY, right, pointY, ratioPaint)
         canvas?.drawText(
@@ -170,9 +168,10 @@ class ChartView(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : Vi
         return fontMetrics.bottom - fontMetrics.top
 
     }
-    fun doAnim(animator: ValueAnimator){
-        animator.addUpdateListener { animation->
-            currentRatio= animation.animatedValue as Float
+
+    fun doAnim(animator: ValueAnimator) {
+        animator.addUpdateListener { animation ->
+            currentRatio = animation.animatedValue as Float
             invalidate()
         }
 

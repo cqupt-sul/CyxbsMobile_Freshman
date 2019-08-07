@@ -4,17 +4,16 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
-
-    <include layout="@layout/common_toolbar" />
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tb_campus_guide"
+        android:id="@+id/tl_canteen"
         app:tabIndicator="@null"
         app:tabRippleColor="@null"
         android:layout_width="match_parent"
-        android:layout_height="49dp"/>
-    <include layout="@layout/freshman_view_divide_line"/>
-    <com.mredrock.cyxbs.freshman.view.customui.CustomViewPager
-        android:id="@+id/vp_campus_guide"
+        android:layout_height="30dp"/>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vp_canteen"
+        android:overScrollMode="never"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content">
+    </androidx.viewpager.widget.ViewPager>
 </LinearLayout>

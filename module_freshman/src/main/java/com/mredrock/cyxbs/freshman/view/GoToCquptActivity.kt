@@ -19,15 +19,12 @@ class GoToCquptActivity : BaseTabLayoutActivity<GoToCquptViewModel>(){
         get() = GoToCquptViewModel::class.java
     override val isFragmentActivity: Boolean
         get() = true
-    override val fragments: List<Fragment>
-        get() = listOf(BusLineFragment(),CollegeSceneryFragment())
-    override val titles: List<String>
-        get() = listOf("公交线路","校园风光")
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.freshman_activity_gotocqupt)
         common_toolbar.init(title = "指路重邮")
-        initTabLayout(vp_goto_cqupt,tb_goto_cqupt)
+        initTabLayout(vp_goto_cqupt,tb_goto_cqupt,listOf("公交线路","校园风光"),listOf(BusLineFragment(),CollegeSceneryFragment()))
     }
 }

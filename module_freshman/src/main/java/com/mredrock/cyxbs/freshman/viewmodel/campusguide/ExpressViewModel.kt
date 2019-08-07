@@ -17,9 +17,8 @@ class ExpressViewModel : BaseViewModel() {
     //网络请求
     private fun loadData() {
         val data= listOf<ExpressData>(
-                ExpressData("中通","1sjfianasf","12345"),
-                ExpressData("圆通","2sj32sf","123456"),
-                ExpressData("EMS","3sanasf","1234567")
+                ExpressData("中通"),
+                ExpressData("EMS")
         )
         expressList.value=data
     }
