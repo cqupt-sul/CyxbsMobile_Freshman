@@ -32,6 +32,7 @@
         <activity android:name=".view.campusguide.CampusGuideActivity"/>
         <activity android:name=".view.DataDisclosureActivity" />
         <activity android:name=".view.schoolrequirement.RequirementEditActivity" />
+        <activity android:name=".view.more.MoreFunctionActivity" />
         <activity android:name=".view.schoolrequirement.MainRequirementActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
