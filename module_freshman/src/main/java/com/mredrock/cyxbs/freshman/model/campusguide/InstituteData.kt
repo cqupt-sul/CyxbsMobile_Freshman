@@ -3,7 +3,6 @@ package com.mredrock.cyxbs.freshman.model.campusguide
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import com.mredrock.cyxbs.freshman.BR
-import java.util.*
 
 /**
  * Created by yyfbe on 2019-08-04

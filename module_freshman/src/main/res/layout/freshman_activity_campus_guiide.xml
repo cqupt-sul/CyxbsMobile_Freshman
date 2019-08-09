@@ -8,6 +8,7 @@
     <include layout="@layout/common_toolbar" />
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tb_campus_guide"
+        app:tabMode="fixed"
         app:tabIndicator="@null"
         app:tabRippleColor="@null"
         android:layout_width="match_parent"

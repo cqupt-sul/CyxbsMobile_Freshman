@@ -23,7 +23,7 @@ class CanteenFragment : BaseTabLayoutFragment<CanteenViewModel>(CanteenViewModel
             for (i in 0 until it?.size!!) {
                 titles.add(it[i].name)
             }
-            initTabLayout(vp_canteen, tl_canteen, titles, listOf(ExpressDetailFragment.newInstance(1), ExpressDetailFragment.newInstance(0)))
+            initTabLayout(vp_canteen, tl_canteen, titles, listOf(CanteenDetailFragment.newInstance(1), CanteenDetailFragment.newInstance(0)))
         }
         return inflater.inflate(R.layout.freshman_fragment_canteen, container, false)
     }

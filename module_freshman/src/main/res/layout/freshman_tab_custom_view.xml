@@ -6,7 +6,7 @@
     android:id="@+id/tv_tab_select"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:textSize="16sp"
+    android:textSize="18sp"
     android:textColor="#cc000000"
     android:gravity="center"/>
 </LinearLayout>

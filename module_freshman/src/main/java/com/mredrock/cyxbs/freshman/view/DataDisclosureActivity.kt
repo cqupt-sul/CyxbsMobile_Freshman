@@ -4,6 +4,7 @@ import android.os.Bundle
 import com.mredrock.cyxbs.freshman.R
 import com.mredrock.cyxbs.freshman.view.customui.chartview.SubjectFragment
 import com.mredrock.cyxbs.freshman.view.nannvbili.NannvbiliFragment
+
 import com.mredrock.cyxbs.freshman.viewmodel.datadisclosure.DataDisclosureActivityViewModel
 import kotlinx.android.synthetic.main.freshman_activity_data_disclosure.*
 

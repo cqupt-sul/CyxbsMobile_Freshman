@@ -2,6 +2,7 @@ package com.mredrock.cyxbs.freshman.view
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
@@ -61,12 +62,10 @@ class HomeActivity : BaseViewModelActivity<HomeViewModel>() {
                 override fun onItemClick(itemView: View, position: Int) {
                     //这里设定点击事件
                     // position为-1时为非法
-                    LogUtils.d("主页点击", "点击了 $position 号标签")
-                    Toast.makeText(BaseApp.context, "点击了 $position 号标签", Toast.LENGTH_SHORT).show()
                     when (position) {
                         0 -> {
-                            //跳转
-                            showTalk()
+                            val intent = Intent()
+
                         }
                     }
                 }
@@ -74,7 +73,8 @@ class HomeActivity : BaseViewModelActivity<HomeViewModel>() {
             rv_home.layoutManager = LinearLayoutManager(this)
             rv_home.adapter = adapter
         }
-//        viewModel.init()
+        viewModel.init()
+        showTalk()
     }
     private fun showTalk(){
         val talkDialogFragment = TalkDialogFragment()
