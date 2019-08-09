@@ -6,28 +6,28 @@ import com.mredrock.cyxbs.freshman.model.campusguide.DormitoryCanteenBean
 import com.mredrock.cyxbs.freshman.model.campusguide.DormitoryDetailData
 
 /**
- * Created by yyfbe on 2019-08-06
+ * Created by yyfbe on 2019-08-07
  */
-class DormitoryDetailViewModel : BaseViewModel() {
+class CanteenDetailViewModel : BaseViewModel() {
 
-    private val dormitoryDetailList = MutableLiveData<DormitoryDetailData>()
-    fun getDormitoryDetails(fragmentIndex:Int): MutableLiveData<DormitoryDetailData> {
+    private val canteenDetailList = MutableLiveData<DormitoryDetailData>()
+    fun getCanteenDetails(fragmentIndex: Int): MutableLiveData<DormitoryDetailData> {
         loadData(fragmentIndex)
-        return dormitoryDetailList
+        return canteenDetailList
     }
 
-    private fun loadData(fragmentIndex:Int) {
+    private fun loadData(fragmentIndex: Int) {
         val showData = DormitoryDetailData(DormitoryCanteenBean.TextBean.MessageBean())
-        showData.detailData.name = "5栋其实也挺好的"
+        showData.detailData.name = "千禧鹤贵"
         showData.detailData.detail = "1waafshdihfisahfsja2啊啊啊啊啊啊啊啊啊啊啊啊是" +
                 "呃呃呃呃呃呃呃呃呃呃呃"
         val showData1 = DormitoryDetailData(DormitoryCanteenBean.TextBean.MessageBean())
-        showData1.detailData.name = "5栋其实真的好"
+        showData1.detailData.name = "中心便宜"
         showData1.detailData.detail = "1waafshdihfisahfsja2啊啊啊啊啊啊啊啊啊啊啊啊是" +
                 "呃呃呃呃呃呃呃呃呃呃呃"
-        when(fragmentIndex){
-            0->dormitoryDetailList.value=showData
-            1->dormitoryDetailList.value=showData1
+        when (fragmentIndex) {
+            0 -> canteenDetailList.value = showData
+            1 -> canteenDetailList.value = showData1
         }
 
     }

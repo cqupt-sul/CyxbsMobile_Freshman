@@ -1,20 +1,11 @@
 package com.mredrock.cyxbs.freshman.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.mredrock.cyxbs.freshman.BR
 import com.mredrock.cyxbs.freshman.R
-import com.mredrock.cyxbs.freshman.databinding.FreshmanRecycleItemHomeBinding
-import com.mredrock.cyxbs.freshman.model.campusguide.InstituteData
-import com.mredrock.cyxbs.freshman.view.adapter.BaseRecyclerViewAdapter
 import com.mredrock.cyxbs.freshman.view.customui.chartview.SubjectFragment
 import com.mredrock.cyxbs.freshman.view.nannvbili.NannvbiliFragment
-import com.mredrock.cyxbs.freshman.viewmodel.DataDisclosureActivityViewModel
-import com.mredrock.cyxbs.freshman.viewmodel.campusguide.DataDisclosureFragmentViewModel
+import com.mredrock.cyxbs.freshman.viewmodel.campusguide.DataDisclosureActivityViewModel
 import kotlinx.android.synthetic.main.freshman_activity_data_disclosure.*
-import kotlinx.android.synthetic.main.freshman_fragment_data_disclosure.*
-import kotlin.collections.ArrayList
 
 
 class DataDisclosureActivity : BaseTabLayoutActivity<DataDisclosureActivityViewModel>() {

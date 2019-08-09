@@ -8,8 +8,9 @@
     android:id="@+id/tl_express"
     app:tabIndicator="@null"
     app:tabRippleColor="@null"
+    app:tabMode="scrollable"
     android:layout_width="match_parent"
-    android:layout_height="30dp"/>
+    android:layout_height="40dp"/>
 <androidx.viewpager.widget.ViewPager
     android:id="@+id/vp_express"
     android:overScrollMode="never"

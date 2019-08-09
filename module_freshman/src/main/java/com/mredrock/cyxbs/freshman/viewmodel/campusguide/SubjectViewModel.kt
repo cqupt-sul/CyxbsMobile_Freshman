@@ -1,4 +1,4 @@
-package com.mredrock.cyxbs.freshman.viewmodel
+package com.mredrock.cyxbs.freshman.viewmodel.campusguide
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

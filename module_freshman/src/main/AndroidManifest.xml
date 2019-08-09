@@ -20,6 +20,7 @@
             <!--</intent-filter>-->
         </activity>
         <activity android:name=".view.MainActivity"/>
+        <activity android:name=".view.schoolrequirement.RequirementMemoActivity"/>
         <!--<activity android:name=".view.campusguide.CampusGuideActivity"/>-->
         <activity android:name=".view.GoToCquptActivity">
             <!--<intent-filter>-->
@@ -28,8 +29,10 @@
                 <!--<category android:name="android.intent.category.LAUNCHER" />-->
             <!--</intent-filter>-->
         </activity>
+        <activity android:name=".view.campusguide.CampusGuideActivity"/>
         <activity android:name=".view.DataDisclosureActivity" />
-        <activity android:name=".view.campusguide.CampusGuideActivity">
+        <activity android:name=".view.schoolrequirement.RequirementEditActivity" />
+        <activity android:name=".view.schoolrequirement.MainRequirementActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
