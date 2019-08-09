@@ -10,14 +10,16 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.mredrock.cyxbs.common.ui.BaseViewModelFragment
+import com.mredrock.cyxbs.common.utils.LogUtils
 import com.mredrock.cyxbs.freshman.R
 import com.mredrock.cyxbs.freshman.databinding.FreshmanFragmentNannvbiliBinding
 import com.mredrock.cyxbs.freshman.model.CircleData
-import com.mredrock.cyxbs.freshman.viewmodel.NannvbiliViewModel
+import com.mredrock.cyxbs.freshman.viewmodel.datadisclosure.NannvbiliViewModel
 import kotlinx.android.synthetic.main.freshman_fragment_nannvbili.*
 
 class NannvbiliFragment : BaseViewModelFragment<NannvbiliViewModel>() {
-    lateinit var dataBinding: FreshmanFragmentNannvbiliBinding
+    private lateinit var dataBinding: FreshmanFragmentNannvbiliBinding
+    private lateinit var animation: ObjectAnimator
     override val viewModelClass = NannvbiliViewModel::class.java
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val viewModelFactory = getViewModelFactory()
@@ -36,18 +38,35 @@ class NannvbiliFragment : BaseViewModelFragment<NannvbiliViewModel>() {
         viewModel.showList.observe(this, Observer<ArrayList<CircleData>> {
             circle_view_test.init(viewModel.showList.value)
             if (viewModel.showList.value != null) {
-                val animation = ObjectAnimator.ofFloat(circle_view_test, "nowAngle",
+                animation = ObjectAnimator.ofFloat(circle_view_test, "nowAngle",
                         viewModel.showList.value!![0].startAngle,
                         viewModel.showList.value!![0].startAngle + 360)
                 animation.duration = 2000
                 animation.addUpdateListener {
-                    circle_view_test.invalidate()
+                    //记得判空
+                    circle_view_test?.invalidate()
                 }
                 animation.interpolator = AccelerateDecelerateInterpolator()
                 animation.start()
             }
         })
         viewModel.init(dataBinding)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        LogUtils.d("生命周期监听","${this} onPause")
+        animation.cancel()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        LogUtils.d("生命周期监听","${this} onStop")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        LogUtils.d("生命周期监听","${this} onDestroy")
     }
 }
 

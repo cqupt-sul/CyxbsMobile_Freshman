@@ -1,7 +1,10 @@
 package com.mredrock.cyxbs.freshman.view
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.View
+import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.AnimationUtils
 import android.view.animation.LinearInterpolator
 import android.widget.Toast
@@ -13,7 +16,8 @@ import com.mredrock.cyxbs.freshman.BR
 import com.mredrock.cyxbs.freshman.R
 import com.mredrock.cyxbs.freshman.databinding.FreshmanRecycleItemHomeBinding
 import com.mredrock.cyxbs.freshman.view.adapter.BaseRecyclerViewAdapter
-import com.mredrock.cyxbs.freshman.model.HomeItem
+import com.mredrock.cyxbs.freshman.model.item.HomeItem
+import com.mredrock.cyxbs.freshman.view.talk.TalkDialogFragment
 import com.mredrock.cyxbs.freshman.viewmodel.HomeViewModel
 import kotlinx.android.synthetic.main.freshman_acitvity_home.*
 
@@ -32,6 +36,7 @@ class HomeActivity : BaseViewModelActivity<HomeViewModel>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.freshman_acitvity_home)
+
         val animation1 = AnimationUtils.loadAnimation(this, R.anim.freshman_rotate_clockwise_001)
         animation1.interpolator = LinearInterpolator()
         iv_home_screw_left.startAnimation(animation1)
@@ -61,6 +66,7 @@ class HomeActivity : BaseViewModelActivity<HomeViewModel>() {
                     when (position) {
                         0 -> {
                             //跳转
+                            showTalk()
                         }
                     }
                 }
@@ -68,7 +74,33 @@ class HomeActivity : BaseViewModelActivity<HomeViewModel>() {
             rv_home.layoutManager = LinearLayoutManager(this)
             rv_home.adapter = adapter
         }
-        viewModel.init()
+//        viewModel.init()
     }
+    private fun showTalk(){
+        val talkDialogFragment = TalkDialogFragment()
+        talkDialogFragment.show(supportFragmentManager,"first")
+        val backgroundAnimation = ObjectAnimator.ofFloat(talkDialogFragment,"scale",0F,1F)
+        backgroundAnimation.duration = 2000
+        backgroundAnimation.addUpdateListener {
+            //记得判空
+            talkDialogFragment.unFold()
+        }
+        backgroundAnimation.interpolator = AccelerateDecelerateInterpolator()
+        val letterAnimation = ObjectAnimator.ofFloat(talkDialogFragment,"letterAlpha",0F,1F)
+        letterAnimation.duration = 1000
+        letterAnimation.addUpdateListener {
+            talkDialogFragment.showLetter()
+        }
+        letterAnimation.interpolator = AccelerateDecelerateInterpolator()
 
+        val buttonAnimation = ObjectAnimator.ofFloat(talkDialogFragment,"buttonAlpha",0F,1F)
+        buttonAnimation.duration = 1000
+        buttonAnimation.addUpdateListener {
+            talkDialogFragment.showButton()
+        }
+        buttonAnimation.interpolator = AccelerateDecelerateInterpolator()
+        val animatorSet = AnimatorSet()
+        animatorSet.playSequentially(backgroundAnimation,letterAnimation,buttonAnimation)
+        animatorSet.start()
+    }
 }

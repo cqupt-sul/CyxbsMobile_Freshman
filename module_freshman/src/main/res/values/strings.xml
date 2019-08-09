@@ -5,4 +5,9 @@
     <string name="freshman_college_name">重庆邮电大学地址：</string>
     <string name="freshman_college_address">重庆市南岸区南山街道崇文路二号重庆邮电大学</string>
     <string name="freshman_goto_map_description">重邮全景地图前往发现查看(发现→重邮地图)</string>
+    <string name="freshman_group_et_hint">找不到学院群？试试搜索</string>
+    <string name="freshman_online_test">触发点击事件</string>
+    <string name="freshman_talk_letter">\t\t\t\t恭喜你经过了高考的考验，与重邮结识。成为邮子的你，想必一定对这所位于巍巍南山上的它倍感兴趣，在这里，我们将领你走入重邮，助你成功走上进入大学的第一步，帮助你解决从入学前到入学后的一系列可能遇到的问题。这里不仅有你感兴趣的校园宿舍食堂，还有祝你入学的入。更多的功能内容等你的探寻。在追寻梦想与踏上人生新征程的同时，希望有我们的同行与帮助，各位萌新能够更快的适应这全新的生活。 \n\t\t\t\t希望充满好奇心的你能够在大学找到自己的舞台，发挥更好的自己，努力学习，钻研学术，广交好友。探索更多重邮内容请关注“2019迎新网”，更多迎新活动请关注微信公众号“重邮小帮手”。\n\t\t\t\t期待与你的相遇</string>
+    <string name="freshman_talk_dear">亲爱的你：</string>
+    <string name="freshman_talk_hywxgzz">红岩网校工作站</string>
 </resources>

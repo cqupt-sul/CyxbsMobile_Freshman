@@ -9,7 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.mredrock.cyxbs.common.ui.BaseViewModelFragment
 import com.mredrock.cyxbs.freshman.R
-import com.mredrock.cyxbs.freshman.viewmodel.SubjectViewModel
+import com.mredrock.cyxbs.freshman.viewmodel.datadisclosure.SubjectViewModel
 import kotlinx.android.synthetic.main.freshman_fragment_subject.*
 
 

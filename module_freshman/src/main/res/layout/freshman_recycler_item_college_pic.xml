@@ -7,7 +7,7 @@
 
         <variable
             name="collegePicItem"
-            type="com.mredrock.cyxbs.freshman.model.CollegePicItem" />
+            type="com.mredrock.cyxbs.freshman.model.item.CollegePicItem" />
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat

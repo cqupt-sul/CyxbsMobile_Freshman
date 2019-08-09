@@ -2,7 +2,7 @@ package com.mredrock.cyxbs.freshman.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.mredrock.cyxbs.common.viewmodel.BaseViewModel
-import com.mredrock.cyxbs.freshman.model.HomeItem
+import com.mredrock.cyxbs.freshman.model.item.HomeItem
 
 /**
 * @date 2019-08-03

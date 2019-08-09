@@ -78,7 +78,7 @@ class CircleView : View {
                     val textAngle = (startAngle*2+scrollAngle)/2
                     val textWidth = paintNumber.measureText(text)
                     paintNumber.alpha = ((nowAngle/360F+ showList!![0].startAngle)*255).toInt()
-                    println((nowAngle/totalAngle).toInt()*255)
+//                    println((nowAngle/totalAngle).toInt()*255)
                     val angleSin = (Math.sqrt(Math.pow(textWidth/2.0, 2.0)+Math.pow(paintNumber.textSize*1.5,2.0))/2)/r
                     when (textAngle) {
                         in 0.0..90.0 -> {

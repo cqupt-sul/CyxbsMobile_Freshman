@@ -8,7 +8,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.mredrock.cyxbs.common.BR
 import com.mredrock.cyxbs.freshman.R
-import com.mredrock.cyxbs.freshman.model.HomeItem
+import com.mredrock.cyxbs.freshman.model.item.HomeItem
 
 /**
  * @date 2019-08-03

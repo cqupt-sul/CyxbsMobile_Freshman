@@ -6,7 +6,7 @@
     <data>
         <variable
             name="item"
-            type="com.mredrock.cyxbs.freshman.model.HomeItem" />
+            type="com.mredrock.cyxbs.freshman.model.item.HomeItem" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
