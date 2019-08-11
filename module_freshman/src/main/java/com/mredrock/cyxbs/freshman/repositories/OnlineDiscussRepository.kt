@@ -75,5 +75,4 @@ class OnlineDiscussRepository {
             FreshmanDataBase.getInstant().freshmanDao().insertSchoolGroup(groupResult.text.map { SchoolGroup(it.name,it.data) })
         }
     }
-
 }

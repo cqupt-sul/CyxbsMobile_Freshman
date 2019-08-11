@@ -39,7 +39,6 @@ class BusLineFragment : BaseViewModelFragment<BusLineViewModel>(){
             if (it != null) {
                 LogUtils.d("view层回调","Recyclerview ${it}")
                 adapter.submitShowList(it)
-                rv_goto_bus_line.invalidate()
             }
         }
         viewModel.getAddress(viewLifecycleOwner).observe{

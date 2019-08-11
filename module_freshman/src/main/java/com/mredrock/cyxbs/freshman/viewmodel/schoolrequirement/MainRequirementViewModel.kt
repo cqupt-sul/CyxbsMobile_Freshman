@@ -38,9 +38,9 @@ class MainRequirementViewModel : BaseViewModel() {
             }
         }
         val list: ArrayList<RequirementData>? = ArrayList<RequirementData>()
-        list?.add(RequirementData("备忘录", "多喝热水", null) { view, item ->
+        list?.add(RequirementData("备忘录", "多喝热水", null) {  item ->
             run {
-                if ((view as CheckBox).isChecked) {
+                if (item.isChecked) {
                     item.textColor = Color.parseColor("#bfbfbf")
                 } else {
                     item.textColor = Color.parseColor("#333333")
@@ -48,29 +48,27 @@ class MainRequirementViewModel : BaseViewModel() {
             }
         })
 
-        list?.add(RequirementData("备忘录", "多喝热水", null) { view, item ->
+        list?.add(RequirementData("备忘录", "多喝热水", null) {  item ->
             run {
-                if ((view as CheckBox).isChecked) {
+                if (item.isChecked) {
                     item.textColor = Color.parseColor("#bfbfbf")
                 } else {
                     item.textColor = Color.parseColor("#333333")
                 }
             }
         })
-        list?.add(RequirementData("报道必备", "多喝热水", "真的难") { view, item ->
+        list?.add(RequirementData("报道必备", "多喝热水", "真的难") {  item ->
             run {
-                if ((view as CheckBox).isChecked) {
+                if (item.isChecked) {
                     item.textColor = Color.parseColor("#bfbfbf")
                 } else {
                     item.textColor = Color.parseColor("#333333")
                 }
             }
         })
-//        list?.add(RequirementData("报道必备", "多喝热水", "真的难"))
-//        list?.add(RequirementData("军训用品", "多喝开水", null))
-//        if (list != null) {
-//            selectData(list)
-//        }
+        if (list != null) {
+            selectData(list)
+        }
         showList.value = list
     }
 

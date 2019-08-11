@@ -1,9 +1,7 @@
 package com.mredrock.cyxbs.freshman.view.schoolrequirement
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
-import android.view.Menu
 import android.view.View
 import android.widget.*
 import androidx.databinding.library.baseAdapters.BR
@@ -22,7 +20,6 @@ import com.mredrock.cyxbs.freshman.view.customui.grouprecyclerview.GroupDecorati
 import com.mredrock.cyxbs.freshman.viewmodel.schoolrequirement.MainRequirementViewModel
 import kotlinx.android.synthetic.main.freshman_activity_requirement_kind.*
 import kotlinx.android.synthetic.main.freshman_layout_top_toolbar.*
-import org.jetbrains.anko.leftPadding
 
 /**
  * Created by yyfbe on 2019-08-08
@@ -64,7 +61,7 @@ class MainRequirementActivity : BaseViewModelActivity<MainRequirementViewModel>(
         }
         tv_right.setOnClickListener {
             if (!FastClickCheck.isFastClick)
-            startActivity(Intent(MainRequirementActivity@ this, RequirementMemoActivity::class.java))
+            startActivity(Intent(MainRequirementActivity@ this, RequirementDeleteActivity::class.java))
         }
         fb_edit.setOnClickListener {
             if (!FastClickCheck.isFastClick)

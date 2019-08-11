@@ -22,7 +22,7 @@ class RequirementDeleteViewModel : BaseViewModel() {
     private var deleteCount = MutableLiveData<Int>()
     private var countValue = 0
     private val showList = MutableLiveData<ArrayList<RequirementData>>()
-    private val lastList = ArrayList<RequirementData>()
+    private val removeList = ArrayList<RequirementData>()
     @SuppressLint("SetTextI18n")
     fun initData(): LiveData<ArrayList<RequirementData>> {
         loadData()
@@ -31,7 +31,6 @@ class RequirementDeleteViewModel : BaseViewModel() {
 
     fun getDeleteCount(): LiveData<Int> {
 //        deleteCount.value=countValue
-        Log.d("yyf", deleteCount.toString() + "个数")
         return deleteCount
     }
 
@@ -40,22 +39,22 @@ class RequirementDeleteViewModel : BaseViewModel() {
 
     private fun loadData() {
         val list: ArrayList<RequirementData>? = ArrayList<RequirementData>()
-        list?.add(RequirementData("备忘录", "多喝热水", null) { view, item ->
+        list?.add(RequirementData("备忘录", "多喝热水", null) {  item ->
             run {
-                view.background = view.resources.getDrawable(R.drawable.freshman_checkbox_color_style)
-                if ((view as CheckBox).isChecked) {
+                if (item.isChecked) {
+                    removeList.add(item)
                     countValue++
                     deleteCount.value=countValue
                 } else {
+                    removeList.remove(item)
                     countValue--
                     deleteCount.value=countValue
                 }
             }
         })
-        list?.add(RequirementData("备忘录", "多喝热水", null) { view, item ->
+        list?.add(RequirementData("备忘录", "多喝热水", null) {  item ->
             run {
-                view.background = view.resources.getDrawable(R.drawable.freshman_checkbox_color_style)
-                if ((view as CheckBox).isChecked) {
+                if (item.isChecked) {
                     countValue++
                     deleteCount.value=countValue
                 } else {

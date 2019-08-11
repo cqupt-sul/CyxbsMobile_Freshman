@@ -30,6 +30,10 @@ class GoToCquptRepository private constructor() {
         upDate()
     }
 
+    init {
+        upDate()
+    }
+
     //单例
     companion object{
         private var instant:GoToCquptRepository? = null

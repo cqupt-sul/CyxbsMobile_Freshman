@@ -26,6 +26,7 @@ class OrderActivity : BaseViewModelActivity<OrderViewModel>() {
         get() = OrderViewModel::class.java
     override val isFragmentActivity: Boolean
         get() = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.freshman_activity_order_school)
@@ -36,7 +37,7 @@ class OrderActivity : BaseViewModelActivity<OrderViewModel>() {
         } else {
             ViewModelProviders.of(this).get(viewModelClass)
         }
-        viewModel.initData().observe{
+        viewModel.initData().observe {
             val adapter = BaseRecyclerViewAdapter<FreshmanActivityOrderSchoolItemBinding
                     , OrderData>(R.layout.freshman_activity_order_school_item, BR.orderData, it)
             rv_order.layoutManager = LinearLayoutManager(context)
@@ -45,8 +46,8 @@ class OrderActivity : BaseViewModelActivity<OrderViewModel>() {
                 override fun onItemClick(itemView: View, position: Int) {
                     Toast.makeText(context, "点击了$position", Toast.LENGTH_SHORT).show()
                     initItemView(itemView, position)
-                    for (i in 0 until  adapter.itemCount){
-                        if(itemView!=rv_order.layoutManager?.getChildAt(i)){
+                    for (i in 0 until adapter.itemCount) {
+                        if (itemView != rv_order.layoutManager?.getChildAt(i)) {
                             rv_order.layoutManager?.getChildAt(i)?.let { it1 -> resetItemView(it1) }
                         }
                     }
@@ -54,7 +55,8 @@ class OrderActivity : BaseViewModelActivity<OrderViewModel>() {
             })
         }
     }
-    fun resetItemView(itemView: View){
+
+    fun resetItemView(itemView: View) {
         if (itemView.findViewById<ImageView>(R.id.iv_order_arrow).isActivated) {
 
             if (itemView.findViewById<TextView>(R.id.tv_order_detail).text != null) {
@@ -66,7 +68,8 @@ class OrderActivity : BaseViewModelActivity<OrderViewModel>() {
             }
         }
     }
-    fun initItemView(itemView:View,positon:Int){
+
+    fun initItemView(itemView: View, positon: Int) {
         if (itemView.findViewById<ImageView>(R.id.iv_order_arrow).isActivated) {
 
             if (itemView.findViewById<TextView>(R.id.tv_order_detail).text != null) {

@@ -34,7 +34,7 @@ import org.jetbrains.anko.sdk27.coroutines.onClick
 /**
  * Created by yyfbe on 2019-08-09
  */
-class RequirementMemoActivity : BaseViewModelActivity<RequirementDeleteViewModel>() {
+class RequirementDeleteActivity : BaseViewModelActivity<RequirementDeleteViewModel>() {
     override val viewModelClass: Class<RequirementDeleteViewModel>
         get() = RequirementDeleteViewModel::class.java
     override val isFragmentActivity: Boolean
@@ -56,7 +56,7 @@ class RequirementMemoActivity : BaseViewModelActivity<RequirementDeleteViewModel
         viewModel.initData().observe(this, Observer {
             if (it.size != 0) tv_no_data_notice.gone()
             val adapter = BaseRecyclerViewAdapter<FreshmanRecycleItemRequirementBinding
-                    , RequirementData>(R.layout.freshman_recycle_item_requirement, BR.schoolrequire, it)
+                    , RequirementData>(R.layout.freshman_recycle_delete_item_requirement, BR.schoolrequire, it)
             rv_school_requirement_edit.adapter = adapter
             adapter.onItemOnClickListener = (object : BaseRecyclerViewAdapter.OnItemOnClickListener {
                 override fun onItemClick(itemView: View, position: Int) {
@@ -83,8 +83,13 @@ class RequirementMemoActivity : BaseViewModelActivity<RequirementDeleteViewModel
             this.finish()
         }
 //        tv_right.setOnClickListener {
-//            startActivity(Intent(RequirementMemoActivity@ this, RequirementEditActivity::class.java))
+//            startActivity(Intent(RequirementDeleteActivity@ this, RequirementEditActivity::class.java))
 //        }
+        tv_no_data_notice.setOnClickListener{
+            /**
+             *
+             */
+        }
         tv_left.setOnClickListener {
             finish()
         }
