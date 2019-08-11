@@ -19,6 +19,9 @@ interface FreshmanDaos {
     fun insertBusline(busLineList: List<BusLine>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertRoute(route: List<Route>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAddress(address: Address)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -26,6 +29,9 @@ interface FreshmanDaos {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertScenery(scenery: Scenery)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertScenery(sceneryList: List<Scenery>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertSchoolGroup(schoolGroup: SchoolGroup)
@@ -40,13 +46,13 @@ interface FreshmanDaos {
     fun insertFellowTownsman(fellowTownsmanGroupGroupList: List<FellowTownsmanGroup>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertOnlineActivity(onlineActivity:OnlineActivity)
+    fun insertOnlineActivity(onlineActivity: OnlineActivity)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertOnlineActivity(OnlineActivityList: List<OnlineActivity>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertHomeItem(homeItem:HomeItem)
+    fun insertHomeItem(homeItem: HomeItem)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertHomeItem(HomeItemList: List<HomeItem>)
@@ -80,13 +86,13 @@ interface FreshmanDaos {
     fun deleteFellowTownsman(fellowTownsmanGroupGroupList: List<FellowTownsmanGroup>)
 
     @Delete
-    fun deleteOnlineActivity(onlineActivity:OnlineActivity)
+    fun deleteOnlineActivity(onlineActivity: OnlineActivity)
 
     @Delete
     fun deleteOnlineActivity(OnlineActivityList: List<OnlineActivity>)
 
     @Delete
-    fun deleteHomeItem(homeItem:HomeItem)
+    fun deleteHomeItem(homeItem: HomeItem)
 
     @Delete
     fun deleteHomeItem(HomeItemList: List<HomeItem>)
@@ -123,13 +129,13 @@ interface FreshmanDaos {
     fun updateFellowTownsman(fellowTownsmanGroupGroupList: List<FellowTownsmanGroup>)
 
     @Update
-    fun updateOnlineActivity(onlineActivity:OnlineActivity)
+    fun updateOnlineActivity(onlineActivity: OnlineActivity)
 
     @Update
     fun updateOnlineActivity(OnlineActivityList: List<OnlineActivity>)
 
     @Update
-    fun updateHomeItem(homeItem:HomeItem)
+    fun updateHomeItem(homeItem: HomeItem)
 
     @Update
     fun updateHomeItem(HomeItemList: List<HomeItem>)
@@ -139,42 +145,45 @@ interface FreshmanDaos {
     fun getAllBusLine(): LiveData<List<BusLine>>
 
     @Query("SELECT * FROM bus_line WHERE name = :name")
-    fun getBusLine(name:String):LiveData<BusLine>
+    fun getBusLine(name: String): LiveData<BusLine>
+
+    @Query("SELECT * FROM route")
+    fun getAllRoute(): LiveData<List<Route>>
 
     @Query("SELECT * FROM address WHERE title = :name")
-    fun getAddress(name:String): LiveData<Address>
+    fun getAddress(name: String): LiveData<Address>
 
     @Query("SELECT * FROM maps WHERE title = :name")
-    fun getMap(name:String): LiveData<Map>
+    fun getMap(name: String): LiveData<Map>
 
     @Query("SELECT * FROM scenery")
     fun getAllScenery(): LiveData<List<Scenery>>
 
     @Query("SELECT * FROM scenery WHERE name = :name")
-    fun getScenery(name:String):LiveData<Scenery>
+    fun getScenery(name: String): LiveData<Scenery>
 
     @Query("SELECT * FROM school_group")
     fun getAllSchoolGroup(): LiveData<List<SchoolGroup>>
 
     @Query("SELECT * FROM school_group WHERE name = :name")
-    fun getSchoolGroup(name:String):LiveData<SchoolGroup>
+    fun getSchoolGroup(name: String): LiveData<SchoolGroup>
 
     @Query("SELECT * FROM fellow_towns_man")
     fun getAllFellowTownsMan(): LiveData<List<FellowTownsmanGroup>>
 
     @Query("SELECT * FROM fellow_towns_man WHERE name = :name")
-    fun getFellowTownMan(name:String):LiveData<FellowTownsmanGroup>
+    fun getFellowTownMan(name: String): LiveData<FellowTownsmanGroup>
 
     @Query("SELECT * FROM online_activity")
     fun getAllOnlineActivity(): LiveData<List<OnlineActivity>>
 
     @Query("SELECT * FROM online_activity WHERE name = :name")
-    fun getOnlineActivity(name:String):LiveData<OnlineActivity>
+    fun getOnlineActivity(name: String): LiveData<OnlineActivity>
 
     @Query("SELECT * FROM home_item")
     fun getAllHomeItem(): LiveData<List<HomeItem>>
 
     @Query("SELECT * FROM home_item WHERE title = :title")
-    fun getHomeItem(title:String):LiveData<HomeItem>
+    fun getHomeItem(title: String): LiveData<HomeItem>
 
 }

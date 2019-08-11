@@ -1,11 +1,9 @@
 package com.mredrock.cyxbs.freshman.model.db
 
-import androidx.databinding.BaseObservable
-import androidx.databinding.Bindable
+
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.mredrock.cyxbs.freshman.BR
 
 /**
  * @date 2019-08-10
@@ -15,6 +13,9 @@ import com.mredrock.cyxbs.freshman.BR
 
 @Entity(tableName = "bus_line")
 class BusLine(@PrimaryKey var name:String,var route:String)
+
+@Entity(tableName = "route")
+class Route(@PrimaryKey var id:Int,var route:String)
 
 @Entity(tableName = "address")
 class Address(@PrimaryKey var title: String,var address: String)

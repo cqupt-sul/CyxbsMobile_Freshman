@@ -8,9 +8,8 @@ import com.mredrock.cyxbs.common.utils.LogUtils
 import com.mredrock.cyxbs.common.utils.extensions.safeSubscribeBy
 import com.mredrock.cyxbs.common.utils.extensions.setSchedulers
 import com.mredrock.cyxbs.freshman.model.InBackgroundEvent
-import com.mredrock.cyxbs.freshman.model.db.Address
-import com.mredrock.cyxbs.freshman.model.db.BusLine
-import com.mredrock.cyxbs.freshman.model.db.FreshmanDataBase
+import com.mredrock.cyxbs.freshman.model.db.*
+import com.mredrock.cyxbs.freshman.model.db.Map
 import com.mredrock.cyxbs.freshman.model.item.BusLineItem
 import com.mredrock.cyxbs.freshman.model.remote.api.GetRequestInterface
 import io.reactivex.schedulers.Schedulers
@@ -44,6 +43,8 @@ class GoToCquptRepository private constructor() {
     }
 
     //指定数据库作为唯一数据来源
+
+    //拿地址
     fun getAddress(lifecycleOwner: LifecycleOwner):MutableLiveData<Address>{
         LogUtils.d("数据库","拿地址")
         val liveData = MutableLiveData<Address>()
@@ -54,19 +55,42 @@ class GoToCquptRepository private constructor() {
         upDate()
         return liveData
     }
+
+    //拿路线
     fun getBusLine(lifecycleOwner: LifecycleOwner):MutableLiveData<List<BusLineItem>>{
         LogUtils.d("数据库","拿路线")
         val liveData = MutableLiveData<List<BusLineItem>>()
         FreshmanDataBase.getInstant().freshmanDao().getAllBusLine().observe(lifecycleOwner, Observer { it ->
-            liveData.postValue(it.map { BusLineItem(it.name,it.route) })
+            liveData.postValue(it.map {
+                val routeList = it.route.split(",")
+                BusLineItem(it.name,it.route) })
         })
         return liveData
     }
 
-    //更新数据
+    //拿地图Url
+    fun getMap(lifecycleOwner: LifecycleOwner):MutableLiveData<Map>{
+        val liveData = MutableLiveData<Map>()
+        FreshmanDataBase.getInstant().freshmanDao().getMap("重邮2D地图").observe(lifecycleOwner, Observer { 
+            liveData.postValue(it)
+        })
+        return liveData
+    }
+    
+    //拿风景Url
+    fun getScenery(lifecycleOwner: LifecycleOwner):MutableLiveData<List<Scenery>>{
+        val liveData = MutableLiveData<List<Scenery>>()
+        FreshmanDataBase.getInstant().freshmanDao().getAllScenery().observe(lifecycleOwner, Observer { 
+            liveData.postValue(it)
+        })
+        return liveData
+    }
+
+    //更新数据库数据
     private fun upDate(){
-        val observable = request.getCall()
-        observable.setSchedulers(
+        //更新BusLineFragment的数据
+        val busLineObservable = request.getBusLineCall()
+        busLineObservable.setSchedulers(
                 subscribeOn = Schedulers.io(),
                 unsubscribeOn = Schedulers.io(),
                 observeOn = Schedulers.io())
@@ -77,11 +101,25 @@ class GoToCquptRepository private constructor() {
                         LogUtils.d("debug",list[0].name+" "+list[0].route)
                         val address = busLineResult.text_1
                         LogUtils.d("debug","${this.getAllBusLine().value?.size}")
-                        EventBus.getDefault().post(InBackgroundEvent{
-                            this.insertAddress(Address(address.title,address.message))
-                            this.insertBusline(list)
-                            LogUtils.d("数据库","写入/更新数据")
-                        })
+                        this.insertAddress(Address(address.title,address.message))
+                        this.insertBusline(list)
+                        LogUtils.d("数据库","写入/更新数据")
+                    }
+                }
+        
+        //更新CollegeSceneryFragment的数据
+        val collegeSceneryObserver = request.getCollegeSceneryCall()
+        collegeSceneryObserver.setSchedulers(
+                subscribeOn = Schedulers.io(),
+                unsubscribeOn = Schedulers.io(),
+                observeOn = Schedulers.io())
+                .safeSubscribeBy {
+                    with(FreshmanDataBase.getInstant().freshmanDao()){
+                        val map = Map(it.text.title,it.text.photo)
+                        val list = it.text.message.map { Scenery(it.name,it.photo) }
+                        this.insertMap(map)
+                        this.insertScenery(list)
+                        LogUtils.d("数据库","写入/更新数据")
                     }
                 }
     }
