@@ -13,6 +13,7 @@ class SubjectViewModel : BaseViewModel() {
     }
 
     private fun loadData() {
+
         val data= listOf<ChartData>(
                 ChartData("高等数学", 0.60f),
                 ChartData("大学物理", 0.40f),
