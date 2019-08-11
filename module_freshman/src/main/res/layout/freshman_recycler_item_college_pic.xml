@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="7dp"
                 android:adjustViewBounds="true"
-                android:src="@drawable/freshman_goto_college_pic"
+                picUrl="@{collegePicItem.photoUrl1}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="7dp"
                 android:adjustViewBounds="true"
-                android:src="@drawable/freshman_goto_college_pic"
+                picUrl="@{collegePicItem.photoUrl1}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

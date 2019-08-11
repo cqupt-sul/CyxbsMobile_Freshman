@@ -4,7 +4,7 @@ package com.mredrock.cyxbs.freshman.utils
  * Created by yyfbe on 2019-08-11
  */
 object FastClickCheck {
-    private val FAST_CLICK_DELAY_TIME = 1000
+    private const val FAST_CLICK_DELAY_TIME = 1000
     private var lastClickTime: Long = 0
 
     val isFastClick: Boolean

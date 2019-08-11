@@ -6,6 +6,7 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.mredrock.cyxbs.common.BaseApp
 import com.mredrock.cyxbs.common.utils.LogUtils
+import com.mredrock.cyxbs.freshman.model.InBackgroundEvent
 import com.mredrock.cyxbs.freshman.model.InitDBEvent
 import org.greenrobot.eventbus.EventBus
 import androidx.room.RoomDatabase.Callback as Callback1
@@ -29,12 +30,14 @@ abstract class FreshmanDataBase :RoomDatabase(){
                         .addCallback(object : Callback() {
                             override fun onCreate(db: SupportSQLiteDatabase) {
                                 super.onCreate(db)
-                                val arrayList = ArrayList<HomeItem>()
-                                for (i in 0 until titleList.size){
-                                    arrayList.add(HomeItem(titleList[i], smallList[i]))
-                                }
-                                instant!!.freshmanDao().insertHomeItem(arrayList)
-                                LogUtils.d("数据库","初始化成功")
+                                EventBus.getDefault().postSticky(InBackgroundEvent{
+                                    val arrayList = ArrayList<HomeItem>()
+                                    for (i in 0 until titleList.size){
+                                        arrayList.add(HomeItem(titleList[i], smallList[i]))
+                                    }
+                                    instant!!.freshmanDao().insertHomeItem(arrayList)
+                                    LogUtils.d("数据库","初始化成功")
+                                })
                             }
                             override fun onOpen(db: SupportSQLiteDatabase) {
                                 super.onOpen(db)

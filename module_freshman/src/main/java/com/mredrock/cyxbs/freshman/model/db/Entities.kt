@@ -30,11 +30,11 @@ class Scenery(@PrimaryKey var name: String,
 
 @Entity(tableName = "school_group")
 class SchoolGroup(@PrimaryKey var name: String,
-                  @ColumnInfo(name = "group_id") var groupId:Long)
+                  @ColumnInfo(name = "group_id") var groupId:String)
 
 @Entity(tableName = "fellow_towns_man")
 class FellowTownsmanGroup(@PrimaryKey var name:String,
-                          @ColumnInfo(name = "group_id") var groupId:Long)
+                          @ColumnInfo(name = "group_id") var groupId:String)
 
 @Entity(tableName = "online_activity")
 class OnlineActivity(@PrimaryKey var name: String,

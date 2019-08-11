@@ -50,7 +50,7 @@ class GroupFragment : BaseViewModelFragment<GroupFragmentViewModel>() {
         }
         val adapter = BaseRecyclerViewAdapter<com.mredrock.cyxbs.freshman.databinding.FreshmanRecycleItemOnlineGroupBinding, GroupItem>(R.layout.freshman_recycle_item_online_group,
                 BR.group,
-                arrayListOf(GroupItem("网络安全"), GroupItem("生物信息"), GroupItem("生物信息"), GroupItem("生物信息"), GroupItem("生物信息"), GroupItem("生物信息"), GroupItem("生物信息"), GroupItem("生物信息")))
+                null)
         adapter.onItemOnClickListener = object : BaseRecyclerViewAdapter.OnItemOnClickListener {
             override fun onItemClick(itemView: View, position: Int) {
                 val copySuccessDialogFragment = CopySuccessDialogFragment()
@@ -64,7 +64,7 @@ class GroupFragment : BaseViewModelFragment<GroupFragmentViewModel>() {
     fun startSearch(){
         val adapter = BaseRecyclerViewAdapter<com.mredrock.cyxbs.freshman.databinding.FreshmanRecycleItemGroupSearchBinding,GroupItem>(R.layout.freshman_recycle_item_group_search,
                 BR.group,
-                arrayListOf(GroupItem("网络安全"), GroupItem("生物信息")))
+                null)
         adapter.onItemOnClickListener = object : BaseRecyclerViewAdapter.OnItemOnClickListener {
             override fun onItemClick(itemView: View, position: Int) {
                 val copySuccessDialogFragment = CopySuccessDialogFragment()

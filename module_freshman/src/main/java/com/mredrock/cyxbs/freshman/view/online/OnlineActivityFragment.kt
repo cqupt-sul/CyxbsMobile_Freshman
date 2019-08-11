@@ -11,11 +11,14 @@ import com.mredrock.cyxbs.common.utils.LogUtils
 import com.mredrock.cyxbs.freshman.BR
 import com.mredrock.cyxbs.freshman.R
 import com.mredrock.cyxbs.freshman.databinding.FreshmanRecycleItemOnlineActivityBinding
+import com.mredrock.cyxbs.freshman.model.ShowActivityDialog
 import com.mredrock.cyxbs.freshman.model.item.ActivityItem
 import com.mredrock.cyxbs.freshman.view.adapter.BaseRecyclerViewAdapter
 import com.mredrock.cyxbs.freshman.view.gotocqupt.CopySuccessDialogFragment
 import com.mredrock.cyxbs.freshman.viewmodel.online.OnlineActivityViewModel
 import kotlinx.android.synthetic.main.freshman_freshamn_online_activity.*
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 /**
  * @date 2019-08-09
@@ -26,19 +29,9 @@ class OnlineActivityFragment :BaseViewModelFragment<OnlineActivityViewModel>(){
     override val viewModelClass: Class<OnlineActivityViewModel>
         get() = OnlineActivityViewModel::class.java
 
-    val showDialog:(it:ActivityItem?)->Unit = {
-        if (it!=null){
-            LogUtils.d("回调监听","触发了立刻参与的点击回调 ${viewModel.showDialog}")
-//            Toast.makeText(this.context,it?.activityName?.get(),Toast.LENGTH_SHORT).show()
-            val joinActivityDialogFragment = JoinActivityDialogFragment()
-            joinActivityDialogFragment.show(fragmentManager,"join now")
-            viewModel.showDialog.value = null
-        }
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        viewModel.showDialog.observe(showDialog)
         LogUtils.d("生命周期监听","$this onCreateView ${viewModel.showDialog}")
         return inflater.inflate(R.layout.freshman_freshamn_online_activity,container,false)
     }
@@ -62,5 +55,14 @@ class OnlineActivityFragment :BaseViewModelFragment<OnlineActivityViewModel>(){
     override fun onStop() {
         super.onStop()
         LogUtils.d("生命周期监听","$this onStop ${viewModel.showDialog}")
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun showActivityDialog(showActivityDialog: ShowActivityDialog){
+        LogUtils.d("回调监听","触发了立刻参与的点击回调 ${viewModel.showDialog}")
+//            Toast.makeText(this.context,it?.activityName?.get(),Toast.LENGTH_SHORT).show()
+        val joinActivityDialogFragment = JoinActivityDialogFragment()
+        joinActivityDialogFragment.show(fragmentManager,"join now")
+        viewModel.showDialog.value = null
     }
 }

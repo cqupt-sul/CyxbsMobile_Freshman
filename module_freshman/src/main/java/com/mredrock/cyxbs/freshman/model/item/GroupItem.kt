@@ -7,10 +7,11 @@ import androidx.databinding.ObservableField
  * @author Override0330
  * @description
  */
-class GroupItem (name: String){
+class GroupItem (name: String,groupId: String){
     val name = ObservableField<String>()
-    val groupId = 1000
+    val groupId = ObservableField<String>()
     init {
         this.name.set(name)
+        this.groupId.set(groupId)
     }
 }

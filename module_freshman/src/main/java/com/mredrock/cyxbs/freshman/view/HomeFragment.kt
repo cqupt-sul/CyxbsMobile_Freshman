@@ -77,6 +77,9 @@ class HomeFragment : BaseViewModelFragment<HomeViewModel>() {
                     4 -> {
                         findNavController().navigate(R.id.freshman_action_freshman_home_fragment_to_freshman_onlinediscussfragment)
                     }
+                    3 -> {
+                        findNavController().navigate(R.id.freshman_action_freshman_home_fragment_to_freshman_campusguidefragment)
+                    }
                     5 -> {
                         findNavController().navigate(R.id.freshman_action_freshman_home_fragment_to_freshman_more_function_fragment)
                     }
@@ -85,11 +88,6 @@ class HomeFragment : BaseViewModelFragment<HomeViewModel>() {
         }
         rv_home.layoutManager = LinearLayoutManager(this.context)
         rv_home.adapter = adapter
-    }
-
-
-    @Subscribe(threadMode = ThreadMode.MAIN,sticky = true)
-    fun inflatRecyclerView(initDBEvent: InitDBEvent){
         viewModel.getShowList(viewLifecycleOwner).observe {
             LogUtils.d("LiveData","Recyclerview初始化回调"+ it.toString())
             it?.let {
@@ -97,6 +95,17 @@ class HomeFragment : BaseViewModelFragment<HomeViewModel>() {
             }
         }
     }
+
+
+//    @Subscribe(threadMode = ThreadMode.MAIN,sticky = true)
+//    fun inflatRecyclerView(initDBEvent: InitDBEvent){
+//        viewModel.getShowList(viewLifecycleOwner).observe {
+//            LogUtils.d("LiveData","Recyclerview初始化回调"+ it.toString())
+//            it?.let {
+//                it1 -> adapter.submitShowList(it1)
+//            }
+//        }
+//    }
 
 
     private fun showTalk(){
