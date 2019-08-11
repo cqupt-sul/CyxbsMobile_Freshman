@@ -44,8 +44,8 @@ abstract class BaseTabLayoutFragment<T : BaseViewModel>(override val viewModelCl
     open fun initTabLayout(viewPager: ViewPager, tabLayout: TabLayout,
                            titles: List<String>,fragments: List<Fragment>) {
         checkMatch(titles, fragments)
-        val fm = activity?.supportFragmentManager
-        val dataFragmentPagerAdapter = fm?.let { BaseFragmentPagerAdapter(titles, fragments, it) }
+        val fm = this.childFragmentManager
+        val dataFragmentPagerAdapter = BaseFragmentPagerAdapter(titles, fragments, fm)
         viewPager.adapter = dataFragmentPagerAdapter
 
         tabLayout.setupWithViewPager(viewPager)

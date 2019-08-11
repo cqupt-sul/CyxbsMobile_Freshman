@@ -33,12 +33,6 @@ class MainRequirementActivity : BaseViewModelActivity<MainRequirementViewModel>(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.freshman_activity_requirement_kind)
-        val viewModelFactory = getViewModelFactory()
-        viewModel = if (viewModelFactory != null) {
-            ViewModelProviders.of(this, viewModelFactory).get(viewModelClass)
-        } else {
-            ViewModelProviders.of(this).get(viewModelClass)
-        }
         viewModel.initData().observe(this, Observer {
             val adapter = BaseRecyclerViewAdapter<FreshmanRecycleItemRequirementBinding
                     , RequirementData>(R.layout.freshman_recycle_item_requirement, BR.schoolrequire, it)

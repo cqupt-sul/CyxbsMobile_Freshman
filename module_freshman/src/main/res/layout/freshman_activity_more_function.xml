@@ -5,9 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/freshman_activity_data_revealed_bg_color"
-    android:orientation="vertical">
-
-    <include layout="@layout/common_toolbar" />
+    android:orientation="vertical">/>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/ll_first"

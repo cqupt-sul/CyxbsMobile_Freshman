@@ -6,9 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/freshman_activity_home_bg_color"
     android:orientation="vertical"
-    tools:context=".view.HomeActivity">
-
-    <include layout="@layout/common_toolbar" />
+    tools:context=".view.HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

@@ -17,7 +17,8 @@ import kotlinx.android.synthetic.main.freshman_dialog_talk.*
  */
 @Suppress("RECEIVER_NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class TalkDialogFragment : DialogFragment(){
-    var scale = 0F
+    var scaleX = 0.25F
+    var scaleY = 0.1F
     var letterAlpha = 0F
     var buttonAlpha = 0F
     private val displayMetrics = DisplayMetrics()
@@ -41,16 +42,24 @@ class TalkDialogFragment : DialogFragment(){
     fun unFold(){
         if (cl_content!=null){
             val constraintSet = ConstraintSet()
-            constraintSet.constrainWidth(R.id.cl_content,(displayMetrics.widthPixels*0.9*scale).toInt())
-            constraintSet.constrainHeight(R.id.cl_content,(displayMetrics.heightPixels*0.9*scale).toInt())
+            constraintSet.constrainWidth(R.id.cl_content,(displayMetrics.widthPixels*0.9*scaleX).toInt())
+            constraintSet.constrainHeight(R.id.cl_content,(displayMetrics.heightPixels*0.9*scaleX).toInt())
+            constraintSet.applyTo(cl_talk_main)
+        }
+    }
+    fun unFold2(){
+        if (cl_content!=null){
+            val constraintSet = ConstraintSet()
+            constraintSet.constrainHeight(R.id.cl_content,(displayMetrics.heightPixels*0.9*scaleY).toInt())
+            constraintSet.constrainWidth(R.id.cl_content,(displayMetrics.widthPixels*0.9*scaleX).toInt())
             constraintSet.applyTo(cl_talk_main)
         }
     }
     fun showLetter(){
-        sv_letter.alpha = letterAlpha
+        sv_letter?.alpha = letterAlpha
     }
     fun showButton(){
-        iv_i_know.alpha = buttonAlpha
-        tv_i_know.alpha = buttonAlpha
+        iv_i_know?.alpha = buttonAlpha
+        tv_i_know?.alpha = buttonAlpha
     }
 }

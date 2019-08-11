@@ -16,7 +16,7 @@
         android:background="@drawable/freshman_data_revealed_iv_bg_normal">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/freshman_appcompattextview"
+            android:id="@+id/tv_hard_line_school_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="46dp"

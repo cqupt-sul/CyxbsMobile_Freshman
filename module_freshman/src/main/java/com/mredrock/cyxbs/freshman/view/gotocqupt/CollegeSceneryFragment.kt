@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import com.mredrock.cyxbs.common.ui.BaseViewModelFragment
+import com.mredrock.cyxbs.common.utils.LogUtils
 import com.mredrock.cyxbs.freshman.R
 import com.mredrock.cyxbs.freshman.viewmodel.gotocqupt.CollegeSceneryViewModel
 
@@ -19,16 +20,13 @@ import com.mredrock.cyxbs.freshman.viewmodel.gotocqupt.CollegeSceneryViewModel
 class CollegeSceneryFragment :BaseViewModelFragment<CollegeSceneryViewModel>(){
     override val viewModelClass: Class<CollegeSceneryViewModel>
         get() = CollegeSceneryViewModel::class.java
-    private lateinit var dataBinding: com.mredrock.cyxbs.freshman.databinding.FreshmanFragmentCollegeSceneryBinding
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val viewModelFactory = getViewModelFactory()
-        viewModel = if (viewModelFactory != null) {
-            ViewModelProviders.of(this, viewModelFactory).get(viewModelClass)
-        } else {
-            ViewModelProviders.of(this).get(viewModelClass)
-        }
-        dataBinding = DataBindingUtil.inflate(inflater, R.layout.freshman_fragment_college_scenery,container,false)
-        //fragment需要通过dataBinding对象来获得view，否则会绑定失败
-        return dataBinding.root
+        super.onCreateView(inflater, container, savedInstanceState)
+        return inflater.inflate(R.layout.freshman_fragment_college_scenery,container,false)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        LogUtils.d("生命周期监听","${this} onStart")
     }
 }

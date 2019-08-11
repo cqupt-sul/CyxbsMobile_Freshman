@@ -12,40 +12,17 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.online.OnlineDiscussActivity">
-            <!--<intent-filter>-->
-            <!--<action android:name="android.intent.action.MAIN" />-->
-
-            <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
-        </activity>
-        <activity android:name=".view.HomeActivity">
+        <activity android:name=".view.MainActivity">
             <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.MainActivity">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
-
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
-        </activity>
         <activity android:name=".view.schoolrequirement.RequirementMemoActivity"/>
-        <!--<activity android:name=".view.campusguide.CampusGuideActivity"/>-->
-        <activity android:name=".view.gotocqupt.GoToCquptActivity">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
-
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
-        </activity>
-        <activity android:name=".view.campusguide.CampusGuideActivity"/>
+        <!--<activity android:name=".view.campusguide.CampusGuideFragment"/>-->
         <activity android:name=".view.DataDisclosureActivity" />
         <activity android:name=".view.schoolrequirement.RequirementEditActivity" />
-        <activity android:name=".view.more.MoreFunctionActivity" />
         <activity android:name=".view.schoolrequirement.MainRequirementActivity">
         </activity>
     </application>

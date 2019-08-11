@@ -2,11 +2,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
-    <data>
-
-    </data>
-
     <androidx.appcompat.widget.LinearLayoutCompat
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -49,20 +44,21 @@
                 app:layout_constraintGuide_percent="0.08" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/freshman_appcompattextview"
+                android:id="@+id/tv_bus_line_school_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toTopOf="@+id/guideline_busline_1"
                 app:layout_constraintStart_toStartOf="@id/guideline_busline_4"
-                android:text="@string/freshman_college_name"
+                tools:text="@string/freshman_college_name"
                 android:textSize="15sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_bus_line_school_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toTopOf="@+id/guideline_busline_2"
-                app:layout_constraintStart_toStartOf="@+id/freshman_appcompattextview"
-                android:text="@string/freshman_college_address"
+                app:layout_constraintStart_toStartOf="@+id/tv_bus_line_school_name"
+                tools:text="@string/freshman_college_address"
                 android:textSize="14sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -82,15 +78,10 @@
             android:text="推荐路线"
             android:layout_marginStart="15dp"
             android:layout_marginTop="24dp" />
-        <com.mredrock.cyxbs.freshman.view.customui.ScaleImage
-            android:id="@+id/test"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/freshman_goto_map_normal"
-            android:scaleType="matrix"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_goto_bus_line"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
+            android:layout_height="wrap_content" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>

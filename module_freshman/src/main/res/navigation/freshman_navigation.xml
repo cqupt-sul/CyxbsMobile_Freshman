@@ -1,5 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/freshman_navigation">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/freshman_navigation"
+    app:startDestination="@id/freshman_home_fragment">
+    <fragment
+        android:id="@+id/freshman_home_fragment"
+        android:name="com.mredrock.cyxbs.freshman.view.HomeFragment"
+        android:label="freshman_acitvity_home"
+        tools:layout="@layout/freshman_acitvity_home">
+        <action
+            android:id="@+id/freshman_action_freshman_home_fragment_to_freshman_more_function_fragment"
+            app:destination="@id/freshman_more_function_fragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action
+            android:id="@+id/freshman_action_freshman_home_fragment_to_freshman_gotocquptfragment"
+            app:destination="@id/freshman_goto_cqupt_fragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action
+            android:id="@+id/freshman_action_freshman_home_fragment_to_freshman_onlinediscussfragment"
+            app:destination="@id/freshman_onlinediscussfragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+    </fragment>
+    <fragment
+        android:id="@+id/freshman_more_function_fragment"
+        android:name="com.mredrock.cyxbs.freshman.view.more.MoreFunctionFragment"
+        android:label="MoreFunctionFragment" />
+    <fragment
+        android:id="@+id/freshman_goto_cqupt_fragment"
+        android:name="com.mredrock.cyxbs.freshman.view.gotocqupt.GoToCquptFragment"
+        android:label="GoToCquptFragment" />
+    <fragment
+        android:id="@+id/freshman_onlinediscussfragment"
+        android:name="com.mredrock.cyxbs.freshman.view.online.OnlineDiscussFragment"
+        android:label="OnlineDiscussFragment" />
 </navigation>
