@@ -13,25 +13,29 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="15dp"
-        android:background="@drawable/freshman_data_revealed_iv_bg_normal">
+        android:background="@drawable/freshman_define_window">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/freshman_appcompattextview"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_subject"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="46dp"
-            android:layout_marginTop="37dp"
-            android:text="难度系数"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.32" />
+        <!--<androidx.appcompat.widget.AppCompatTextView-->
+            <!--android:id="@+id/freshman_appcompattextview"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginStart="46dp"-->
+            <!--android:layout_marginTop="37dp"-->
+            <!--android:text="难度系数"-->
+            <!--android:textSize="17sp"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toTopOf="parent" />-->
         <com.mredrock.cyxbs.freshman.view.customui.chart.ChartView
             android:id="@+id/cv_subject"
-            android:layout_width="345dp"
-            android:layout_height="308dp"
-            android:layout_gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

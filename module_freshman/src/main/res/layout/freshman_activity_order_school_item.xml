@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="orderData"
+            type="com.mredrock.cyxbs.freshman.model.schoolorder.OrderData" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <!--<androidx.constraintlayout.widget.ConstraintLayout-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="154dp"-->
+            <!--app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--tools:layout_editor_absoluteX="71dp">-->
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="62dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/line" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/lt_order"
+                    android:layout_alignTop="@+id/lt_order"
+                    android:layout_alignEnd="@+id/lt_order"
+                    android:layout_alignBottom="@+id/lt_order"
+                    android:background="@drawable/order_bg" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/lt_order"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="60dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="5dp"
+                            android:gravity="center_vertical"
+                            android:maxEms="20"
+                            android:text="@{orderData.title}"
+                            android:textSize="15sp" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/iv_order_arrow"
+                            android:layout_width="19dp"
+                            android:layout_height="15dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/freshman_arrow_down" />
+                    </RelativeLayout>
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:visibility="gone"
+                        android:id="@+id/tv_order_detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginBottom="20dp"
+                        android:maxEms="17"
+                        android:text="@{orderData.message}" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_order_pic"
+                        picUrl="@{orderData.photo}"
+                        android:visibility="gone"
+                        android:layout_width="265dp"
+                        android:layout_height="126dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="20dp" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </RelativeLayout>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

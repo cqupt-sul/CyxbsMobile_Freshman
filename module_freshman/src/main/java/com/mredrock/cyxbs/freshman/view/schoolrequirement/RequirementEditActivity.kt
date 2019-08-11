@@ -6,7 +6,8 @@ import com.mredrock.cyxbs.common.ui.BaseViewModelActivity
 import com.mredrock.cyxbs.freshman.R
 import com.mredrock.cyxbs.freshman.viewmodel.schoolrequirement.RequirementEditViewModel
 import kotlinx.android.synthetic.main.freshman_activity_requirement_edit.*
-import kotlinx.android.synthetic.main.freshman_linear_layout_top.*
+import kotlinx.android.synthetic.main.freshman_layout_top_toolbar.*
+import org.jetbrains.anko.leftPadding
 
 /**
  * Created by yyfbe on 2019-08-09
@@ -22,6 +23,8 @@ class RequirementEditActivity : BaseViewModelActivity<RequirementEditViewModel>(
         setContentView(R.layout.freshman_activity_requirement_edit)
         val viewModelFactory = getViewModelFactory()
 //        initView()
+        freshman_top_toolbar.init("",listener = null)
+//        setSupportActionBar(freshman_top_toolbar)
         viewModel = if (viewModelFactory != null) {
             ViewModelProviders.of(this, viewModelFactory).get(viewModelClass)
         } else {
@@ -31,9 +34,9 @@ class RequirementEditActivity : BaseViewModelActivity<RequirementEditViewModel>(
     }
 
     private fun initView(viewModel: RequirementEditViewModel) {
-        tv_left.text="取消"
         tv_center.text="备忘录"
-        tv_right.text="保存"
+        tv_left.text = "取消"
+        tv_right.text = "保存"
         tv_left.setOnClickListener {
             finish()
         }

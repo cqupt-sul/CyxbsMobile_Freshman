@@ -1,10 +1,12 @@
 package com.mredrock.cyxbs.freshman.view.schoolrequirement
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.database.DatabaseUtils
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -26,10 +28,7 @@ import com.mredrock.cyxbs.freshman.viewmodel.schoolrequirement.MainRequirementVi
 import com.mredrock.cyxbs.freshman.viewmodel.schoolrequirement.RequirementDeleteViewModel
 import kotlinx.android.synthetic.main.freshman_activity_requirement_kind.*
 import kotlinx.android.synthetic.main.freshman_activity_requirement_memo.*
-import kotlinx.android.synthetic.main.freshman_linear_layout_top.*
-import kotlinx.android.synthetic.main.freshman_linear_layout_top.tv_center
-import kotlinx.android.synthetic.main.freshman_linear_layout_top.tv_left
-import kotlinx.android.synthetic.main.freshman_linear_layout_top.tv_right
+import kotlinx.android.synthetic.main.freshman_layout_top_toolbar.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
 /**
@@ -41,17 +40,20 @@ class RequirementMemoActivity : BaseViewModelActivity<RequirementDeleteViewModel
     override val isFragmentActivity: Boolean
         get() = false
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.freshman_activity_requirement_memo)
         initView()
+        freshman_top_toolbar.init("",
+                listener = null)
         val viewModelFactory = getViewModelFactory()
         viewModel = if (viewModelFactory != null) {
             ViewModelProviders.of(this, viewModelFactory).get(viewModelClass)
         } else {
             ViewModelProviders.of(this).get(viewModelClass)
         }
-        viewModel.initData(tv_right).observe(this, Observer {
+        viewModel.initData().observe(this, Observer {
             if (it.size != 0) tv_no_data_notice.gone()
             val adapter = BaseRecyclerViewAdapter<FreshmanRecycleItemRequirementBinding
                     , RequirementData>(R.layout.freshman_recycle_item_requirement, BR.schoolrequire, it)
@@ -64,6 +66,12 @@ class RequirementMemoActivity : BaseViewModelActivity<RequirementDeleteViewModel
             })
             rv_school_requirement_edit.addItemDecoration(GroupDecoration(it, context))
             rv_school_requirement_edit.layoutManager = LinearLayoutManager(context) as RecyclerView.LayoutManager?
+
+        })
+        viewModel.getDeleteCount().observe(this, Observer {
+            if (it != 0)
+                (tv_right as TextView).text = "删除($it)"
+            else (tv_right as TextView).text = "删除"
         })
     }
 
@@ -71,6 +79,9 @@ class RequirementMemoActivity : BaseViewModelActivity<RequirementDeleteViewModel
         tv_left.text = "取消"
         tv_center.text = "编辑"
         tv_right.text = "删除"
+        tv_right.setOnClickListener {
+            this.finish()
+        }
 //        tv_right.setOnClickListener {
 //            startActivity(Intent(RequirementMemoActivity@ this, RequirementEditActivity::class.java))
 //        }

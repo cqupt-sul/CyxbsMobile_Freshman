@@ -34,11 +34,8 @@ class GroupDecoration(data: ArrayList<RequirementData>,context:Context) :
         super.getItemOffsets(outRect, view, parent, state)
         val itemPosition = parent.getChildItemId(view)
         //如果有这个下标，就画分离组
-        Log.d("yyf",mTitleMap.containsKey(itemPosition.toInt()).toString())
-        Log.d("yyf",itemPosition.toInt().toString()+parent.childCount)
         when (mTitleMap.containsKey(parent.childCount-1)){
             true-> {
-                Log.d("yyf","true")
                 outRect.top=topGap.toInt()
             }
             false->outRect.top=0

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <include layout="@layout/freshman_linear_layout_top"/>
+    <include layout="@layout/freshman_layout_top_toolbar"/>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -23,9 +22,10 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_school_requirement_edit"
+            android:overScrollMode="never"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </FrameLayout>
 
 
-</LinearLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>
