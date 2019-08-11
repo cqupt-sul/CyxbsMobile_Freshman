@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.mredrock.cyxbs.common.viewmodel.BaseViewModel
 import com.mredrock.cyxbs.freshman.model.db.Map
 import com.mredrock.cyxbs.freshman.model.db.Scenery
+import com.mredrock.cyxbs.freshman.model.item.CollegePicItem
 import com.mredrock.cyxbs.freshman.repositories.GoToCquptRepository
 
 /**
@@ -15,5 +16,5 @@ import com.mredrock.cyxbs.freshman.repositories.GoToCquptRepository
 class CollegeSceneryViewModel : BaseViewModel() {
     private val goToCquptRepository = GoToCquptRepository.getInstant()
     fun getMapLiveData(lifecycleOwner: LifecycleOwner):MutableLiveData<Map> = goToCquptRepository.getMap(lifecycleOwner)
-    fun getSceneryListLiveData(lifecycleOwner: LifecycleOwner):MutableLiveData<List<Scenery>> = goToCquptRepository.getScenery(lifecycleOwner)
+    fun getSceneryListLiveData(lifecycleOwner: LifecycleOwner):MutableLiveData<List<CollegePicItem>> = goToCquptRepository.getScenery(lifecycleOwner)
 }

@@ -11,6 +11,7 @@ import com.mredrock.cyxbs.freshman.model.InBackgroundEvent
 import com.mredrock.cyxbs.freshman.model.db.*
 import com.mredrock.cyxbs.freshman.model.db.Map
 import com.mredrock.cyxbs.freshman.model.item.BusLineItem
+import com.mredrock.cyxbs.freshman.model.item.CollegePicItem
 import com.mredrock.cyxbs.freshman.model.remote.api.GetRequestInterface
 import io.reactivex.schedulers.Schedulers
 import org.greenrobot.eventbus.EventBus
@@ -29,6 +30,10 @@ class GoToCquptRepository private constructor() {
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
     private val request = retrofit.create(GetRequestInterface::class.java)
+
+    init {
+        upDate()
+    }
 
     //单例
     companion object{
@@ -49,10 +54,8 @@ class GoToCquptRepository private constructor() {
         LogUtils.d("数据库","拿地址")
         val liveData = MutableLiveData<Address>()
         FreshmanDataBase.getInstant().freshmanDao().getAddress("重庆邮电大学地址").observe(lifecycleOwner, Observer {
-            LogUtils.d("数据库","数据更新回调 ${it.address} ${it.title}")
-            liveData.value = it
+            liveData.postValue(it)
         })
-        upDate()
         return liveData
     }
 
@@ -71,17 +74,22 @@ class GoToCquptRepository private constructor() {
     //拿地图Url
     fun getMap(lifecycleOwner: LifecycleOwner):MutableLiveData<Map>{
         val liveData = MutableLiveData<Map>()
-        FreshmanDataBase.getInstant().freshmanDao().getMap("重邮2D地图").observe(lifecycleOwner, Observer { 
+        FreshmanDataBase.getInstant().freshmanDao().getMap("重邮2D地图").observe(lifecycleOwner, Observer {
             liveData.postValue(it)
         })
         return liveData
     }
     
     //拿风景Url
-    fun getScenery(lifecycleOwner: LifecycleOwner):MutableLiveData<List<Scenery>>{
-        val liveData = MutableLiveData<List<Scenery>>()
-        FreshmanDataBase.getInstant().freshmanDao().getAllScenery().observe(lifecycleOwner, Observer { 
-            liveData.postValue(it)
+    fun getScenery(lifecycleOwner: LifecycleOwner):MutableLiveData<List<CollegePicItem>>{
+        val liveData = MutableLiveData<List<CollegePicItem>>()
+        FreshmanDataBase.getInstant().freshmanDao().getAllScenery().observe(lifecycleOwner, Observer {
+            val list = ArrayList<CollegePicItem>()
+            for (i in 0 until it.size step 2){
+                val collegePicItem = CollegePicItem(it[i].name,it[i].photoUrl,it[(i+1)].name,it[i+1].photoUrl)
+                list.add(collegePicItem)
+            }
+            liveData.postValue(list)
         })
         return liveData
     }

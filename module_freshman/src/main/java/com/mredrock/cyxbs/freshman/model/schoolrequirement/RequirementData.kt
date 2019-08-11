@@ -5,6 +5,7 @@ import android.view.View
 import androidx.databinding.Bindable
 
 import androidx.databinding.BaseObservable
+import androidx.databinding.ObservableBoolean
 import com.mredrock.cyxbs.freshman.BR
 import com.mredrock.cyxbs.freshman.R
 
@@ -13,8 +14,15 @@ import com.mredrock.cyxbs.freshman.R
  */
 
 class RequirementData(title: String, name: String, detail: String?,
-                      val onClick: ((view: View, item: RequirementData) -> Unit)?) : BaseObservable() {
+                      val onClick: (( item: RequirementData) -> Unit)?) : BaseObservable() {
 
+    var isChecked:Boolean=false
+    @Bindable
+    get() = field
+    set(value) {
+        field=value
+        notifyPropertyChanged(BR.checked)
+    }
     var requirementTitle = title
         @Bindable
         get() = field

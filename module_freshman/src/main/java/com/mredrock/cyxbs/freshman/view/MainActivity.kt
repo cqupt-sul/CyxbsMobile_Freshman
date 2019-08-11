@@ -30,8 +30,6 @@ class MainActivity : BaseActivity(){
         super.onCreate(savedInstanceState)
         UMConfigure.setLogEnabled(true)
         setContentView(R.layout.freshman_activity_main)
-        FreshmanDataBase.getInstant().freshmanDao().getAllHomeItem()
-        LogUtils.d("debug","${FreshmanDataBase.getInstant().freshmanDao().getAllHomeItem()}")
     }
 
 

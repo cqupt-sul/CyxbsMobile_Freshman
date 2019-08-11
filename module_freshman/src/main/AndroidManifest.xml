@@ -12,18 +12,20 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.MainActivity">
+        <activity android:name=".view.schoolrequirement.MainRequirementActivity"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.schoolrequirement.RequirementMemoActivity"/>
+        <activity android:name=".view.MainActivity"/>
+        <activity android:name=".view.schoolorder.OrderActivity"/>
         <!--<activity android:name=".view.campusguide.CampusGuideFragment"/>-->
         <activity android:name=".view.DataDisclosureActivity" />
         <activity android:name=".view.schoolrequirement.RequirementEditActivity" />
-        <activity android:name=".view.schoolrequirement.MainRequirementActivity">
+        <activity android:name=".view.schoolrequirement.RequirementDeleteActivity">
         </activity>
     </application>
 
