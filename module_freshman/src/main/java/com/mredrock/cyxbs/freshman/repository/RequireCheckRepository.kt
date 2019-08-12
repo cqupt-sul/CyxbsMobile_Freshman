@@ -1,4 +1,4 @@
-package com.mredrock.cyxbs.freshman.repositories
+package com.mredrock.cyxbs.freshman.repository
 
 /**
  * Created by yyfbe on 2019-08-12

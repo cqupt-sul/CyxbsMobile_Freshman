@@ -21,9 +21,7 @@ class RequirementEditActivity : BaseViewModelActivity<RequirementEditViewModel>(
         super.onCreate(savedInstanceState)
         setContentView(R.layout.freshman_activity_requirement_edit)
         val viewModelFactory = getViewModelFactory()
-//        initView()
-        freshman_top_toolbar.init("",listener = null)
-//        setSupportActionBar(freshman_top_toolbar)
+        freshman_top_toolbar.init("", listener = null)
         viewModel = if (viewModelFactory != null) {
             ViewModelProviders.of(this, viewModelFactory).get(viewModelClass)
         } else {
@@ -33,7 +31,7 @@ class RequirementEditActivity : BaseViewModelActivity<RequirementEditViewModel>(
     }
 
     private fun initView(viewModel: RequirementEditViewModel) {
-        tv_center.text="备忘录"
+        tv_center.text = "备忘录"
         tv_left.text = "取消"
         tv_right.text = "保存"
         tv_left.setOnClickListener {

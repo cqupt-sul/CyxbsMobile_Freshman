@@ -1,4 +1,4 @@
-package com.mredrock.cyxbs.freshman.repositories
+package com.mredrock.cyxbs.freshman.repository
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
@@ -8,10 +8,8 @@ import com.mredrock.cyxbs.common.utils.LogUtils
 import com.mredrock.cyxbs.common.utils.extensions.safeSubscribeBy
 import com.mredrock.cyxbs.common.utils.extensions.setSchedulers
 import com.mredrock.cyxbs.freshman.model.InBackgroundEvent
-import com.mredrock.cyxbs.freshman.model.db.Address
 import com.mredrock.cyxbs.freshman.model.db.FreshmanDataBase
 import com.mredrock.cyxbs.freshman.model.db.RequireItem
-import com.mredrock.cyxbs.freshman.model.remote.api.RequirementResult
 import com.mredrock.cyxbs.freshman.model.remote.api.request
 import io.reactivex.schedulers.Schedulers
 import org.greenrobot.eventbus.EventBus

@@ -42,19 +42,20 @@ class RequirementDeleteActivity : BaseViewModelActivity<RequirementDeleteViewMod
         initView()
         freshman_top_toolbar.init("",
                 listener = null)
+        //获得viewmodel
         val viewModelFactory = getViewModelFactory()
         viewModel = if (viewModelFactory != null) {
             ViewModelProviders.of(this, viewModelFactory).get(viewModelClass)
         } else {
             ViewModelProviders.of(this).get(viewModelClass)
         }
+        //获得数据，配置rv
         viewModel.initData(this).observe(this, Observer {
             if (it.size != 0) tv_no_data_notice.gone()
             adapter.submitShowList(it)
             rv_school_requirement_edit.adapter = adapter
             adapter.onItemOnClickListener = (object : BaseRecyclerViewAdapter.OnItemOnClickListener {
                 override fun onItemClick(itemView: View, position: Int) {
-                    Toast.makeText(context, "点击了$position", Toast.LENGTH_SHORT).show()
                     initItemView(itemView, position)
                 }
             })
@@ -62,13 +63,14 @@ class RequirementDeleteActivity : BaseViewModelActivity<RequirementDeleteViewMod
             rv_school_requirement_edit.layoutManager = LinearLayoutManager(context) as RecyclerView.LayoutManager?
 
         })
+        //获得点击删除数量
         viewModel.getDeleteCount().observe(this, Observer {
             if (it != 0)
                 (tv_right as TextView).text = "删除($it)"
             else (tv_right as TextView).text = "删除"
         })
     }
-
+    //配置view和点击事件
     private fun initView() {
         tv_left.text = "取消"
         tv_center.text = "编辑"
@@ -76,9 +78,6 @@ class RequirementDeleteActivity : BaseViewModelActivity<RequirementDeleteViewMod
         tv_right.setOnClickListener {
             this.finish()
         }
-//        tv_right.setOnClickListener {
-//            startActivity(Intent(RequirementDeleteActivity@ this, RequirementEditActivity::class.java))
-//        }
         tv_no_data_notice.setOnClickListener {
             startActivity(Intent(this@RequirementDeleteActivity
                     , RequirementEditActivity::class.java))
@@ -88,18 +87,14 @@ class RequirementDeleteActivity : BaseViewModelActivity<RequirementDeleteViewMod
             finish()
         }
     }
-
     private fun initItemView(itemView: View, position: Int) {
         if (itemView.findViewById<ImageView>(R.id.iv_require_arrow).isActivated) {
-
             if (itemView.findViewById<TextView>(R.id.tv_require_detail).text != null) {
-//                Log.d("yyf", "iv activated")
                 itemView.findViewById<ImageView>(R.id.iv_require_arrow).setImageResource(R.drawable.freshman_arrow_down)
                 itemView.findViewById<TextView>(R.id.tv_require_detail).visibility = View.GONE
                 itemView.findViewById<ImageView>(R.id.iv_require_arrow).isActivated = false
             }
         } else {
-//            Log.d("yyf", "iv unactivated")
             itemView.findViewById<ImageView>(R.id.iv_require_arrow).setImageResource(R.drawable.freshman_arrow_up)
             itemView.findViewById<TextView>(R.id.tv_require_detail).visibility = View.VISIBLE
             itemView.findViewById<ImageView>(R.id.iv_require_arrow).isActivated = true
