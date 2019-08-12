@@ -7,7 +7,7 @@
 
         <variable
             name="schoolrequire"
-            type="com.mredrock.cyxbs.freshman.model.schoolrequirement.RequirementData" />
+            type="com.mredrock.cyxbs.freshman.model.bean.RequirementData" />
 
         <import type="android.view.View" />
     </data>

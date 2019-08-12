@@ -1,7 +1,5 @@
 package com.mredrock.cyxbs.freshman.model
 
-import com.mredrock.cyxbs.freshman.model.item.ActivityItem
-
 /**
  * @date 2019-08-10
  * @author Override0330
@@ -11,6 +9,8 @@ import com.mredrock.cyxbs.freshman.model.item.ActivityItem
 class ShowOrHindToolsBarEvent(val isShow: Boolean)
 
 class InitDBEvent
+
+class SetToolsBarTitle(val title:String)
 
 class InBackgroundEvent(val event:()->Unit)
 

@@ -32,7 +32,7 @@
             <!--android:textSize="17sp"-->
             <!--app:layout_constraintStart_toStartOf="parent"-->
             <!--app:layout_constraintTop_toTopOf="parent" />-->
-        <com.mredrock.cyxbs.freshman.view.customui.chart.ChartView
+        <com.mredrock.cyxbs.freshman.view.custom.chart.ChartView
             android:id="@+id/cv_subject"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

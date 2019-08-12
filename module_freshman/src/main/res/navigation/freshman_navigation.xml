@@ -41,17 +41,39 @@
     <fragment
         android:id="@+id/freshman_more_function_fragment"
         android:name="com.mredrock.cyxbs.freshman.view.more.MoreFunctionFragment"
-        android:label="MoreFunctionFragment" />
+        android:label="MoreFunctionFragment"
+        tools:layout="@layout/freshman_activity_more_function"/>
     <fragment
         android:id="@+id/freshman_goto_cqupt_fragment"
-        android:name="com.mredrock.cyxbs.freshman.view.gotocqupt.GoToCquptFragment"
-        android:label="GoToCquptFragment" />
+        android:name="com.mredrock.cyxbs.freshman.view.goto.GoToCquptFragment"
+        android:label="GoToCquptFragment"
+        tools:layout="@layout/freshman_fragmnet_main_gotocqupt"/>
     <fragment
         android:id="@+id/freshman_onlinediscussfragment"
         android:name="com.mredrock.cyxbs.freshman.view.online.OnlineDiscussFragment"
-        android:label="OnlineDiscussFragment" />
+        android:label="OnlineDiscussFragment"
+        tools:layout="@layout/freshman_activity_online_discuss"/>
     <fragment
+
         android:id="@+id/freshman_campusguidefragment"
-        android:name="com.mredrock.cyxbs.freshman.view.campusguide.CampusGuideFragment"
-        android:label="CampusGuideFragment" />
+        android:name="com.mredrock.cyxbs.freshman.view.guide.CampusGuideFragment"
+        android:label="CampusGuideFragment"
+        tools:layout="@layout/freshman_activity_campus_guiide">
+        <action
+            android:id="@+id/freshman_action_freshman_campusguidefragment_to_freshman_datadisclosuredetailfragment"
+            app:destination="@id/freshman_datadisclosuredetailfragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <argument
+            android:name="school"
+            app:argType="string"
+            android:defaultValue='"传媒艺术学院"' />
+    </fragment>
+    <fragment
+        android:id="@+id/freshman_datadisclosuredetailfragment"
+        android:name="com.mredrock.cyxbs.freshman.view.guide.disclosure.DataDisclosureActivity"
+        android:label="DataDisclosureDetailFragment"
+        tools:layout="@layout/freshman_activity_data_disclosure"/>
 </navigation>

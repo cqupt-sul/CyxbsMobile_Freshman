@@ -24,10 +24,10 @@
             android:layout_marginTop="18dp"
             android:layout_marginEnd="18dp"
             android:adjustViewBounds="true"
-            android:src="@drawable/freshman_goto_map_normal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            picUrl="@{activityItem.imageUrl}"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/freshman_appcompattextview2"

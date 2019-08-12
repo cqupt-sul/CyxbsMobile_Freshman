@@ -7,7 +7,7 @@
 
         <variable
             name="orderData"
-            type="com.mredrock.cyxbs.freshman.model.schoolorder.OrderData" />
+            type="com.mredrock.cyxbs.freshman.model.bean.OrderData" />
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat

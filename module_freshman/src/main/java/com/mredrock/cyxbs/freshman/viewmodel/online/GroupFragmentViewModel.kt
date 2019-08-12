@@ -1,6 +1,10 @@
 package com.mredrock.cyxbs.freshman.viewmodel.online
 
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.MutableLiveData
 import com.mredrock.cyxbs.common.viewmodel.BaseViewModel
+import com.mredrock.cyxbs.freshman.model.item.GroupItem
+import com.mredrock.cyxbs.freshman.repository.OnlineDiscussRepository
 
 /**
  * @date 2019-08-08
@@ -8,5 +12,7 @@ import com.mredrock.cyxbs.common.viewmodel.BaseViewModel
  * @description
  */
 class GroupFragmentViewModel : BaseViewModel(){
-
+    private val onlineDiscussRepository = OnlineDiscussRepository.getInstant()
+    fun getSchoolGroup(lifecycleOwner: LifecycleOwner):MutableLiveData<List<GroupItem>> = onlineDiscussRepository.getSchoolList(lifecycleOwner)
+    fun getOldFriendGroup(lifecycleOwner: LifecycleOwner):MutableLiveData<List<GroupItem>> = onlineDiscussRepository.getFriendList(lifecycleOwner)
 }

@@ -14,13 +14,26 @@ import kotlin.collections.ArrayList
  * @description
  */
 
-val retrofit = Retrofit.Builder().baseUrl("http://129.28.185.138:9025/")
+val retrofit = Retrofit.Builder().baseUrl("http://129.28.185.138:8080")
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build()
 val request = retrofit.create(GetRequestInterface::class.java)
 
 interface GetRequestInterface{
+
+    @GET("zsqy/json/3")
+    fun getDormitoryCall(): Observable<DormitoryResult>
+
+    @GET("zsqy/json/33")
+    fun getExpressCall(): Observable<ExpressResult>
+
+    @GET("zsqy/json/4")
+    fun getSubjectCall(): Observable<SubjectResult>
+
+    @GET("zsqy/json/44")
+    fun getBoyAndGirlCall(): Observable<BoyAndGirlResult>
+
     @GET("zsqy/json/5")
     fun getBusLineCall(): Observable<BusLineResult>
 
@@ -41,7 +54,18 @@ interface GetRequestInterface{
 class BusLineResult(val text_1:Address,val text_2:Route){
     class Address(val title:String, val message:String)
     class Route(val title:String, val message:ArrayList<BusLine>){
-        class BusLine(val name:String, val route:ArrayList<String>)
+        class BusLine(val name:String, val route:ArrayList<String>){
+            fun getRoute():String{
+                var route = ""
+                for (i in 0 until this.route.size){
+                    route += this.route[i]
+                    if (i!=(this.route.size-1)) {
+                        route += "\n\n"
+                    }
+                }
+                return route
+            }
+        }
     }
 }
 
@@ -57,5 +81,38 @@ class GroupResult(val text:List<Group>){
 
 class ActivityResult(val text:List<ActivityItem>){
     class ActivityItem(val name:String,val photo:String,val message:String,val QR:String)
+}
+
+class DormitoryResult(val text:List<Content>){
+    class Content(val title:String,val message:List<Item>){
+        class Item(val name:String,val detail:String,val photo:List<String>){
+            fun getPhoto():String{
+                var url = ""
+                for (i in 0 until photo.size){
+                    url += photo[i]
+                    if (i!=(photo.size-1)) {
+                        url += ","
+                    }
+                }
+                return url
+            }
+        }
+    }
+}
+
+class ExpressResult(val text:List<Company>){
+    class Company(val name:String, val message: List<Address>){
+        class Address(val title: String,val detail: String,val photo: String){}
+    }
+}
+
+class SubjectResult(val text:List<Content>){
+    class Content(val name: String,val message: List<Subject>){
+        class Subject(val subject:String,val data:String)
+    }
+}
+
+class BoyAndGirlResult(val text:List<Content>){
+    class Content(val name: String,val boy:String,val girl:String)
 }
 

@@ -1,43 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
             name="instituteItem"
-            type="com.mredrock.cyxbs.freshman.model.campusguide.InstituteData" />
+            type="com.mredrock.cyxbs.freshman.model.bean.InstituteData" />
     </data>
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_margin="15dp"
+        android:background="@drawable/freshman_more_up">
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="53dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="15dp"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_item_institute"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
             android:gravity="center"
-            tools:ignore="UselessParent">
+            android:text="@{instituteItem.name}"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="传媒艺术学院" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_item_institute"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:background="@drawable/freshman_institute_bg"
-                android:text="@{instituteItem.name}"
-                android:textSize="24sp" />
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/iv_item_institute"
-                android:layout_width="19dp"
-                android:layout_height="13dp"
-                android:layout_marginEnd="20dp"
-                android:layout_gravity="end|center"
-                android:src="@drawable/freshman_institute_arrow"
-                />
-        </FrameLayout>
-    </LinearLayout>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_item_institute"
+            android:layout_width="19dp"
+            android:layout_height="13dp"
+            android:layout_gravity="end|center"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/freshman_institute_arrow"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_item_institute"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_item_institute" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

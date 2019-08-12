@@ -28,7 +28,6 @@
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
                 android:src="@drawable/freshman_goto_map_normal"
-
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="22dp" />
 

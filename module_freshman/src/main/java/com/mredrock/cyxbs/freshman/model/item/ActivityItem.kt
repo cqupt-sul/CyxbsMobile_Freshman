@@ -1,6 +1,5 @@
 package com.mredrock.cyxbs.freshman.model.item
 
-import android.view.View
 import androidx.databinding.ObservableField
 
 /**
@@ -9,7 +8,7 @@ import androidx.databinding.ObservableField
  * @description
  */
 class ActivityItem(imageUrl: String, activityName: String, val onClick: (it:ActivityItem) -> Unit){
-    private val imageUrl = ObservableField<String>()
+    val imageUrl = ObservableField<String>()
     val activityName = ObservableField<String>()
     init {
         this.imageUrl.set(activityName)

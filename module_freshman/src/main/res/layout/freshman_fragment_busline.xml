@@ -75,13 +75,15 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="推荐路线"
+            android:text="推荐路线:"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="24dp" />
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_goto_bus_line"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:overScrollMode="never"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>

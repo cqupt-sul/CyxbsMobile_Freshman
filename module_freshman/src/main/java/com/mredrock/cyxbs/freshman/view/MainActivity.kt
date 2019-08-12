@@ -2,10 +2,12 @@ package com.mredrock.cyxbs.freshman.view
 
 import android.os.Bundle
 import android.view.View
+import androidx.navigation.findNavController
 import com.mredrock.cyxbs.common.ui.BaseActivity
 import com.mredrock.cyxbs.common.utils.LogUtils
 import com.mredrock.cyxbs.freshman.R
 import com.mredrock.cyxbs.freshman.model.InBackgroundEvent
+import com.mredrock.cyxbs.freshman.model.SetToolsBarTitle
 import com.mredrock.cyxbs.freshman.model.ShowOrHindToolsBarEvent
 import com.mredrock.cyxbs.freshman.model.db.FreshmanDataBase
 import com.umeng.commonsdk.UMConfigure
@@ -23,19 +25,16 @@ class MainActivity : BaseActivity(){
     override val isFragmentActivity: Boolean
         get() = true
 
-    override fun onStart() {
-        super.onStart()
-    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         UMConfigure.setLogEnabled(true)
         setContentView(R.layout.freshman_activity_main)
+        common_toolbar.init(title = "",listener = View.OnClickListener { findNavController(R.id.fragment_main).popBackStack() })
     }
 
-
     @Subscribe(threadMode = ThreadMode.MAIN,sticky = true)
-    fun changeToolsBarTitle(title:String){
-        common_toolbar.title = title
+    fun changeToolsBarTitle(setToolsBarTitle: SetToolsBarTitle){
+        common_toolbar.title = setToolsBarTitle.title
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN,sticky = true)

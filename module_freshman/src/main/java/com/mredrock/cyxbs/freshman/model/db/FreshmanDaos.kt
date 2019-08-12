@@ -57,6 +57,37 @@ interface FreshmanDaos {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertHomeItem(HomeItemList: List<HomeItem>)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertDormitory(dormitory: Dormitory)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertDormitory(dormitory: List<Dormitory>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertCanteen(canteen: Canteen)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertCanteen(canteen: List<Canteen>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertExpressAddress(expressAddress: ExpressAddress)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertExpressAddress(expressAddress: List<ExpressAddress>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertSubject(subject: Subject)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertSubject(subject: List<Subject>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertBoyAndGirl(boyAndGirl: BoyAndGirl)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertBoyAndGirl(boyAndGirl: List<BoyAndGirl>)
+
+
     //删
     @Delete
     fun deleteBusLine(busLine: BusLine)
@@ -186,4 +217,30 @@ interface FreshmanDaos {
     @Query("SELECT * FROM home_item WHERE title = :title")
     fun getHomeItem(title: String): LiveData<HomeItem>
 
+    @Query("SELECT * FROM dormitory")
+    fun getAllDormitory(): LiveData<List<Dormitory>>
+
+    @Query("SELECT * FROM dormitory WHERE name = :name")
+    fun getDormitoryByName(name:String):LiveData<Dormitory>
+
+    @Query("SELECT * FROM canteen")
+    fun getAllCanteen(): LiveData<List<Canteen>>
+
+    @Query("SELECT * FROM canteen WHERE name = :name")
+    fun getCanteenByName(name:String):LiveData<Canteen>
+
+    @Query("SELECT * FROM express WHERE name =:name")
+    fun getExpressByName(name: String): LiveData<List<ExpressAddress>>
+
+    @Query("SELECT * FROM EXPRESS")
+    fun getAllExpress():LiveData<List<ExpressAddress>>
+
+    @Query("SELECT * FROM subject WHERE name =:school")
+    fun getSubjectBySchool(school:String): LiveData<List<Subject>>
+
+    @Query("SELECT * FROM subject")
+    fun getAllSubject():LiveData<List<Subject>>
+
+    @Query("SELECT * FROM boy_and_girl WHERE name =:school")
+    fun getBoyAndGirlBySchool(school:String): LiveData<BoyAndGirl>
 }

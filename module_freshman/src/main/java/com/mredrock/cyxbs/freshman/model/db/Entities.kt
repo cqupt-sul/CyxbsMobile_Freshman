@@ -3,6 +3,7 @@ package com.mredrock.cyxbs.freshman.model.db
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
 /**
@@ -44,4 +45,30 @@ class OnlineActivity(@PrimaryKey var name: String,
 
 @Entity(tableName = "home_item")
 class HomeItem(@PrimaryKey var title:String,var content:String)
+
+@Entity(tableName = "dormitory")
+class Dormitory(@PrimaryKey var name:String,
+                var detail:String,
+                var url:String)
+
+@Entity(tableName = "canteen")
+class Canteen(@PrimaryKey var name:String,
+              var detail:String,
+              var url:String)
+
+@Entity(tableName = "express",primaryKeys = ["name","title"])
+class ExpressAddress( var name:String,
+              var title:String,
+              var detail: String,
+              var photoUrl: String)
+
+@Entity(tableName = "subject",primaryKeys = ["name","subject"])
+class Subject(var name: String,
+              var subject: String,
+              var data:String)
+
+@Entity(tableName = "boy_and_girl")
+class BoyAndGirl(@PrimaryKey var name: String,
+                 var boy:String,
+                 var girl:String)
 

@@ -5,8 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/common_toolbar" />
-
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tb_data_disclosure"
         app:tabMode="fixed"

@@ -6,7 +6,7 @@
 
         <variable
             name="expressDetailData"
-            type="com.mredrock.cyxbs.freshman.model.campusguide.ExpressDetailData" />
+            type="com.mredrock.cyxbs.freshman.model.bean.ExpressDetailData" />
     </data>
 
     <LinearLayout xmlns:tools="http://schemas.android.com/tools"
@@ -29,7 +29,7 @@
                 android:layout_marginTop="14dp"
                 android:layout_marginRight="14dp"
                 android:layout_marginBottom="165dp"
-                app:picUrl="@{expressDetailData.detailData.photo}" />
+                picUrl="@{expressDetailData.detailData.photo}" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="72dp"

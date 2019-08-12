@@ -23,21 +23,22 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="false" />
-    <loaded-nodes />
+    <loaded-nodes>
+      <connection connection-id="136224f5-7002-4ff3-95e9-bcfdad339121">
+        <schema name="main" object-types="view, table" />
+      </connection>
+    </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="e7416a89-38be-49cc-98f3-87ffb0536044">
-      <console name="Connection" type="STANDARD" schema="main" session="Main" />
+    <connection id="136224f5-7002-4ff3-95e9-bcfdad339121">
+      <console name="Connection 2" type="STANDARD" schema="main" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="e7416a89-38be-49cc-98f3-87ffb0536044" />
-  </component>
-  <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="e7416a89-38be-49cc-98f3-87ffb0536044" dataset="main.address" active-filter-id="" />
+    <connection id="136224f5-7002-4ff3-95e9-bcfdad339121" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -62,9 +63,9 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="e7416a89-38be-49cc-98f3-87ffb0536044" active="true">
+      <connection id="136224f5-7002-4ff3-95e9-bcfdad339121" active="true">
         <database>
-          <name value="Connection" />
+          <name value="Connection 2" />
           <description value="" />
           <database-type value="SQLITE" />
           <config-type value="BASIC" />
@@ -77,7 +78,7 @@
           <port value="1234" />
           <database value="database" />
           <files>
-            <file path="$USER_HOME$/Documents/AndroidStudio/DeviceExplorer/emulator-5554/data/data/com.mredrock.cyxbs.freshman/databases/freshman_database" schema="main" />
+            <file path="$USER_HOME$/Documents/AndroidStudio/DeviceExplorer/Nexus_4_API_24 [emulator-5554]/data/data/com.mredrock.cyxbs.freshman/databases/freshman_database" schema="main" />
           </files>
           <type value="NONE" />
           <user value="" />

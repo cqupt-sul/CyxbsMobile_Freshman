@@ -29,9 +29,9 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="7dp"
                 android:adjustViewBounds="true"
-                picUrl="@{collegePicItem.photoUrl1}"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                picUrl="collegePicItem.photoUrl1"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
@@ -58,9 +58,9 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="7dp"
                 android:adjustViewBounds="true"
-                picUrl="@{collegePicItem.photoUrl1}"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                picUrl="collegePicItem.photoUrl2"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"

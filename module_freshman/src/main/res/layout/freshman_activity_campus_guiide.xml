@@ -13,8 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="49dp"/>
     <include layout="@layout/freshman_view_divide_line"/>
-    <com.mredrock.cyxbs.freshman.view.customui.CustomViewPager
+    <com.mredrock.cyxbs.freshman.view.custom.CustomViewPager
         android:id="@+id/vp_campus_guide"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:overScrollMode="never"/>
 </LinearLayout>

@@ -4,7 +4,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import com.mredrock.cyxbs.common.viewmodel.BaseViewModel
 import com.mredrock.cyxbs.freshman.model.item.HomeItem
-import com.mredrock.cyxbs.freshman.repositories.HomeRepository
+import com.mredrock.cyxbs.freshman.repository.HomeRepository
 
 /**
 * @date 2019-08-03

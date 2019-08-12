@@ -1,6 +1,6 @@
 package com.mredrock.cyxbs.freshman.viewmodel.helper
 
-import android.util.Log
+
 import android.widget.ImageView
 
 import androidx.databinding.BindingAdapter

@@ -8,6 +8,7 @@ import android.widget.Toast
 import com.mredrock.cyxbs.common.ui.BaseActivity
 import com.mredrock.cyxbs.common.ui.BaseFragment
 import com.mredrock.cyxbs.freshman.R
+import com.mredrock.cyxbs.freshman.model.SetToolsBarTitle
 import kotlinx.android.synthetic.main.freshman_activity_more_function.*
 import org.greenrobot.eventbus.EventBus
 
@@ -22,7 +23,7 @@ class MoreFunctionFragment : BaseFragment(){
 
     override fun onStart() {
         super.onStart()
-        EventBus.getDefault().post("更多功能")
+        EventBus.getDefault().post(SetToolsBarTitle("更多功能"))
         ll_third.setOnClickListener {
             Toast.makeText(this.context, "重邮小帮手", Toast.LENGTH_SHORT).show()
         }

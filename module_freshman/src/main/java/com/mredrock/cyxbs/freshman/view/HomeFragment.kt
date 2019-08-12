@@ -17,6 +17,7 @@ import com.mredrock.cyxbs.freshman.BR
 import com.mredrock.cyxbs.freshman.R
 import com.mredrock.cyxbs.freshman.databinding.FreshmanRecycleItemHomeBinding
 import com.mredrock.cyxbs.freshman.model.InitDBEvent
+import com.mredrock.cyxbs.freshman.model.SetToolsBarTitle
 import com.mredrock.cyxbs.freshman.model.item.HomeItem
 import com.mredrock.cyxbs.freshman.view.adapter.BaseRecyclerViewAdapter
 import com.mredrock.cyxbs.freshman.view.talk.TalkDialogFragment
@@ -45,7 +46,7 @@ class HomeFragment : BaseViewModelFragment<HomeViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        EventBus.getDefault().post(SetToolsBarTitle(""))
         val animation1 = AnimationUtils.loadAnimation(this.context, R.anim.freshman_rotate_clockwise_001)
         animation1.interpolator = LinearInterpolator()
         iv_home_screw_left.startAnimation(animation1)
@@ -89,23 +90,15 @@ class HomeFragment : BaseViewModelFragment<HomeViewModel>() {
         rv_home.layoutManager = LinearLayoutManager(this.context)
         rv_home.adapter = adapter
         viewModel.getShowList(viewLifecycleOwner).observe {
-            LogUtils.d("LiveData","Recyclerview初始化回调"+ it.toString())
-            it?.let {
-                it1 -> adapter.submitShowList(it1)
+            if (adapter.itemCount==0){
+                LogUtils.d("LiveData","Recyclerview初始化回调"+ it.toString())
+                it?.let {
+                    it1 -> adapter.submitShowList(it1)
+                }
             }
         }
     }
 
-
-//    @Subscribe(threadMode = ThreadMode.MAIN,sticky = true)
-//    fun inflatRecyclerView(initDBEvent: InitDBEvent){
-//        viewModel.getShowList(viewLifecycleOwner).observe {
-//            LogUtils.d("LiveData","Recyclerview初始化回调"+ it.toString())
-//            it?.let {
-//                it1 -> adapter.submitShowList(it1)
-//            }
-//        }
-//    }
 
 
     private fun showTalk(){

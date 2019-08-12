@@ -16,7 +16,21 @@ import androidx.room.RoomDatabase.Callback as Callback1
  * @author Override0330
  * @description
  */
-@Database(entities = [BusLine::class, Address::class, Map::class, Scenery::class, SchoolGroup::class, FellowTownsmanGroup::class, OnlineActivity::class, HomeItem::class, Route::class],version = 1)
+@Database(entities = [
+    BusLine::class,
+    Address::class,
+    Map::class,
+    Scenery::class,
+    SchoolGroup::class,
+    FellowTownsmanGroup::class,
+    OnlineActivity::class,
+    HomeItem::class,
+    Route::class,
+    Dormitory::class,
+    Canteen::class,
+    ExpressAddress::class,
+    Subject::class,
+    BoyAndGirl::class],version = 1)
 abstract class FreshmanDataBase :RoomDatabase(){
     abstract fun freshmanDao():FreshmanDaos
     companion object{

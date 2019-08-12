@@ -5,12 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.mredrock.cyxbs.freshman.R
-import com.mredrock.cyxbs.freshman.view.BaseTabLayoutActivity
+import com.mredrock.cyxbs.freshman.model.SetToolsBarTitle
 import com.mredrock.cyxbs.freshman.view.BaseTabLayoutFragment
-import com.mredrock.cyxbs.freshman.view.nannvbili.NannvbiliFragment
 import com.mredrock.cyxbs.freshman.viewmodel.online.OnlineDiscussViewModel
-import com.umeng.commonsdk.UMConfigure
 import kotlinx.android.synthetic.main.freshman_activity_online_discuss.*
+import org.greenrobot.eventbus.EventBus
 
 /**
  * @date 2019-08-08
@@ -28,6 +27,7 @@ class OnlineDiscussFragment :BaseTabLayoutFragment<OnlineDiscussViewModel>(Onlin
 
     override fun onStart() {
         super.onStart()
+        EventBus.getDefault().post(SetToolsBarTitle("线上活动"))
         initTabLayout(vp_online_discuss,tb_online_discuss, listOf("学员群","老乡群","线上活动"), listOf(GroupFragment.getInstantWithTag("学院群"),GroupFragment.getInstantWithTag("老乡群"),OnlineActivityFragment()))
     }
 }
