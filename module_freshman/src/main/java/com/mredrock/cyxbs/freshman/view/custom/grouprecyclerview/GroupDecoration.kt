@@ -8,23 +8,30 @@ import android.graphics.Paint
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.mredrock.cyxbs.common.utils.LogUtils
 import com.mredrock.cyxbs.freshman.R
 import com.mredrock.cyxbs.freshman.model.bean.RequirementData
 
 /**
  * Created by yyfbe on 2019-08-08
  */
-class GroupDecoration(data: ArrayList<RequirementData>, context:Context) :
+
+class GroupDecoration(val data: ArrayList<RequirementData>, context: Context) :
         RecyclerView.ItemDecoration() {
-    private val textPaint=Paint(Paint.ANTI_ALIAS_FLAG)
+
+    private val textPaint = Paint(Paint.ANTI_ALIAS_FLAG)
     @SuppressLint("UseSparseArrays")
     private val mTitleMap = HashMap<Int, String>()
     private var res: Resources = context.resources
-    private var topGap=res.getDimension(R.dimen.freshman_school_require_recycler_view_pad_top)
-    private var textStart=res.getDimension(R.dimen.freshman_school_require_recycler_view_text_start)
+    private var topGap = res.getDimension(R.dimen.freshman_school_require_recycler_view_pad_top)
+    private var textStart = res.getDimension(R.dimen.freshman_school_require_recycler_view_text_start)
+
     init {
+        for (i in data)
+            LogUtils.d("data", i.requirementName + i.requirementTitle)
+//        sortTitle(data)
         divideTitle(data)
-        textPaint.textSize=res.getDimension(R.dimen.freshman_school_require_recycler_view_title)
+        textPaint.textSize = res.getDimension(R.dimen.freshman_school_require_recycler_view_title)
     }
 
     override fun getItemOffsets(outRect: Rect, view: View,
@@ -32,28 +39,32 @@ class GroupDecoration(data: ArrayList<RequirementData>, context:Context) :
         super.getItemOffsets(outRect, view, parent, state)
         val itemPosition = parent.getChildItemId(view)
         //如果有这个下标，就画分离组
-        when (mTitleMap.containsKey(parent.childCount-1)){
-            true-> {
-                outRect.top=topGap.toInt()
+        when (mTitleMap.containsKey(parent.getChildAdapterPosition(view))) {
+            true -> {
+                outRect.top = topGap.toInt()
             }
-            false->outRect.top=0
         }
     }
 
     override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
         super.onDraw(c, parent, state)
-        val left=parent.paddingLeft
+        val left = parent.paddingLeft
 //        val right=parent.width-parent.paddingRight
-        var childView:View
+        var childView: View
 //        var top:Float
-        var bottom:Float
-        for (i in 0 until  parent.childCount){
-            childView=parent.getChildAt(i)
+        var bottom: Float
+        for (i in 0 until parent.childCount) {
+            childView = parent.getChildAt(i)
+            val itemPosition= parent.getChildAdapterPosition(childView)
 //            top=childView.top-topGap
-            bottom= childView.top.toFloat()
-            when (mTitleMap.containsKey(i)){
-                true-> mTitleMap[i]?.let { c.drawText(it,textStart,bottom-20f,textPaint) }
+            bottom = childView.top.toFloat()
+            when (mTitleMap.containsKey(itemPosition)) {
+//                true -> mTitleMap[i]?.let { c.drawText(it, textStart, bottom - 20f, textPaint) }
+                true -> {
+                    c.drawText(mTitleMap.getValue(itemPosition), textStart, bottom - 20f, textPaint)
+                }
             }
+
         }
     }
 
@@ -70,5 +81,13 @@ class GroupDecoration(data: ArrayList<RequirementData>, context:Context) :
                 }
             }
         }
+    }
+
+    private fun sortTitle(requirementDataList: ArrayList<RequirementData>) {
+//        for (i in 0 until requirementDataList.size) {
+//            if (requirementDataList[i].requirementTitle != "备忘录") {
+//            }
+//        }
+        requirementDataList.sortBy { it.requirementTitle }
     }
 }

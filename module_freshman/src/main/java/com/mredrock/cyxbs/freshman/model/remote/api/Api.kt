@@ -14,7 +14,7 @@ import kotlin.collections.ArrayList
  * @description
  */
 
-val retrofit = Retrofit.Builder().baseUrl("http://129.28.185.138:8080")
+val retrofit = Retrofit.Builder().baseUrl("http://129.28.185.138:8080/")
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build()
@@ -49,6 +49,9 @@ interface GetRequestInterface{
     @GET("zsqy/json/8")
     fun getActivityCall(): Observable<ActivityResult>
 
+    @GET("zsqy/json/1")
+    fun getRequireCall(): Observable<RequirementResult>
+
 }
 
 class BusLineResult(val text_1:Address,val text_2:Route){
@@ -69,18 +72,24 @@ class BusLineResult(val text_1:Address,val text_2:Route){
     }
 }
 
-class CollegeSceneryResult(val text:Context){
-    class Context(val title: String,val photo:String,val message:ArrayList<Scenery>){
-        class Scenery(val name: String,val photo:String)
+class CollegeSceneryResult(val text: Context) {
+    class Context(val title: String, val photo: String, val message: ArrayList<Scenery>) {
+        class Scenery(val name: String, val photo: String)
     }
 }
 
-class GroupResult(val text:List<Group>){
-    class Group(val name: String, val data:String)
+class GroupResult(val text: List<Group>) {
+    class Group(val name: String, val data: String)
 }
 
-class ActivityResult(val text:List<ActivityItem>){
-    class ActivityItem(val name:String,val photo:String,val message:String,val QR:String)
+class ActivityResult(val text: List<ActivityItem>) {
+    class ActivityItem(val name: String, val photo: String, val message: String, val QR: String)
+}
+
+class RequirementResult(val text: List<Group>) {
+    class Group(val title: String, val data: List<Group2>) {
+        class Group2(val name: String, val detail: String)
+    }
 }
 
 class DormitoryResult(val text:List<Content>){

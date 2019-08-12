@@ -15,3 +15,11 @@ class SetToolsBarTitle(val title:String)
 class InBackgroundEvent(val event:()->Unit)
 
 class ShowActivityDialog(val photoUrl:String,val message:String)
+
+class DeleteRequire(val requireInfo :String)
+
+class AddRequire(val requireInfo: String)
+
+class CurrentDeleteRequire(val requireInfo :String)
+
+class CurrentAddRequire(val requireInfo :String)

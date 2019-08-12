@@ -30,7 +30,9 @@ import androidx.room.RoomDatabase.Callback as Callback1
     Canteen::class,
     ExpressAddress::class,
     Subject::class,
-    BoyAndGirl::class],version = 1)
+    BoyAndGirl::class,
+    RequireItem::class,
+    RequireCheck::class],version = 1)
 abstract class FreshmanDataBase :RoomDatabase(){
     abstract fun freshmanDao():FreshmanDaos
     companion object{

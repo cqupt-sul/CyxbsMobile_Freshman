@@ -29,11 +29,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.order.OrderActivity"/>
-        <!--<activity android:name=".view.campusguide.CampusGuideRepository"/>-->
-        <activity android:name=".view.requirement.RequirementEditActivity" />
-        <activity android:name=".view.requirement.RequirementDeleteActivity">
-        </activity>
     </application>
 
 </manifest>

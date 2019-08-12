@@ -70,7 +70,7 @@
                     android:layout_toEndOf="@+id/cb_item_requirement"
                     android:text="@{schoolrequire.requirementName}"
                     android:textColor="@{schoolrequire.textColor}"
-                    android:textSize="20sp"
+                    android:textSize="17sp"
                     tools:ignore="RelativeOverlap" />
 
                 <androidx.appcompat.widget.AppCompatImageView
@@ -89,6 +89,7 @@
                 android:id="@+id/tv_require_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:maxEms="15"
                 android:text="@{schoolrequire.requirementDetail}"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
