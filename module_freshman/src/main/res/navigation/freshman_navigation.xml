@@ -37,6 +37,16 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action
+            android:id="@+id/freshman_action_freshman_home_fragment_to_freshman_orderfragment"
+            app:destination="@id/freshman_orderfragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action
+            android:id="@+id/freshman_action_freshman_home_fragment_to_freshman_mainrequirementactivity"
+            app:destination="@id/freshman_mainrequirementactivity" />
     </fragment>
     <fragment
         android:id="@+id/freshman_more_function_fragment"
@@ -76,4 +86,31 @@
         android:name="com.mredrock.cyxbs.freshman.view.guide.disclosure.DataDisclosureActivity"
         android:label="DataDisclosureDetailFragment"
         tools:layout="@layout/freshman_activity_data_disclosure"/>
+    <fragment
+        android:id="@+id/freshman_orderfragment"
+        android:name="com.mredrock.cyxbs.freshman.view.order.OrderFragment"
+        android:label="OrderFragment" />
+    <fragment
+        android:id="@+id/freshman_mainrequirementactivity"
+        android:name="com.mredrock.cyxbs.freshman.view.requirement.MainRequirementActivity"
+        android:label="MainRequirementActivity" >
+        <action
+            android:id="@+id/freshman_action_freshman_mainrequirementactivity_to_freshman_requirementdeleteactivity"
+            app:destination="@id/freshman_requirementdeleteactivity" />
+        <action
+            android:id="@+id/freshman_action_freshman_mainrequirementactivity_to_freshman_requirementeditactivity"
+            app:destination="@id/freshman_requirementeditactivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/freshman_requirementdeleteactivity"
+        android:name="com.mredrock.cyxbs.freshman.view.requirement.RequirementDeleteActivity"
+        android:label="RequirementDeleteActivity" >
+        <action
+            android:id="@+id/freshman_action_freshman_requirementdeleteactivity_to_freshman_requirementeditactivity"
+            app:destination="@id/freshman_requirementeditactivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/freshman_requirementeditactivity"
+        android:name="com.mredrock.cyxbs.freshman.view.requirement.RequirementEditActivity"
+        android:label="RequirementEditActivity" />
 </navigation>

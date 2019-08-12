@@ -19,6 +19,7 @@ import com.mredrock.cyxbs.freshman.R
 import com.mredrock.cyxbs.freshman.databinding.FreshmanRecycleItemHomeBinding
 import com.mredrock.cyxbs.freshman.model.InitDBEvent
 import com.mredrock.cyxbs.freshman.model.SetToolsBarTitle
+import com.mredrock.cyxbs.freshman.model.ShowOrHindToolsBarEvent
 import com.mredrock.cyxbs.freshman.model.item.HomeItem
 import com.mredrock.cyxbs.freshman.view.adapter.BaseRecyclerViewAdapter
 import com.mredrock.cyxbs.freshman.view.talk.TalkDialogFragment
@@ -49,6 +50,7 @@ class HomeFragment : BaseViewModelFragment<HomeViewModel>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         EventBus.getDefault().post(SetToolsBarTitle(""))
+        EventBus.getDefault().post(ShowOrHindToolsBarEvent(true))
         val animation1 = AnimationUtils.loadAnimation(this.context, R.anim.freshman_rotate_clockwise_001)
         animation1.interpolator = LinearInterpolator()
         iv_home_screw_left.startAnimation(animation1)
@@ -72,10 +74,13 @@ class HomeFragment : BaseViewModelFragment<HomeViewModel>() {
                 // position为-1时为非法
                 when (position) {
                     0 -> {
-                        showTalk()
+                        findNavController().navigate(R.id.freshman_action_freshman_home_fragment_to_freshman_mainrequirementactivity)
                     }
                     1 -> {
                         findNavController().navigate(R.id.freshman_action_freshman_home_fragment_to_freshman_gotocquptfragment)
+                    }
+                    2 -> {
+                        findNavController().navigate(R.id.freshman_action_freshman_home_fragment_to_freshman_orderfragment)
                     }
                     4 -> {
                         findNavController().navigate(R.id.freshman_action_freshman_home_fragment_to_freshman_onlinediscussfragment)
@@ -106,6 +111,7 @@ class HomeFragment : BaseViewModelFragment<HomeViewModel>() {
                 }
             }
         }
+        showTalk()
     }
 
 

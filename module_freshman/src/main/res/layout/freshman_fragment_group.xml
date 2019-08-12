@@ -39,8 +39,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/et_search"
-            android:overScrollMode="never"
-            android:visibility="gone" />
+            android:overScrollMode="never" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_group"
@@ -51,6 +50,7 @@
             android:overScrollMode="never"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_search" />
+            app:layout_constraintTop_toBottomOf="@+id/et_search"
+            android:visibility="gone"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
