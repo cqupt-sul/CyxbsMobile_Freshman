@@ -22,7 +22,7 @@ class DormitoryFragment : BaseTabLayoutFragment<DormitoryViewModel>(DormitoryVie
         viewModel.getDorimtoryList(viewLifecycleOwner).observe{ list ->
             if (list!=null){
                 val fragmentList = list.map { DormitoryDetailFragment.newInstance(it) }
-                LogUtils.d("debug","$list")
+                LogUtils.d("加载宿舍fragment","${list.toString()}")
                 initTabLayout(vp_dormitory,tl_dormitory,list,fragmentList)
             }
         }

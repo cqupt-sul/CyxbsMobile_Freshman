@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import com.mredrock.cyxbs.freshman.R
 import com.mredrock.cyxbs.freshman.view.BaseTabLayoutFragment
 import com.mredrock.cyxbs.freshman.viewmodel.guide.ExpressViewModel
+import kotlinx.android.synthetic.main.freshman_activity_campus_guiide.*
 import kotlinx.android.synthetic.main.freshman_fragment_express.*
 
 /**
@@ -23,13 +24,11 @@ class ExpressFragment : BaseTabLayoutFragment<ExpressViewModel>(ExpressViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.initData().observe {
-            val titles = ArrayList<String>()
-            for (i in 0 until it?.size!!) {
-                titles.add(it[i].name)
+        viewModel.campusGuideRepository.getExpressListLiveData(viewLifecycleOwner).observe{
+            if (it != null){
+                val fragmentList = it.map { ExpressDetailFragment.newInstance(it) }
+                initTabLayout(vp_express,tl_express,it,fragmentList)
             }
-            initTabLayout(vp_express, tl_express, titles, listOf(ExpressDetailFragment.newInstance(0),
-                    ExpressDetailFragment.newInstance(1)))
         }
     }
 }

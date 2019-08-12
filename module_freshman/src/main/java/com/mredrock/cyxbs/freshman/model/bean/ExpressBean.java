@@ -58,6 +58,12 @@ public class ExpressBean {
         }
 
         public static class MessageBean {
+            public MessageBean(String title, String detail, String photo) {
+                this.title = title;
+                this.detail = detail;
+                this.photo = photo;
+            }
+
             /**
              * title : 樱花园
              * detail : .....................

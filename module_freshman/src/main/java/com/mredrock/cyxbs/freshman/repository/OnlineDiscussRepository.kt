@@ -12,6 +12,7 @@ import com.mredrock.cyxbs.freshman.model.db.OnlineActivity
 import com.mredrock.cyxbs.freshman.model.db.SchoolGroup
 import com.mredrock.cyxbs.freshman.model.item.ActivityItem
 import com.mredrock.cyxbs.freshman.model.item.GroupItem
+import com.mredrock.cyxbs.freshman.model.remote.api.imageBaseUrl
 import com.mredrock.cyxbs.freshman.model.remote.api.request
 import io.reactivex.schedulers.Schedulers
 import org.greenrobot.eventbus.EventBus
@@ -60,8 +61,8 @@ class OnlineDiscussRepository {
         val list = MutableLiveData<List<ActivityItem>>()
         FreshmanDataBase.getInstant().freshmanDao().getAllOnlineActivity().observe(lifecycleOwner, Observer { onlineActivity ->
             list.postValue(onlineActivity.map {
-                ActivityItem(it.photoUrl,it.name){activity->
-                    EventBus.getDefault().postSticky(ShowActivityDialog(it.qrUrl,it.message))} })
+                ActivityItem(imageBaseUrl +it.photoUrl,it.name){ activity->
+                    EventBus.getDefault().postSticky(ShowActivityDialog(imageBaseUrl+it.qrUrl,it.message))} })
         })
         return list
     }
@@ -92,7 +93,7 @@ class OnlineDiscussRepository {
                 subscribeOn = Schedulers.io(),
                 unsubscribeOn = Schedulers.io(),
                 observeOn = Schedulers.io()).safeSubscribeBy { activityResult ->
-            FreshmanDataBase.getInstant().freshmanDao().insertOnlineActivity(activityResult.text.map { OnlineActivity(it.name,it.photo,it.message,it.QR) })
+            FreshmanDataBase.getInstant().freshmanDao().insertOnlineActivity(activityResult.text.map { OnlineActivity(it.name,imageBaseUrl+it.photo,it.message,imageBaseUrl+it.QR) })
         }
     }
 }

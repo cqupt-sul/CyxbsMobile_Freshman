@@ -10,7 +10,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/mtrl_btn_transparent_bg_color">
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_freshman_home_1"
             android:layout_width="wrap_content"

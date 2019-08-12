@@ -8,6 +8,7 @@ import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mredrock.cyxbs.common.BaseApp
 import com.mredrock.cyxbs.common.ui.BaseViewModelFragment
+import com.mredrock.cyxbs.common.viewmodel.event.ProgressDialogEvent
 import com.mredrock.cyxbs.freshman.BR
 import com.mredrock.cyxbs.freshman.R
 import com.mredrock.cyxbs.freshman.databinding.FreshmanRecycleItemBusLineBinding
@@ -38,15 +39,26 @@ class BusLineFragment : BaseViewModelFragment<BusLineViewModel>(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.progressDialogEvent.value = ProgressDialogEvent.SHOW_CANCELABLE_DIALOG_EVENT
         viewModel.getBusLine(viewLifecycleOwner).observe{
-            if (it != null) {
+            if (adapter.itemCount==0&&it != null) {
                 adapter.submitShowList(it)
+                if (viewModel.progressDialogEvent.value==ProgressDialogEvent.SHOW_CANCELABLE_DIALOG_EVENT){
+                    viewModel.progressDialogEvent.value = ProgressDialogEvent.DISMISS_DIALOG_EVENT
+                }
+            }else{
+                if (viewModel.progressDialogEvent.value==ProgressDialogEvent.SHOW_CANCELABLE_DIALOG_EVENT){
+                    viewModel.progressDialogEvent.value = ProgressDialogEvent.DISMISS_DIALOG_EVENT
+                }
             }
         }
         viewModel.getAddress(viewLifecycleOwner).observe{
             if (it != null){
                 tv_bus_line_school_name.text = it.title
                 tv_bus_line_school_address.text = it.address
+                if (viewModel.progressDialogEvent.value==ProgressDialogEvent.SHOW_CANCELABLE_DIALOG_EVENT){
+                    viewModel.progressDialogEvent.value = ProgressDialogEvent.DISMISS_DIALOG_EVENT
+                }
             }
         }
     }

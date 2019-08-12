@@ -20,6 +20,8 @@ val retrofit = Retrofit.Builder().baseUrl("http://129.28.185.138:8080/")
         .build()
 val request = retrofit.create(GetRequestInterface::class.java)
 
+val imageBaseUrl = "http://129.28.185.138:8080/zsqy/image/"
+
 interface GetRequestInterface{
 
     @GET("zsqy/json/3")
@@ -98,7 +100,7 @@ class DormitoryResult(val text:List<Content>){
             fun getPhoto():String{
                 var url = ""
                 for (i in 0 until photo.size){
-                    url += photo[i]
+                    url += imageBaseUrl+photo[i]
                     if (i!=(photo.size-1)) {
                         url += ","
                     }

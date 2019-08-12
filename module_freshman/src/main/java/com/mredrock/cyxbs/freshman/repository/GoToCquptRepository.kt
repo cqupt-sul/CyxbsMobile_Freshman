@@ -11,6 +11,7 @@ import com.mredrock.cyxbs.freshman.model.db.*
 import com.mredrock.cyxbs.freshman.model.db.Map
 import com.mredrock.cyxbs.freshman.model.item.BusLineItem
 import com.mredrock.cyxbs.freshman.model.item.CollegePicItem
+import com.mredrock.cyxbs.freshman.model.remote.api.imageBaseUrl
 import com.mredrock.cyxbs.freshman.model.remote.api.request
 import io.reactivex.schedulers.Schedulers
 
@@ -112,6 +113,7 @@ class GoToCquptRepository private constructor() {
                         LogUtils.d("数据库","写入/更新数据")
                     }
                 }
+
         
         //更新CollegeSceneryFragment的数据
         val collegeSceneryObserver = request.getCollegeSceneryCall()
@@ -121,8 +123,8 @@ class GoToCquptRepository private constructor() {
                 observeOn = Schedulers.io())
                 .safeSubscribeBy {
                     with(FreshmanDataBase.getInstant().freshmanDao()){
-                        val map = Map(it.text.title,it.text.photo)
-                        val list = it.text.message.map { Scenery(it.name,it.photo) }
+                        val map = Map(it.text.title, imageBaseUrl+it.text.photo)
+                        val list = it.text.message.map { Scenery(it.name,imageBaseUrl+it.photo) }
                         this.insertMap(map)
                         this.insertScenery(list)
                         LogUtils.d("数据库","写入/更新数据")

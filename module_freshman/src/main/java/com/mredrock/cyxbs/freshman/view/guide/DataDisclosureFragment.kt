@@ -22,12 +22,20 @@ import kotlinx.android.synthetic.main.freshman_fragment_data_disclosure.*
 class DataDisclosureFragment : BaseViewModelFragment<DataDisclosureFragmentViewModel>() {
     override val viewModelClass: Class<DataDisclosureFragmentViewModel>
         get() = DataDisclosureFragmentViewModel::class.java
-
+//
     val adapter = BaseRecyclerViewAdapter<FreshmanRecycleItemDataDisclosureBinding, InstituteData>(
             R.layout.freshman_recycle_item_data_disclosure, BR.instituteItem, null)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
+        return inflater.inflate(R.layout.freshman_fragment_data_disclosure, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        LogUtils.d("生命周期","onViewCreated")
+        rv_data_disclosure.adapter = adapter
+        rv_data_disclosure.layoutManager = LinearLayoutManager(context)
         viewModel.getSchoolListLiveData(viewLifecycleOwner).observe{ list ->
             LogUtils.d("回调","触发更新Recyclerview $list")
             if (adapter.itemCount==0&&list!=null){
@@ -43,14 +51,6 @@ class DataDisclosureFragment : BaseViewModelFragment<DataDisclosureFragmentViewM
                 }
             }
         }
-        return inflater.inflate(R.layout.freshman_fragment_data_disclosure, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        LogUtils.d("生命周期","onViewCreated")
-        rv_data_disclosure.adapter = adapter
-        rv_data_disclosure.layoutManager = LinearLayoutManager(context)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

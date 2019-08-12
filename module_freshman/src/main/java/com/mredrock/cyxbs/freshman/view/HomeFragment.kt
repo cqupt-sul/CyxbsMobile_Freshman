@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mredrock.cyxbs.common.ui.BaseViewModelFragment
 import com.mredrock.cyxbs.common.utils.LogUtils
+import com.mredrock.cyxbs.common.viewmodel.event.ProgressDialogEvent
 import com.mredrock.cyxbs.freshman.BR
 import com.mredrock.cyxbs.freshman.R
 import com.mredrock.cyxbs.freshman.databinding.FreshmanRecycleItemHomeBinding
@@ -26,6 +27,7 @@ import kotlinx.android.synthetic.main.freshman_acitvity_home.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
+import org.jetbrains.anko.support.v4.progressDialog
 
 /**
  * @date 2019-08-03
@@ -89,11 +91,18 @@ class HomeFragment : BaseViewModelFragment<HomeViewModel>() {
         }
         rv_home.layoutManager = LinearLayoutManager(this.context)
         rv_home.adapter = adapter
+        viewModel.progressDialogEvent.value=ProgressDialogEvent.SHOW_CANCELABLE_DIALOG_EVENT
         viewModel.getShowList(viewLifecycleOwner).observe {
             if (adapter.itemCount==0){
-                LogUtils.d("LiveData","Recyclerview初始化回调"+ it.toString())
                 it?.let {
                     it1 -> adapter.submitShowList(it1)
+                    if (viewModel.progressDialogEvent.value==ProgressDialogEvent.SHOW_CANCELABLE_DIALOG_EVENT){
+                        viewModel.progressDialogEvent.value = ProgressDialogEvent.DISMISS_DIALOG_EVENT
+                    }
+                }
+            }else{
+                if (viewModel.progressDialogEvent.value==ProgressDialogEvent.SHOW_CANCELABLE_DIALOG_EVENT){
+                    viewModel.progressDialogEvent.value = ProgressDialogEvent.DISMISS_DIALOG_EVENT
                 }
             }
         }

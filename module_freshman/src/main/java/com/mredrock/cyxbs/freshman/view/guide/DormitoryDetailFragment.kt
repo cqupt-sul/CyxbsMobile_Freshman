@@ -21,8 +21,8 @@ class DormitoryDetailFragment : BaseViewModelFragment<DormitoryDetailViewModel>(
         return inflater.inflate(R.layout.freshman_fragment_dormitory_detail, container, false)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         val tag = arguments?.getString("tag")
         if (tag != null){
             viewModel.getDormitoryData(viewLifecycleOwner,tag).observe{
@@ -34,7 +34,6 @@ class DormitoryDetailFragment : BaseViewModelFragment<DormitoryDetailViewModel>(
             }
         }
     }
-
     companion object {
         fun newInstance(tag: String): DormitoryDetailFragment {
             val args = Bundle()

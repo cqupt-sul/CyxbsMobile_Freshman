@@ -7,7 +7,10 @@ import com.mredrock.cyxbs.common.utils.LogUtils
 import com.mredrock.cyxbs.common.utils.extensions.safeSubscribeBy
 import com.mredrock.cyxbs.common.utils.extensions.setSchedulers
 import com.mredrock.cyxbs.freshman.model.bean.ChartData
+import com.mredrock.cyxbs.freshman.model.bean.ExpressBean
+import com.mredrock.cyxbs.freshman.model.bean.ExpressDetailData
 import com.mredrock.cyxbs.freshman.model.db.*
+import com.mredrock.cyxbs.freshman.model.remote.api.imageBaseUrl
 import com.mredrock.cyxbs.freshman.model.remote.api.request
 import io.reactivex.schedulers.Schedulers
 
@@ -42,6 +45,7 @@ class CampusGuideRepository private constructor(){
         val list = MutableLiveData<List<String>>()
         updata()
         FreshmanDataBase.getInstant().freshmanDao().getAllDormitory().observe(lifecycleOwner, Observer {
+            LogUtils.d("数据库层变化监听","${it.size}")
             list.postValue(it.map { it.name })
         })
         return list
@@ -63,10 +67,10 @@ class CampusGuideRepository private constructor(){
         return list
     }
 
-    fun getExpressLiveData(lifecycleOwner: LifecycleOwner,name: String):MutableLiveData<List<ExpressAddress>>{
-        val liveData = MutableLiveData<List<ExpressAddress>>()
+    fun getExpressLiveData(lifecycleOwner: LifecycleOwner,name: String):MutableLiveData<List<ExpressDetailData>>{
+        val liveData = MutableLiveData<List<ExpressDetailData>>()
         FreshmanDataBase.getInstant().freshmanDao().getExpressByName(name).observe(lifecycleOwner, Observer {
-            liveData.postValue(it)
+            liveData.postValue(it.map { ExpressDetailData(ExpressBean.TextBean.MessageBean(it.title,it.detail,it.photoUrl)) })
         })
         return liveData
     }
@@ -120,10 +124,13 @@ class CampusGuideRepository private constructor(){
                     LogUtils.d("网络请求","${it.text[0]}")
                     with(FreshmanDataBase.getInstant().freshmanDao()){
                         val list = it.text
+                        LogUtils.d("网络请求", it.text[0].title)
                         list.forEach{ content ->
-                            if (content.title == "宿舍") {
+                            if (content.title == "学生寝室") {
+                                LogUtils.d("数据库写入","宿舍 ${content.title}")
                                 this.insertDormitory(content.message.map { Dormitory(it.name, it.detail, it.getPhoto()) })
-                            }else if (content.title == "食堂") {
+                            }else if (content.title == "学生食堂") {
+                                LogUtils.d("数据库写入","食堂 ${content.title}")
                                 this.insertCanteen(content.message.map { Canteen(it.name,it.detail,it.getPhoto()) })
                             }
                             }
@@ -136,9 +143,11 @@ class CampusGuideRepository private constructor(){
                 observeOn = Schedulers.io()).safeSubscribeBy {
             with(FreshmanDataBase.getInstant().freshmanDao()){
                 val list = it.text
+                LogUtils.d("网络请求", it.text[0].name)
                 list.forEach{company->
                     company.message.forEach {
-                        this.insertExpressAddress(ExpressAddress(company.name,it.title,it.detail,it.photo))
+                        this.insertExpressAddress(ExpressAddress(company.name,it.title,it.detail, imageBaseUrl +it.photo))
+                        LogUtils.d("imageUrl",imageBaseUrl +it.photo)
                     }
                 }
             }

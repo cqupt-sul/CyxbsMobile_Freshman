@@ -1,5 +1,6 @@
 package com.mredrock.cyxbs.freshman.viewmodel.guide
 
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.mredrock.cyxbs.common.viewmodel.BaseViewModel
@@ -24,5 +25,6 @@ class ExpressViewModel : BaseViewModel() {
         expressList.value=data
     }
     val campusGuideRepository = CampusGuideRepository.getInstant()
+    fun getExpressList(lifecycleOwner: LifecycleOwner):MutableLiveData<List<String>> = campusGuideRepository.getExpressListLiveData(lifecycleOwner)
 
 }

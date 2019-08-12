@@ -68,13 +68,9 @@ class GroupFragment : BaseViewModelFragment<GroupFragmentViewModel>() {
                 }
             }
         }
-        adapter.onItemOnClickListener = object : BaseRecyclerViewAdapter.OnItemOnClickListener {
-            override fun onItemClick(itemView: View, position: Int) {
-                val copySuccessDialogFragment = CopySuccessDialogFragment()
-                copySuccessDialogFragment.show(fragmentManager,"copy success")
-            }
-        }
     }
+
+
 
 
     fun startSearch(){

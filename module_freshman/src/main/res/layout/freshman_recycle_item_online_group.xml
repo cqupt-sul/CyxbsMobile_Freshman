@@ -14,7 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/freshman_goto_line_shape"
-        android:layout_marginTop="15dp">
+        android:layout_marginTop="15dp"
+        android:onClick="@{()->group.copyGroupId()}">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_online_school_name"

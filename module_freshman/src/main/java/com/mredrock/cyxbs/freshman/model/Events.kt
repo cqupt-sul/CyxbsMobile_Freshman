@@ -23,3 +23,6 @@ class AddRequire(val requireInfo: String)
 class CurrentDeleteRequire(val requireInfo :String)
 
 class CurrentAddRequire(val requireInfo :String)
+
+class CopyStringToClipboard(val message: String)
+

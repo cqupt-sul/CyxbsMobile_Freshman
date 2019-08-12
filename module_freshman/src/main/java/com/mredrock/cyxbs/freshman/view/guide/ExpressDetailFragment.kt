@@ -23,33 +23,33 @@ class ExpressDetailFragment : BaseViewModelFragment<ExpressDetailViewModel>() {
     override val viewModelClass: Class<ExpressDetailViewModel>
         get() = ExpressDetailViewModel::class.java
 
+    val adapter = BaseRecyclerViewAdapter<FreshmanRecycleItemExpressDetailBinding, ExpressDetailData>(
+            R.layout.freshman_recycle_item_express_detail, BR.expressDetailData, null)
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        super.onCreateView(inflater, container, savedInstanceState)
         return inflater.inflate(R.layout.freshman_fragment_express_detail, container, false)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val fragmentIndex = arguments?.getInt("Index")
-        val viewModelFactory = getViewModelFactory()
-        viewModel = if (viewModelFactory != null) {
-            ViewModelProviders.of(this, viewModelFactory).get(viewModelClass)
-        } else {
-            ViewModelProviders.of(this).get(viewModelClass)
-        }
-        if (fragmentIndex != null) {
-            viewModel.getExpressDetails(fragmentIndex).observe {
-                val adapter = BaseRecyclerViewAdapter<FreshmanRecycleItemExpressDetailBinding, ExpressDetailData>(
-                        R.layout.freshman_recycle_item_express_detail, BR.expressDetailData, it)
-                rv_express_detail.adapter = adapter
-                rv_express_detail.layoutManager = LinearLayoutManager(context) as RecyclerView.LayoutManager?
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        rv_express_detail.adapter = adapter
+        rv_express_detail.layoutManager = LinearLayoutManager(context)
+        val company = arguments?.getString("tag")
+        if (company!=null){
+            viewModel.getExpressDatail(viewLifecycleOwner,company).observe{
+                if (it!=null){
+                    adapter.submitShowList(it)
+                }
             }
         }
     }
 
+
     companion object {
-        fun newInstance(tag: Int): ExpressDetailFragment {
+        fun newInstance(tag: String): ExpressDetailFragment {
             val args = Bundle()
-            args.putInt("Index", tag)
+            args.putString("tag", tag)
             val fragment = ExpressDetailFragment()
             fragment.arguments = args
             return fragment

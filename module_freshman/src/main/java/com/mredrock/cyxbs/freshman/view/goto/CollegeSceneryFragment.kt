@@ -10,6 +10,7 @@ import com.mredrock.cyxbs.common.component.showPhotos
 import com.mredrock.cyxbs.common.ui.BaseViewModelFragment
 import com.mredrock.cyxbs.common.utils.LogUtils
 import com.mredrock.cyxbs.common.utils.extensions.setImageFromUrl
+import com.mredrock.cyxbs.common.viewmodel.event.ProgressDialogEvent
 import com.mredrock.cyxbs.freshman.BR
 import com.mredrock.cyxbs.freshman.R
 import com.mredrock.cyxbs.freshman.databinding.FreshmanFragmentCollegeSceneryBinding
@@ -39,6 +40,7 @@ class CollegeSceneryFragment : BaseViewModelFragment<CollegeSceneryViewModel>() 
 
     override fun onStart() {
         super.onStart()
+        viewModel.progressDialogEvent.value = ProgressDialogEvent.SHOW_CANCELABLE_DIALOG_EVENT
         LogUtils.d("生命周期监听", "${this} onStart")
         rv_goto_college_pic.layoutManager = LinearLayoutManager(this.context)
         rv_goto_college_pic.adapter
@@ -74,6 +76,9 @@ class CollegeSceneryFragment : BaseViewModelFragment<CollegeSceneryViewModel>() 
         viewModel.getSceneryListLiveData(viewLifecycleOwner).observe{
             if (it != null){
                 adapter.submitShowList(it)
+                if (viewModel.progressDialogEvent.value== ProgressDialogEvent.SHOW_CANCELABLE_DIALOG_EVENT){
+                    viewModel.progressDialogEvent.value = ProgressDialogEvent.DISMISS_DIALOG_EVENT
+                }
             }
         }
     }
