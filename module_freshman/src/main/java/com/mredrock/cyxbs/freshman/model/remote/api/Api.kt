@@ -4,7 +4,10 @@ import io.reactivex.Observable
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
+import retrofit2.http.POST
 import kotlin.collections.ArrayList
 
 
@@ -56,6 +59,12 @@ interface GetRequestInterface{
 
     @GET("zsqy/json/2")
     fun getOrderCall(): Observable<OrderResult>
+
+    @FormUrlEncoded
+    @POST("zsqy/select/college")
+    fun getSearchCall(@Field("college") college:String): Observable<SearchResult>
+
+
 
 }
 
@@ -135,3 +144,6 @@ class BoyAndGirlResult(val text:List<Content>){
     class Content(val name: String,val boy:String,val girl:String)
 }
 
+class SearchResult(val text:List<Group>){
+    class Group(val name:String,val data:String)
+}

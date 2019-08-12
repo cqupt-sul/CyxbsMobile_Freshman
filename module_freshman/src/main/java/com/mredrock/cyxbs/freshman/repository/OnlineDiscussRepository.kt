@@ -96,4 +96,16 @@ class OnlineDiscussRepository {
             FreshmanDataBase.getInstant().freshmanDao().insertOnlineActivity(activityResult.text.map { OnlineActivity(it.name,imageBaseUrl+it.photo,it.message,imageBaseUrl+it.QR) })
         }
     }
+
+    //拿到搜索结果
+    fun getSearchList(text:String):MutableLiveData<List<GroupItem>>{
+        val list = MutableLiveData<List<GroupItem>>()
+        val observableSearch = request.getSearchCall(text)
+        observableSearch.setSchedulers(subscribeOn = Schedulers.io(),
+                unsubscribeOn = Schedulers.io(),
+                observeOn = Schedulers.io()).safeSubscribeBy {
+            list.postValue(it.text.map { GroupItem(it.name,it.data) })
+        }
+        return list
+    }
 }
