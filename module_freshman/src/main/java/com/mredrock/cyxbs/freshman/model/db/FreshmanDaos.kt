@@ -99,6 +99,12 @@ interface FreshmanDaos {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertRequireCheck(checkList: List<RequireCheck>)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertOrderItem(orderList: List<OrderItem>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertOrderItem(order: OrderItem)
+
     //删
     @Delete
     fun deleteBusLine(busLine: BusLine)
@@ -151,6 +157,9 @@ interface FreshmanDaos {
     @Delete
     fun deleteRequireCheck(requireCheckList: List<RequireCheck>)
 
+    @Delete
+    fun deleteOrderItem(orderList: List<OrderItem>)
+
 
     //改
     @Update
@@ -200,6 +209,9 @@ interface FreshmanDaos {
 
     @Update
     fun updateRequireCheck(checkList: List<RequireCheck>)
+
+    @Update
+    fun updateOrderItem(orderList: List<OrderItem>)
 
     //查
     @Query("SELECT * FROM bus_line")
@@ -251,28 +263,28 @@ interface FreshmanDaos {
     fun getAllDormitory(): LiveData<List<Dormitory>>
 
     @Query("SELECT * FROM dormitory WHERE name = :name")
-    fun getDormitoryByName(name:String):LiveData<Dormitory>
+    fun getDormitoryByName(name: String): LiveData<Dormitory>
 
     @Query("SELECT * FROM canteen")
     fun getAllCanteen(): LiveData<List<Canteen>>
 
     @Query("SELECT * FROM canteen WHERE name = :name")
-    fun getCanteenByName(name:String):LiveData<Canteen>
+    fun getCanteenByName(name: String): LiveData<Canteen>
 
     @Query("SELECT * FROM express WHERE name =:name")
     fun getExpressByName(name: String): LiveData<List<ExpressAddress>>
 
     @Query("SELECT * FROM EXPRESS")
-    fun getAllExpress():LiveData<List<ExpressAddress>>
+    fun getAllExpress(): LiveData<List<ExpressAddress>>
 
     @Query("SELECT * FROM subject WHERE name =:school")
-    fun getSubjectBySchool(school:String): LiveData<List<Subject>>
+    fun getSubjectBySchool(school: String): LiveData<List<Subject>>
 
     @Query("SELECT * FROM subject")
-    fun getAllSubject():LiveData<List<Subject>>
+    fun getAllSubject(): LiveData<List<Subject>>
 
     @Query("SELECT * FROM boy_and_girl WHERE name =:school")
-    fun getBoyAndGirlBySchool(school:String): LiveData<BoyAndGirl>
+    fun getBoyAndGirlBySchool(school: String): LiveData<BoyAndGirl>
 
     @Query("SELECT * FROM require_item WHERE name = :name")
     fun getRequireItem(name: String): LiveData<List<RequireItem>>
@@ -285,5 +297,9 @@ interface FreshmanDaos {
 
     @Query("SELECT * FROM require_check")
     fun getAllRequireCheck(): LiveData<List<RequireCheck>>
+
+    @Query("SELECT * FROM order_item")
+    fun getOrderItem(): LiveData<List<OrderItem>>
+
 
 }

@@ -42,12 +42,14 @@ class MainRequirementActivity : BaseViewModelActivity<MainRequirementViewModel>(
         super.onCreate(savedInstanceState)
         setContentView(R.layout.freshman_activity_requirement_kind)
         freshman_top_toolbar.init("入学流程")
+        //获得ViewModel
         val viewModelFactory = getViewModelFactory()
         viewModel = if (viewModelFactory != null) {
             ViewModelProviders.of(this, viewModelFactory).get(viewModelClass)
         } else {
             ViewModelProviders.of(this).get(viewModelClass)
         }
+        //通过ViewModel获得数据
         viewModel.initData(this).observe(this, Observer {
             val adapter = BaseRecyclerViewAdapter<FreshmanRecycleItemRequirementBinding
                     , RequirementData>(R.layout.freshman_recycle_item_requirement, BR.schoolrequire, it)
@@ -57,6 +59,8 @@ class MainRequirementActivity : BaseViewModelActivity<MainRequirementViewModel>(
                     initItemView(itemView, position)
                 }
             })
+
+            //防止多次设置rv的ItemDecoration
             if (checkReset&&rv_school_requirement_kind.itemDecorationCount!=0) {
                 rv_school_requirement_kind.removeItemDecorationAt(0)
             }
@@ -68,6 +72,7 @@ class MainRequirementActivity : BaseViewModelActivity<MainRequirementViewModel>(
     }
 
     private fun initView() {
+        //配置标题和一些的点击事件
         tv_right.text = "编辑"
         tv_left.setOnClickListener {
             finish()
@@ -96,7 +101,7 @@ class MainRequirementActivity : BaseViewModelActivity<MainRequirementViewModel>(
 
         }
     }
-
+//处在最低层的activity作为发布者
     @Subscribe(threadMode = ThreadMode.ASYNC, sticky = true)
     fun runInBackground(inBackgroundEvent: InBackgroundEvent) {
         run(inBackgroundEvent.event)

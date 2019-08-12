@@ -14,10 +14,10 @@
         android:background="@color/freshman_activity_data_revealed_bg_color">
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_order_register"
+            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="报道时间：9月5-9月6"
             android:textColor="#666666"
             android:textSize="20sp"/>
         <androidx.recyclerview.widget.RecyclerView

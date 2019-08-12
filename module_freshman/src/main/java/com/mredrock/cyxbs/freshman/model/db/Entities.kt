@@ -44,39 +44,46 @@ class OnlineActivity(@PrimaryKey var name: String,
                      @ColumnInfo(name = "qr_url") var qrUrl: String)
 
 @Entity(tableName = "home_item")
-class HomeItem(@PrimaryKey var title:String,var content:String)
+class HomeItem(@PrimaryKey var title: String, var content: String)
 
 @Entity(tableName = "dormitory")
-class Dormitory(@PrimaryKey var name:String,
-                var detail:String,
-                var url:String)
+class Dormitory(@PrimaryKey var name: String,
+                var detail: String,
+                var url: String)
 
 @Entity(tableName = "canteen")
-class Canteen(@PrimaryKey var name:String,
-              var detail:String,
-              var url:String)
-
-@Entity(tableName = "express",primaryKeys = ["name","title"])
-class ExpressAddress( var name:String,
-              var title:String,
+class Canteen(@PrimaryKey var name: String,
               var detail: String,
-              var photoUrl: String)
+              var url: String)
 
-@Entity(tableName = "subject",primaryKeys = ["name","subject"])
+@Entity(tableName = "express", primaryKeys = ["name", "title"])
+class ExpressAddress(var name: String,
+                     var title: String,
+                     var detail: String,
+                     var photoUrl: String)
+
+@Entity(tableName = "subject", primaryKeys = ["name", "subject"])
 class Subject(var name: String,
               var subject: String,
-              var data:String)
+              var data: String)
 
 @Entity(tableName = "boy_and_girl")
 class BoyAndGirl(@PrimaryKey var name: String,
-                 var boy:String,
-                 var girl:String)
+                 var boy: String,
+                 var girl: String)
 
 
 @Entity(tableName = "require_item")
 class RequireItem(@PrimaryKey var name: String,
                   @ColumnInfo(name = "title_id") var title: String,
                   @ColumnInfo(name = "detail_id") var detail: String)
+
 @Entity(tableName = "require_check")
 class RequireCheck(@PrimaryKey var name: String,
                    @ColumnInfo(name = "check") var check: Boolean)
+
+@Entity(tableName = "order_item")
+class OrderItem(@PrimaryKey var title: String,
+                @ColumnInfo(name = "message") var message: String,
+                @ColumnInfo(name = "photo") var photo: String,
+                @ColumnInfo(name = "detail") var detail: String)

@@ -3,7 +3,7 @@
     <dimen name="freshman_school_require_recycler_view_pad_top" >24dp</dimen>
     <dimen name="freshman_school_require_recycler_view_title" >16sp</dimen>
     <dimen name="freshman_school_require_recycler_view_text_start" >16dp</dimen>
-    <dimen name="freshman_data_disclosure_custom_view_text_size">15sp</dimen>
+    <dimen name="freshman_data_disclosure_custom_view_text_size">10sp</dimen>
     <dimen name="freshman_data_disclosure_custom_view_ratio_size">15sp</dimen>
     <dimen name="freshman_data_disclosure_custom_view_title_size">17sp</dimen>
     <dimen name="freshman_data_disclosure_custom_view_title_distance_size">16dp</dimen>

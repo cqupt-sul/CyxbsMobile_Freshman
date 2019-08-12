@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.fragment.app.Fragment
 import com.mredrock.cyxbs.common.ui.BaseViewModelFragment
 import com.mredrock.cyxbs.freshman.R
@@ -54,7 +55,9 @@ class SubjectFragment : BaseViewModelFragment<SubjectViewModel>() {
                             }
                         }
                     }
+                    val interpolator= AccelerateDecelerateInterpolator()
                     animator.duration = 3000
+                    animator.interpolator=interpolator
                     cv_subject.doAnim(animator)
                     animator.start()
                 }

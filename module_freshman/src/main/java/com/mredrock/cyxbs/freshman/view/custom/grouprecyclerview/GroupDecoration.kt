@@ -49,17 +49,13 @@ class GroupDecoration(val data: ArrayList<RequirementData>, context: Context) :
     override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
         super.onDraw(c, parent, state)
         val left = parent.paddingLeft
-//        val right=parent.width-parent.paddingRight
         var childView: View
-//        var top:Float
         var bottom: Float
         for (i in 0 until parent.childCount) {
             childView = parent.getChildAt(i)
             val itemPosition= parent.getChildAdapterPosition(childView)
-//            top=childView.top-topGap
             bottom = childView.top.toFloat()
             when (mTitleMap.containsKey(itemPosition)) {
-//                true -> mTitleMap[i]?.let { c.drawText(it, textStart, bottom - 20f, textPaint) }
                 true -> {
                     c.drawText(mTitleMap.getValue(itemPosition), textStart, bottom - 20f, textPaint)
                 }
@@ -81,13 +77,5 @@ class GroupDecoration(val data: ArrayList<RequirementData>, context: Context) :
                 }
             }
         }
-    }
-
-    private fun sortTitle(requirementDataList: ArrayList<RequirementData>) {
-//        for (i in 0 until requirementDataList.size) {
-//            if (requirementDataList[i].requirementTitle != "备忘录") {
-//            }
-//        }
-        requirementDataList.sortBy { it.requirementTitle }
     }
 }

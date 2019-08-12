@@ -13,7 +13,7 @@ import com.mredrock.cyxbs.freshman.model.CurrentAddRequire
 import com.mredrock.cyxbs.freshman.model.CurrentDeleteRequire
 import com.mredrock.cyxbs.freshman.model.bean.RequirementData
 import com.mredrock.cyxbs.freshman.model.db.RequireItem
-import com.mredrock.cyxbs.freshman.repositories.RequirementRepository
+import com.mredrock.cyxbs.freshman.repository.RequirementRepository
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode

@@ -13,7 +13,7 @@ import kotlin.collections.ArrayList
  * @author Override0330
  * @description
  */
-
+val basePicUrl="http://129.28.185.138:8080/zsqy/image/"
 val retrofit = Retrofit.Builder().baseUrl("http://129.28.185.138:8080/")
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
@@ -51,6 +51,9 @@ interface GetRequestInterface{
 
     @GET("zsqy/json/1")
     fun getRequireCall(): Observable<RequirementResult>
+
+    @GET("zsqy/json/2")
+    fun getOrderCall(): Observable<OrderResult>
 
 }
 
@@ -90,6 +93,11 @@ class RequirementResult(val text: List<Group>) {
     class Group(val title: String, val data: List<Group2>) {
         class Group2(val name: String, val detail: String)
     }
+}
+
+class OrderResult(val text:List<Group>){
+    class Group(val title: String,val message: String,
+                val photo: String,val detail: String)
 }
 
 class DormitoryResult(val text:List<Content>){
