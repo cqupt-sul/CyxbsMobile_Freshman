@@ -57,6 +57,18 @@ interface FreshmanDaos {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertHomeItem(HomeItemList: List<HomeItem>)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertRequireItem(requireItem: RequireItem)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertRequireItem(RequireItemList: List<RequireItem>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertRequireCheck(check: RequireCheck)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertRequireCheck(checkList: List<RequireCheck>)
+
     //删
     @Delete
     fun deleteBusLine(busLine: BusLine)
@@ -96,6 +108,19 @@ interface FreshmanDaos {
 
     @Delete
     fun deleteHomeItem(HomeItemList: List<HomeItem>)
+
+    @Delete
+    fun deleteRequireItem(RequireItemList: List<RequireItem>)
+
+    @Delete
+    fun deleteRequireItem(requireItem: RequireItem)
+
+    @Delete
+    fun deleteRequireCheck(requireCheck: RequireCheck)
+
+    @Delete
+    fun deleteRequireCheck(requireCheckList: List<RequireCheck>)
+
 
     //改
     @Update
@@ -139,6 +164,12 @@ interface FreshmanDaos {
 
     @Update
     fun updateHomeItem(HomeItemList: List<HomeItem>)
+
+    @Update
+    fun updateRequireItem(RequireItemList: List<RequireItem>)
+
+    @Update
+    fun updateRequireCheck(checkList: List<RequireCheck>)
 
     //查
     @Query("SELECT * FROM bus_line")
@@ -185,5 +216,18 @@ interface FreshmanDaos {
 
     @Query("SELECT * FROM home_item WHERE title = :title")
     fun getHomeItem(title: String): LiveData<HomeItem>
+
+    @Query("SELECT * FROM require_item WHERE name = :name")
+    fun getRequireItem(name: String): LiveData<List<RequireItem>>
+
+    @Query("SELECT * FROM require_item WHERE title_id = :title")
+    fun getRequireItemByTitle(title: String): LiveData<List<RequireItem>>
+
+    @Query("SELECT * FROM require_item")
+    fun getAllRequireItem(): LiveData<List<RequireItem>>
+
+    @Query("SELECT * FROM require_check")
+    fun getAllRequireCheck(): LiveData<List<RequireCheck>>
+
 
 }

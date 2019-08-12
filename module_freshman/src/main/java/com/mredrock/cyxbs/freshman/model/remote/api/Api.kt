@@ -14,13 +14,13 @@ import kotlin.collections.ArrayList
  * @description
  */
 
-val retrofit = Retrofit.Builder().baseUrl("http://129.28.185.138:9025/")
+val retrofit = Retrofit.Builder().baseUrl("http://129.28.185.138:8080/")
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build()
 val request = retrofit.create(GetRequestInterface::class.java)
 
-interface GetRequestInterface{
+interface GetRequestInterface {
     @GET("zsqy/json/5")
     fun getBusLineCall(): Observable<BusLineResult>
 
@@ -36,26 +36,35 @@ interface GetRequestInterface{
     @GET("zsqy/json/8")
     fun getActivityCall(): Observable<ActivityResult>
 
+    @GET("zsqy/json/1")
+    fun getRequireCall(): Observable<RequirementResult>
+
 }
 
-class BusLineResult(val text_1:Address,val text_2:Route){
-    class Address(val title:String, val message:String)
-    class Route(val title:String, val message:ArrayList<BusLine>){
-        class BusLine(val name:String, val route:ArrayList<String>)
+class BusLineResult(val text_1: Address, val text_2: Route) {
+    class Address(val title: String, val message: String)
+    class Route(val title: String, val message: ArrayList<BusLine>) {
+        class BusLine(val name: String, val route: ArrayList<String>)
     }
 }
 
-class CollegeSceneryResult(val text:Context){
-    class Context(val title: String,val photo:String,val message:ArrayList<Scenery>){
-        class Scenery(val name: String,val photo:String)
+class CollegeSceneryResult(val text: Context) {
+    class Context(val title: String, val photo: String, val message: ArrayList<Scenery>) {
+        class Scenery(val name: String, val photo: String)
     }
 }
 
-class GroupResult(val text:List<Group>){
-    class Group(val name: String, val data:String)
+class GroupResult(val text: List<Group>) {
+    class Group(val name: String, val data: String)
 }
 
-class ActivityResult(val text:List<ActivityItem>){
-    class ActivityItem(val name:String,val photo:String,val message:String,val QR:String)
+class ActivityResult(val text: List<ActivityItem>) {
+    class ActivityItem(val name: String, val photo: String, val message: String, val QR: String)
+}
+
+class RequirementResult(val text: List<Group>) {
+    class Group(val title: String, val data: List<Group2>) {
+        class Group2(val name: String, val detail: String)
+    }
 }
 

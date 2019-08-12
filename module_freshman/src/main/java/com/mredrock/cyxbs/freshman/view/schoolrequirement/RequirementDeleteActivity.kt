@@ -44,6 +44,8 @@ class RequirementDeleteActivity : BaseViewModelActivity<RequirementDeleteViewMod
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.freshman_activity_requirement_memo)
+        val adapter = BaseRecyclerViewAdapter<FreshmanRecycleItemRequirementBinding
+                , RequirementData>(R.layout.freshman_recycle_delete_item_requirement, BR.schoolrequire, null)
         initView()
         freshman_top_toolbar.init("",
                 listener = null)
@@ -53,10 +55,9 @@ class RequirementDeleteActivity : BaseViewModelActivity<RequirementDeleteViewMod
         } else {
             ViewModelProviders.of(this).get(viewModelClass)
         }
-        viewModel.initData().observe(this, Observer {
+        viewModel.initData(this).observe(this, Observer {
             if (it.size != 0) tv_no_data_notice.gone()
-            val adapter = BaseRecyclerViewAdapter<FreshmanRecycleItemRequirementBinding
-                    , RequirementData>(R.layout.freshman_recycle_delete_item_requirement, BR.schoolrequire, it)
+            adapter.submitShowList(it)
             rv_school_requirement_edit.adapter = adapter
             adapter.onItemOnClickListener = (object : BaseRecyclerViewAdapter.OnItemOnClickListener {
                 override fun onItemClick(itemView: View, position: Int) {
@@ -85,10 +86,10 @@ class RequirementDeleteActivity : BaseViewModelActivity<RequirementDeleteViewMod
 //        tv_right.setOnClickListener {
 //            startActivity(Intent(RequirementDeleteActivity@ this, RequirementEditActivity::class.java))
 //        }
-        tv_no_data_notice.setOnClickListener{
-            /**
-             *
-             */
+        tv_no_data_notice.setOnClickListener {
+            startActivity(Intent(this@RequirementDeleteActivity
+                    , RequirementEditActivity::class.java))
+            finish()
         }
         tv_left.setOnClickListener {
             finish()
