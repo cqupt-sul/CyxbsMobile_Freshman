@@ -40,13 +40,6 @@ class OrderFragment : BaseViewModelFragment<OrderViewModel>() {
     override fun onStart() {
         super.onStart()
         EventBus.getDefault().post(SetToolsBarTitle("入学流程"))
-        //获得ViewModel
-        val viewModelFactory = getViewModelFactory()
-        viewModel = if (viewModelFactory != null) {
-            ViewModelProviders.of(this, viewModelFactory).get(viewModelClass)
-        } else {
-            ViewModelProviders.of(this).get(viewModelClass)
-        }
         //获得数据
         viewModel.initData(this).observe { orderItem ->
             if (orderItem != null) {
