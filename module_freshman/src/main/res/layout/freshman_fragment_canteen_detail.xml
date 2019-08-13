@@ -18,8 +18,8 @@
             android:background="@drawable/freshman_bg"
             android:orientation="vertical">
 
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/freshman_viewpager"
+            <com.youth.banner.Banner
+                android:id="@+id/freshman_canteen_banner"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_gravity="center_horizontal"
@@ -38,8 +38,8 @@
                 android:textColor="#b3000000"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/freshman_viewpager"
-                app:layout_constraintTop_toBottomOf="@+id/freshman_viewpager"
+                app:layout_constraintStart_toStartOf="@+id/freshman_canteen_banner"
+                app:layout_constraintTop_toBottomOf="@+id/freshman_canteen_banner"
                 tools:text="千喜鹤" />
 
             <androidx.appcompat.widget.AppCompatTextView

@@ -14,6 +14,7 @@ dependencies {
 
     implementation 'androidx.navigation:navigation-fragment-ktx:2.0.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.0.0'
+    implementation 'com.youth.banner:banner:1.4.10'
 }
 
 

@@ -82,6 +82,7 @@ class GoToCquptRepository private constructor() {
             for (i in 0 until it.size step 2){
                 val collegePicItem = CollegePicItem(it[i].name,it[i].photoUrl,it[(i+1)].name,it[i+1].photoUrl)
                 list.add(collegePicItem)
+                LogUtils.d("debug-picget", collegePicItem.photoUrl1.get().toString())
             }
             liveData.postValue(list)
         })
@@ -124,10 +125,9 @@ class GoToCquptRepository private constructor() {
                 .safeSubscribeBy {
                     with(FreshmanDataBase.getInstant().freshmanDao()){
                         val map = Map(it.text.title, imageBaseUrl+it.text.photo)
-                        val list = it.text.message.map { Scenery(it.name,imageBaseUrl+it.photo) }
+                        val list = it.text.message.map { Scenery(it.name,(imageBaseUrl+it.photo).toString()) }
                         this.insertMap(map)
                         this.insertScenery(list)
-                        LogUtils.d("数据库","写入/更新数据")
                     }
                 }
     }

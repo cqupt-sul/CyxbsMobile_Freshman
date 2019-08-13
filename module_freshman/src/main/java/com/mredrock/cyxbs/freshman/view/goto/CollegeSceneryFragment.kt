@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.mredrock.cyxbs.common.BaseApp
 import com.mredrock.cyxbs.common.component.showPhotos
 import com.mredrock.cyxbs.common.ui.BaseViewModelFragment
@@ -42,11 +43,12 @@ class CollegeSceneryFragment : BaseViewModelFragment<CollegeSceneryViewModel>() 
         super.onStart()
         viewModel.progressDialogEvent.value = ProgressDialogEvent.SHOW_CANCELABLE_DIALOG_EVENT
         LogUtils.d("生命周期监听", "${this} onStart")
-        rv_goto_college_pic.layoutManager = LinearLayoutManager(this.context)
+        rv_goto_college_pic.layoutManager = LinearLayoutManager(this.context) as RecyclerView.LayoutManager?
         rv_goto_college_pic.adapter
         adapter.onItemOnClickListener = object :BaseRecyclerViewAdapter.OnItemOnClickListener{
             override fun onItemClick(itemView: View, position: Int) {
                 viewModel.getSceneryUrlList(viewLifecycleOwner).observe{
+                    LogUtils.d("debug-pic", it?.get(0).toString())
                     if (it != null){
                         showPhotos(BaseApp.context,it,position)
                     }

@@ -18,8 +18,8 @@
             android:background="@drawable/freshman_bg"
             tools:ignore="UselessParent">
 
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/vp_dormitory"
+            <com.youth.banner.Banner
+                android:id="@+id/freshman_dormitory_banner"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_gravity="center_horizontal"
@@ -38,8 +38,8 @@
                 android:textColor="#b3000000"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@id/vp_dormitory"
-                app:layout_constraintTop_toBottomOf="@id/vp_dormitory"
+                app:layout_constraintStart_toStartOf="@id/freshman_dormitory_banner"
+                app:layout_constraintTop_toBottomOf="@id/freshman_dormitory_banner"
                 tools:text="明理苑" />
 
             <androidx.appcompat.widget.AppCompatTextView

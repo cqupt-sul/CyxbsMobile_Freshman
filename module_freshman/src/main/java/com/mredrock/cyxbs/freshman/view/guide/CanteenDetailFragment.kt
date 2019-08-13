@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.mredrock.cyxbs.common.ui.BaseViewModelFragment
 import com.mredrock.cyxbs.freshman.R
+import com.mredrock.cyxbs.freshman.view.adapter.BannerImageLoader
 import com.mredrock.cyxbs.freshman.viewmodel.guide.CanteenDetailViewModel
 import kotlinx.android.synthetic.main.freshman_fragment_canteen_detail.*
 
@@ -25,6 +26,8 @@ class CanteenDetailFragment: BaseViewModelFragment<CanteenDetailViewModel>() {
                     tv_canteen_detail_name.text = it.name
                     tv_canteen_detail_content.text = it.detail
                     //轮播图初始化
+                    val list=it.url.split(",")
+                    freshman_canteen_banner.setImages(list).setImageLoader(BannerImageLoader()).start()
                 }
             }
         }
