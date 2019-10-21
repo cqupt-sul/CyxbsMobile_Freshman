@@ -2,6 +2,9 @@
 *.ap_
 *.aab
 
+# Mac special file
+*.DS_Store
+
 # Files for the ART/Dalvik VM
 *.dex
 
