@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/freshman_navigation"
+    app:startDestination="@id/freshman_home_fragment">
+    <fragment
+        android:id="@+id/freshman_home_fragment"
+        android:name="com.mredrock.cyxbs.freshman.view.HomeFragment"
+        android:label="freshman_acitvity_home"
+        tools:layout="@layout/freshman_acitvity_home">
+        <action
+            android:id="@+id/freshman_action_freshman_home_fragment_to_freshman_more_function_fragment"
+            app:destination="@id/freshman_more_function_fragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action
+            android:id="@+id/freshman_action_freshman_home_fragment_to_freshman_gotocquptfragment"
+            app:destination="@id/freshman_goto_cqupt_fragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action
+            android:id="@+id/freshman_action_freshman_home_fragment_to_freshman_onlinediscussfragment"
+            app:destination="@id/freshman_onlinediscussfragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action
+            android:id="@+id/freshman_action_freshman_home_fragment_to_freshman_campusguidefragment"
+            app:destination="@id/freshman_campusguidefragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action
+            android:id="@+id/freshman_action_freshman_home_fragment_to_freshman_orderfragment"
+            app:destination="@id/freshman_orderfragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action
+            android:id="@+id/freshman_action_freshman_home_fragment_to_freshman_mainrequirementactivity"
+            app:destination="@id/freshman_mainrequirementactivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/freshman_more_function_fragment"
+        android:name="com.mredrock.cyxbs.freshman.view.more.MoreFunctionFragment"
+        android:label="MoreFunctionFragment"
+        tools:layout="@layout/freshman_activity_more_function"/>
+    <fragment
+        android:id="@+id/freshman_goto_cqupt_fragment"
+        android:name="com.mredrock.cyxbs.freshman.view.goto.GoToCquptFragment"
+        android:label="GoToCquptFragment"
+        tools:layout="@layout/freshman_fragmnet_main_gotocqupt"/>
+    <fragment
+        android:id="@+id/freshman_onlinediscussfragment"
+        android:name="com.mredrock.cyxbs.freshman.view.online.OnlineDiscussFragment"
+        android:label="OnlineDiscussFragment"
+        tools:layout="@layout/freshman_activity_online_discuss"/>
+    <fragment
+
+        android:id="@+id/freshman_campusguidefragment"
+        android:name="com.mredrock.cyxbs.freshman.view.guide.CampusGuideFragment"
+        android:label="CampusGuideFragment"
+        tools:layout="@layout/freshman_activity_campus_guiide">
+        <action
+            android:id="@+id/freshman_action_freshman_campusguidefragment_to_freshman_datadisclosuredetailfragment"
+            app:destination="@id/freshman_datadisclosuredetailfragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <argument
+            android:name="school"
+            app:argType="string"
+            android:defaultValue='"传媒艺术学院"' />
+    </fragment>
+    <fragment
+        android:id="@+id/freshman_datadisclosuredetailfragment"
+        android:name="com.mredrock.cyxbs.freshman.view.guide.disclosure.DataDisclosureActivity"
+        android:label="DataDisclosureDetailFragment"
+        tools:layout="@layout/freshman_activity_data_disclosure"/>
+    <fragment
+        android:id="@+id/freshman_orderfragment"
+        android:name="com.mredrock.cyxbs.freshman.view.order.OrderFragment"
+        android:label="OrderFragment" />
+    <fragment
+        android:id="@+id/freshman_mainrequirementactivity"
+        android:name="com.mredrock.cyxbs.freshman.view.requirement.MainRequirementActivity"
+        android:label="MainRequirementActivity" >
+        <action
+            android:id="@+id/freshman_action_freshman_mainrequirementactivity_to_freshman_requirementdeleteactivity"
+            app:destination="@id/freshman_requirementdeleteactivity" />
+        <action
+            android:id="@+id/freshman_action_freshman_mainrequirementactivity_to_freshman_requirementeditactivity"
+            app:destination="@id/freshman_requirementeditactivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/freshman_requirementdeleteactivity"
+        android:name="com.mredrock.cyxbs.freshman.view.requirement.RequirementDeleteActivity"
+        android:label="RequirementDeleteActivity" >
+        <action
+            android:id="@+id/freshman_action_freshman_requirementdeleteactivity_to_freshman_requirementeditactivity"
+            app:destination="@id/freshman_requirementeditactivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/freshman_requirementeditactivity"
+        android:name="com.mredrock.cyxbs.freshman.view.requirement.RequirementEditActivity"
+        android:label="RequirementEditActivity" />
+</navigation>

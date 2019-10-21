@@ -6,7 +6,7 @@
     <data>
         <variable
             name="item"
-            type="com.mredrock.cyxbs.freshman.view.adapter.HomeItem" />
+            type="com.mredrock.cyxbs.freshman.model.item.HomeItem" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,6 +24,7 @@
             android:layout_marginStart="22dp"
             android:layout_marginTop="18dp"
             android:textSize="15.5sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="入学必备"

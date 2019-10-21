@@ -6,7 +6,7 @@
     <data>
         <variable
             name="showSchool"
-            type="com.mredrock.cyxbs.freshman.model.DataRevealedSchool" />
+            type="com.mredrock.cyxbs.freshman.model.bean.DataRevealedSchool" />
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -14,25 +14,50 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="20dp"
+        android:orientation="vertical"
         android:background="@color/freshman_activity_data_revealed_bg_color"
-        tools:context=".view.nannvbili.NannvbiliFragment">
+        tools:context=".view.guide.disclosure.BoyAndGirlFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/freshman_data_revealed_iv_bg_normal">
-
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/freshman_define_window">
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_data_revealed_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.09"/>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_data_revealed_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.16"/>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_data_revealed_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.23"/>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_data_revealed_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.32"/>
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_data_revealed_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="31dp"
                 android:layout_marginTop="30dp"
-                android:text="@{showSchool.schoolName.get()}"
                 tools:text="传媒艺术学院男女比例"
                 android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toStartOf="@id/guideline_data_revealed_1"
+                app:layout_constraintBottom_toTopOf="@id/guideline_data_revealed_2"/>
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/iv_data_revealed_man_color"
@@ -80,19 +105,17 @@
                 app:layout_constraintStart_toEndOf="@id/iv_data_revealed_woman_color"
                 app:layout_constraintTop_toTopOf="@+id/iv_data_revealed_woman_color" />
 
-            <com.mredrock.cyxbs.freshman.view.customui.circle.CircleView
+            <com.mredrock.cyxbs.freshman.view.custom.circle.CircleView
                 android:id="@+id/circle_view_test"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="80dp"
-                android:layout_marginTop="100dp"
                 android:layout_marginEnd="80dp"
                 android:layout_marginBottom="30dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@id/guideline_data_revealed_4" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>

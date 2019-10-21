@@ -1,38 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.HomeActivity"
+    android:background="@color/freshman_activity_home_bg_color"
     android:orientation="vertical"
-    android:background="@color/freshman_activity_home_bg_color">
-    <include layout="@layout/common_toolbar"/>
+    tools:context=".view.HomeFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/mtrl_btn_transparent_bg_color">
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_freshman_home_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.33"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_freshman_home_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.47"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:src="@drawable/freshman_home_bg_iv_normal"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_home_shadow_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1.5dp"
+            android:layout_marginBottom="1.5dp"
+            android:adjustViewBounds="true"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:src="@drawable/freshman_home_shadow_left_rotate"
+            app:layout_constraintBottom_toBottomOf="@id/iv_home_screw_left"
+            app:layout_constraintStart_toStartOf="@id/iv_home_screw_left" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_home_screw_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:src="@drawable/freshman_home_screw_left_rotate"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_freshman_home_1"
+            app:layout_constraintStart_toStartOf="@+id/guideline_freshman_home_2" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_freshman_home_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.76" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_freshman_home_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.49" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_home_shadow_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1.5dp"
+            android:layout_marginBottom="1.5dp"
+            android:adjustViewBounds="true"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:src="@drawable/freshman_home_shadow_right_rotate"
+            app:layout_constraintBottom_toBottomOf="@id/iv_home_screw_right"
+            app:layout_constraintStart_toStartOf="@id/iv_home_screw_right" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_home_screw_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:src="@drawable/freshman_home_screw_right_rotate"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_freshman_home_4"
+            app:layout_constraintStart_toStartOf="@+id/guideline_freshman_home_3" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:overScrollMode="never" >
+
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/freshman_home_bg_iv_normal"
-                android:adjustViewBounds="true"
-                android:focusable="true"
-                android:focusableInTouchMode="true"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_home"
-                android:layout_marginTop="7dp"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
-            </androidx.recyclerview.widget.RecyclerView>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="7dp" />
+
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/freshman_home_bottom_iv_normal"
-                android:adjustViewBounds="true"/>
+                android:adjustViewBounds="true"
+                android:src="@drawable/freshman_home_bottom_iv_normal" />
+
         </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.core.widget.NestedScrollView>
